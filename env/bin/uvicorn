@@ -1,4 +1,4 @@
-#!/Users/hisham/Downloads/CoopSalaries/env/bin/python3.12
+#!/home/hisham/code/Canadian-Internship-Salaries/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
