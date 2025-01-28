@@ -1,0 +1,393 @@
+Timestamp,"Where Did you work? (""Other"" at bottom if not listed)",Which work term was this?,How much did you make per hour?,"If there was a signing bonus, how much was it?",What year was it?,Where was it?
+13/02/2020 12:31:25,Morgan Stanley,1st,22.6,2000,2018,Montreal
+13/02/2020 12:31:52,Morgan Stanley,2nd,25,2000,2019,Montreal
+13/02/2020 12:32:14,Morgan Stanley,3rd,27.4,2000,2020,Montreal
+13/02/2020 12:32:20,Bombardier,1st,18.25,0,2019,Mirabel
+13/02/2020 12:33:54,Square Enix,1st,21,0,2019,Montreal
+13/02/2020 12:36:46,Audiokinetic,1st,17.5,0,2018,Montreal
+13/02/2020 12:37:20,Warner Bros. Games Montreal,2nd,20,0,2019,Montreal
+13/02/2020 12:39:15,Matrox,1st,18,0,2018,West Island
+13/02/2020 12:39:43,Dental Wings,2nd,22.7,0,2019,Montreal
+13/02/2020 12:39:51,CAE,1st,21.75,0,2019,West Island
+13/02/2020 12:42:05,CAE,2nd,21,0,2019,West Island
+13/02/2020 13:03:02,Accedian,1st,19,0,2019,West Island
+13/02/2020 13:15:35,NeuroRx Research,1st,19,0,2018,Montreal
+13/02/2020 13:26:47,Genetec,3rd,22,0,2019,West Island
+13/02/2020 13:32:22,Bloomberg,Greater than 3rd,63,2600,2020,New York City
+13/02/2020 13:33:33,Amazon,3rd,41,0,2019,Vancouver
+13/02/2020 13:36:34,Facebook,Greater than 3rd,61,0,2020,Bay Area
+13/02/2020 13:38:13,Lockheed Martin,1st,17.75,0,2019,West Island
+13/02/2020 13:41:09,Uber,Greater than 3rd,57,4716,2019,Bay Area
+13/02/2020 13:41:37,LinkedIn ,Greater than 3rd,59,0,2019,Bay Area
+13/02/2020 13:44:18,Google,Greater than 3rd,57,11790,2019,Bay Area
+13/02/2020 13:58:28,Coveo,2nd,21,0,2018,Montreal
+13/02/2020 14:17:51,CDPQ,3rd,29.8,0,2020,Montreal
+13/02/2020 14:39:59,Ericsson,1st,20.25,0,2020,Montreal
+13/02/2020 16:08:36,Ubisoft,1st,21,1,2020,Montreal
+16/02/2020 21:21:34,SAP,2nd,23,1,2019,Montreal
+17/02/2020 15:54:58,Ericsson,1st,18.5,1,2018,Montreal
+17/02/2020 17:05:28,Sofdesk,2nd,22,0,2020,Montreal
+17/02/2020 17:06:38,SSENSE,1st,21,0,2019,Montreal
+17/02/2020 20:36:23,Mira Geoscience,1st,21,0,2020,Montreal
+17/02/2020 20:36:45,Mira Geoscience,2nd,21,0,2019,Montreal
+17/02/2020 21:25:52,Matrox,1st,18,0,2019,West Island
+18/02/2020 00:14:46,CAE,1st,20,0,2019,St-Laurent
+29/02/2020 19:31:37,McKesson Canada,1st,19,450,2020,St-Laurent
+02/03/2020 19:10:32,Morgan Stanley,1st,25,2000,2020,Montreal
+21/04/2020 10:56:47,Bombardier,1st,20,0,2020,St-Bruno
+13/05/2020 16:21:41,McKesson Canada,1st,19,450,2020,St-Laurent
+29/09/2020 16:44:12,Octasic,1st,19.5,0,2020,Montreal
+29/09/2020 16:46:25,Genetec,2nd,20.75,0,2020,Montreal
+29/09/2020 16:48:42,Intact,2nd,23.45,0,2021,Montreal
+30/09/2020 11:29:38,Tangerine Software,1st,20,0,2020,Montreal
+30/09/2020 13:21:29,CAE,1st,20,0,2018,Montreal
+30/09/2020 20:50:42,Ubisoft,3rd,22,0,2020,Montreal
+30/09/2020 20:51:00,SAP,2nd,24,0,2020,Montreal
+01/10/2020 13:24:40,Ericsson,1st,19.5,0,2020,Montreal
+02/10/2020 01:27:38,Genetec,2nd,23.71,0,2020,Montreal
+26/10/2020 13:16:09,SAP,Greater than 3rd,32,0,2020,Montreal
+27/10/2020 14:02:12,AUDELA,Greater than 3rd,24,0,2019,Montreal
+19/11/2020 18:17:27,Consoltec,1st,18,0,2021,Montreal
+07/12/2020 15:29:23,Genetec,1st,19.5,0,2020,St-Laurent
+07/12/2020 21:23:53,Sun Life Financial Canada,1st,20,0,2020,Montreal
+10/12/2020 18:50:45,Matrox,1st,19,0,2020,West Island
+10/12/2020 18:51:08,Matrox,2nd,20,0,2020,West Island
+10/12/2020 18:51:46,Matrox,3rd,23,0,2021,West Island
+05/01/2021 17:18:47,Nakisa,1st,15,0,2018,Montreal
+15/01/2021 10:13:42,Diff Agency,1st,19,0,2019,Montreal
+17/01/2021 14:15:00,CAE,1st,20,0,2020,Montreal
+17/01/2021 19:56:01,Genetec,1st,21,0,2021,Montreal
+17/01/2021 20:23:10,Neptronic,1st,18.5,0,2020,St-Laurent
+17/01/2021 20:34:52,CAE,1st,18.5,0,2019,St-Laurent
+17/01/2021 21:31:16,Consoltec,1st,18,0,2020,Montreal
+04/02/2021 10:37:24,Ericsson,2nd,20.5,0,2021,Montreal
+11/02/2021 18:34:50,DRW,2nd,45,0,2021,Montreal
+16/02/2021 15:19:57,Amazon,2nd,45,0,2021,toronto
+16/02/2021 15:24:21,L3harris ,1st,20,0,2020,Montreal
+16/02/2021 15:25:17,L3harris ,1st,20,0,2020,Montreal
+16/02/2021 15:33:23,GitHub,Greater than 3rd,67,0,2019,San Francisco
+16/02/2021 15:44:33,Intact,1st,21.5,0,2021,Montreal
+16/02/2021 15:52:45,Autodesk,1st,21,0,2020,Montreal
+16/02/2021 15:53:08,Paysafe,2nd,18,0,2021,Montreal
+16/02/2021 15:53:29,CloudOps,2nd,23,0,2021,Montreal
+16/02/2021 15:55:00,Unity,2nd,31.5,0,2020,Montreal
+18/02/2021 22:24:50,Coveo,3rd,25,0,2021,Montreal
+18/02/2021 22:25:11,Coveo,3rd,25,0,2021,Montreal
+22/02/2021 14:08:48,Intact Financial Corp,1st,22.5,0,2019,Montreal
+07/03/2021 15:18:19,Electronic Arts,3rd,22,0,2020,Montreal
+21/04/2021 18:31:20,Cisco,2nd,45,7500,2021,San Jose
+23/04/2021 18:23:11,The Aldo Group,2nd,22,0,2021,St-Laurent
+02/05/2021 22:50:44,SAP,1st,26,0,2021,Montreal
+06/05/2021 15:38:32,Telus,1st,22.13,0,2021,Montreal
+06/05/2021 17:07:41,Deloitte ,1st,17.5,0,2021,Montreal
+26/05/2021 12:39:14,Genetec,3rd,23,0,2021,Montreal
+26/05/2021 12:54:13,Genetec,1st,21,0,2021,Montreal
+26/05/2021 13:20:19,Lockheed Martin,1st,21,0,2021,Mirabel
+30/05/2021 21:23:18,Matrox,1st,18,0,2021,Montreal
+08/06/2021 12:03:38,Ibwave,1st,21,0,2021,Montreal
+09/07/2021 09:57:34,Lockheed Martin,1st,23,0,2021,Montreal
+09/07/2021 10:19:07,Société Générale ,1st,21,0,2021,Montreal
+09/07/2021 11:22:41,Genetec,2nd,23,0,2021,Montreal
+09/07/2021 12:48:53,Diabsolut,1st,17,0,2021,West Island
+09/07/2021 16:48:16,Genetec,1st,21,0,2021,St-Laurent
+09/07/2021 16:49:35,Desjardins,1st,24.5,0,2021,Montreal
+09/07/2021 16:50:21,Genetec,2nd,22,0,2021,St-Laurent
+09/07/2021 18:30:47,Squarepoint capital,3rd,45,0,2021,Montreal
+14/07/2021 11:38:28,Microdrones,1st,20,0,2021,Vaudreuil Dorion
+14/07/2021 15:06:56,Ciena,1st,25,0,2021,Ottawa
+14/07/2021 15:25:13,Rio Tinto Fer et Titane,1st,23,0,2021,Sorel-Tracy
+15/07/2021 00:23:16,Nuance Communications,1st,23,0,2021,Montreal
+25/07/2021 17:18:49,Matrox,1st,21,0,2021,Montreal
+04/08/2021 14:52:26,Bombardier,1st,19,0,2021,Montreal
+21/08/2021 09:11:50,Ceridian,3rd,32,0,2021,Toronto
+21/08/2021 17:02:06,Genetec,1st,21,0,2021,Montreal
+23/09/2021 15:17:05,Epic Games,2nd,36,5000,2021,Montreal
+23/09/2021 20:16:48,Hydro-Quebec,2nd,22,0,2021,Montreal
+28/09/2021 13:50:35,Shared Service Canada,1st,16.5,0,2021,Remote
+29/09/2021 21:34:17,Desjardins ,1st,25.19,0,2021,Montreal
+30/09/2021 10:37:39,Matrox,2nd,20,0,2021,West Island
+30/09/2021 12:44:48,Matrox,1st,18,0,2021,Dorval
+01/10/2021 17:37:09,Unity,2nd,31.5,0,2020,Montreal
+01/10/2021 17:37:27,Unity,3rd,34,0,2021,Montreal
+03/10/2021 23:44:12,Coveo,1st,21,0,2021,Montreal
+04/10/2021 19:03:38,Morgan Stanley,3rd,32,2000,2021,Montreal
+12/10/2021 19:14:22,Genetec,1st,21,0,2021,Montreal
+14/10/2021 19:22:20,Mercer,1st,28.57,0,2021,Montreal
+22/11/2021 13:13:29,Amazon,2nd,46.93,0,2022,Vancouver
+23/11/2021 15:27:27,Purpose Financial ,2nd,21,0,2022,Montreal
+07/12/2021 15:40:25,PWC,1st,19,0,2018,South Shore
+16/12/2021 11:45:19,Intact,3rd,31.71,0,2021,Montreal
+19/12/2021 19:40:24,CAE,1st,20,0,2021,Montreal
+07/01/2022 15:43:07,Matrox,1st,19,0,2021,Montreal
+11/01/2022 14:30:36,CAE,1st,19.15,0,2021,Montreal
+12/01/2022 22:56:15,Genetec,2nd,22,0,2021,Montreal
+13/01/2022 17:56:40,CGI,1st,20,0,2021,Montreal
+13/01/2022 17:58:33,GIRO inc.,1st,20,0,2021,Montreal
+19/01/2022 13:39:39,RCMP,3rd,25,0,2022,Ottawa
+19/01/2022 13:40:36,WillowTree,3rd,33,4000,2022,Vancouver
+19/01/2022 15:09:13,CAE,1st,19.15,000000,2021,Montreal
+27/01/2022 13:21:57,Sun Life Financial,1st,20.5,0,2021,Montreal
+27/01/2022 13:22:34,CDPQ,2nd,25.1,0,2022,Montreal
+27/01/2022 13:23:39,Affirm,3rd,35,4000,2022,Waterloo
+27/01/2022 13:25:13,Robinhood,Greater than 3rd,61,8000,2022,Seattle
+02/02/2022 13:08:31,Intact,3rd,26,0,2022,Montreal
+02/02/2022 17:11:42,Amazon,3rd,47,0,2022,Toronto
+03/02/2022 17:18:42,McKesson Canada,1st,21,0,2020,Montreal
+03/02/2022 17:19:05,Société Générale,2nd,21,0,2021,Montreal
+03/02/2022 17:22:16,AppDirect,2nd,23.68,0,2021,Montreal
+04/02/2022 17:42:31,Matrox,3rd,24,0,2022,Montreal
+04/02/2022 21:07:24,Fluke Reliability (PRUFTECHNIK) ,1st,20,0,2019,Laval
+04/02/2022 21:54:31,Bombardier,1st,19,0,2021,St-Laurent
+05/02/2022 18:51:26,CAE,1st,18.75,0,2019,Montreal
+09/02/2022 13:56:42,Intact,2nd,35,0,2022,Montreal
+09/02/2022 17:52:25,BRP,1st,21.6,0,2022,Montreal
+11/02/2022 16:13:15,DRW,Greater than 3rd,52,0,2022,Montreal
+13/02/2022 09:51:09,CAE,1st,20,0,2021,Montreal
+13/02/2022 09:51:45,Telus,2nd,25.2,0,2022,Montreal
+18/02/2022 08:10:32,DRW,Greater than 3rd,52.08,0,2022,Montreal
+18/02/2022 16:57:16,Google,Greater than 3rd,58.79,8000,2021,New York City
+18/02/2022 18:11:23,Microsoft,1st,43,0,2022,Seattle
+24/02/2022 14:24:29,Matrox,1st,23,0,2022,Dorval
+24/02/2022 19:06:58,Verafin,1st,24.04,0,2022,remote
+25/02/2022 22:37:52,UKG,2nd,26,0,2022,Montreal
+14/03/2022 15:11:33,Coveo,1st,24,0,2022,Montreal
+14/03/2022 15:59:15,CAE,2nd,24.4,0,2022,Montreal
+14/03/2022 18:34:45,Pratt and Whitney ,1st,20,0,2022,South Shore
+15/03/2022 14:02:43,Matrox,1st,19,0,2022,West Island
+15/03/2022 22:13:29,Intact,3rd,26.38,0,2022,Montreal
+31/03/2022 18:46:29,Shopify,2nd,40,0,2022,Remote
+29/04/2022 17:41:21,Zendesk,3rd,26,0,2021,Montreal
+29/04/2022 17:44:59,Genetec,2nd,22,0,2021,Montreal
+29/04/2022 17:46:55,Matrox,1st,20,0,2021,Montreal
+29/04/2022 17:53:03,Matrox,2nd,21,0,2021,Montreal
+29/04/2022 17:53:21,Matrox,3rd,22,0,2021,Montreal
+29/04/2022 18:29:25,Cyme/Eaton,1st,20,0,2021,South Shore
+29/04/2022 18:36:36,Samsung Ads | AdGear,2nd,25,0,2022,Montreal
+29/04/2022 18:40:54,Pratt & whitney canada,1st,18.9,0,2021,Saint hubert
+29/04/2022 19:21:29,Morgan Stanley,1st,30,2000,2022,Montreal
+29/04/2022 20:22:40,Bombardier,1st,19,0,2020,St-Laurent
+29/04/2022 21:08:18,Genetec,1st,22.75,0,2022,Montreal
+29/04/2022 21:38:24,Bombardier,1st,20.5,0,2022,West Island
+29/04/2022 22:57:24,Morgan Stanley,2nd,29.8,2000,2022,Montreal
+30/04/2022 12:20:35,Autodesk,3rd,26,0,2021,Montreal
+01/05/2022 13:15:35,CAE,1st,22.2,0,2022,Montreal
+01/05/2022 13:15:40,Amilia,3rd,24,0,2021,Montreal
+01/05/2022 21:55:01,AON3D,1st,18,0,2022,Montreal
+01/05/2022 21:55:30,Aesus Packaging Systems,2nd,21,0,2022,Montreal
+19/05/2022 00:48:47,Aheeva,2nd,20,0,2022,Montreal
+19/05/2022 00:49:45,Nuance Communications,3rd,25,0,2022,Montreal
+16/06/2022 10:18:42,UKG,3rd,28,0,2022,Montreal
+16/06/2022 10:19:33,UKG,3rd,29,0,2022,Montreal
+16/06/2022 10:33:04,Genetec,1st,22,0,2022,Montreal
+16/06/2022 11:02:16,Matrox,1st,18,0,2021,Dorval
+16/06/2022 18:14:49,iBwave,1st,22,0,2022,Montreal
+17/06/2022 10:17:42,Bombardier,1st,19,0,2022,Montreal
+17/06/2022 16:57:30,SAP,3rd,30,0,2022,Montreal
+17/06/2022 23:37:21,Nxtsens,1st,18,0,2022,Montreal
+19/06/2022 21:26:10,Elekta,1st,21,0,2021,Montreal
+25/06/2022 14:56:17,Desjardins,2nd,25.69,0,2022,Montreal
+27/06/2022 12:01:06,Antea,1st,20,0,2022,Brossard
+27/06/2022 12:01:12,RBC,1st,25,0,2022,Montreal
+27/06/2022 13:27:54,Nventive,2nd,23,0,2022,Montreal
+27/06/2022 13:28:39,EventDesk,1st,18,0,2022,Montreal
+28/06/2022 20:18:30,Haivision,1st,20,0,2022,Montreal
+30/06/2022 20:46:34,Pomerleau,1st,21,0,2022,Montreal
+30/06/2022 23:05:36,Bombardier,1st,20.5,0,2022,Montreal
+30/06/2022 23:20:02,Ross Video,1st,22,0,2022,Ottawa
+03/07/2022 14:25:20,EventDesk,1st,18,0,2022,Montreal
+08/07/2022 11:09:01,CAE,1st,22.2,0,2022,Montreal
+08/07/2022 11:28:04,Hydro-Quebec,3rd,21,0,2019,Montreal
+13/07/2022 13:39:47,Genetec,2nd,22,0,2022,Montreal
+22/07/2022 18:30:09,Rogers,1st,24.5,0,2022,Montreal
+23/07/2022 10:12:41,City of MTL,1st,18,0,2022,Montreal
+23/07/2022 10:19:42,CAE,1st,21.4,0,2022,St-Laurent
+23/07/2022 12:29:15,CAE,1st,20.1,0,2022,St-Laurent
+26/07/2022 13:21:39,Intact,2nd,27.84,0,2022,Montreal
+28/07/2022 12:23:00,Microsemi/Microchip,3rd,23.5,0,2022,Montreal
+28/07/2022 12:23:32,Matrox,1st,18,0,2019,West Island
+28/07/2022 21:14:13,Genetec,1st,21,0,2022,Montreal
+30/07/2022 01:17:05,Genetec,1st,21.25,0,2022,St-Laurent
+01/08/2022 22:33:27,RBC,1st,25,0,2022,Montreal
+06/08/2022 10:11:32,UKG,2nd,27,0,2022,Montreal
+06/09/2022 15:53:38,CAE,2nd,23.5,0,2022,Montreal
+07/09/2022 21:06:12,Driven Financial Technologies,2nd,21,0,2022,Montreal
+11/09/2022 09:56:36,Wise Systems ,1st,20,0,2022,Montreal
+11/09/2022 10:27:55,CAE,1st,20.4,0,2022,Montreal
+13/09/2022 00:34:43,Facebook,Greater than 3rd,68,0,2022,New York City
+13/09/2022 00:35:14,Coinbase,3rd,50,0,2022,Montreal
+16/09/2022 12:31:51,Matrox,1st,22,0,2022,West Island
+21/09/2022 11:13:38,CAE,1st,21.4,0,2022,Montreal
+21/09/2022 17:33:11,Bombardier,1st,19,0,2021,Montreal
+22/09/2022 06:28:22,Genetec,1st,21.25,0,2022,Montreal
+26/09/2022 16:22:53,ticketmaster,2nd,25,0,2021,Québec
+26/09/2022 16:23:32,Gouvernement du Québec,1st,19.1,0,2020,Québec 
+30/09/2022 15:31:42,IAMGOLD,1st,20,0,2022,South Shore
+30/09/2022 16:41:10,Matrox,1st,20,0,2022,West Island
+03/10/2022 10:58:57,CAE,2nd,23.5,0,2022,Montreal
+03/10/2022 15:41:22,Bombardier,1st,19,0,2021,Montreal
+03/10/2022 18:53:52,Bombardier,1st,20.5,0,2022,Montreal
+04/10/2022 13:11:19,Genetec,2nd,23.5,0,2022,Montreal
+04/10/2022 20:14:52,Hazelview,1st,18,0,2022,Montreal
+05/10/2022 14:33:11,Pratt & Whitney,1st,21.3,0,2021,South Shore
+14/10/2022 23:23:49,Morgan Stanley,3rd,30,2000,2022,Montreal
+15/10/2022 11:42:54,Ubisoft,2nd,21,0,2022,Montreal
+15/10/2022 20:20:38,Morgan Stanley,3rd,30,2000,2022,Montreal
+16/10/2022 03:10:11,Evident Industrial (Olympus),1st,20,1000,2022,Montreal
+22/10/2022 19:47:46,Air Canada,1st,20,0,2022,Montreal
+02/11/2022 13:45:34,Amazon,Greater than 3rd,50.38,0,2023,Vancouver
+10/11/2022 16:13:42,Pratt and Whitney Canada,2nd,27.4,0,2022,Montreal
+10/11/2022 17:15:57,RBC,3rd,29,0,2023,Toronto
+10/11/2022 17:16:29,Autodesk,3rd,29,500,2023,Montreal
+15/11/2022 01:03:42,Matrox,1st,23,0,2022,Montreal
+18/11/2022 23:18:41,Bombardier,3rd,25,2300,2022,Montreal
+05/12/2022 11:22:01,Cisco Systems,1st,32.87,2000,2023,Remote
+08/12/2022 13:35:10,Facebook,Greater than 3rd,52,0,2022,Seattle
+16/12/2022 21:08:29,Pratt & Whitney,3rd,27.19,0,2022,South Shore
+10/01/2023 09:56:30,Genetec,1st,21.25,0,2022,St-Laurent
+13/01/2023 14:54:51,CAE,1st,21.4,0,2022,St-Laurent
+16/01/2023 10:59:57,Matrox,1st,22,0,2022,Montreal
+16/01/2023 19:26:31,McKesson Canada,1st,25,0,2022,Montreal
+17/01/2023 10:01:44,Deloitte,Greater than 3rd,38,5000,2023,Montreal
+17/01/2023 16:05:57,Autodesk,2nd,26,500,2022,Montreal
+18/01/2023 16:05:09,Sollio Agriculture,2nd,17,0,2021,South Shore
+18/01/2023 16:05:34,Lynkz Instruments,3rd,25,0,2022,Amos
+19/01/2023 17:05:00,Genetec,1st,20,0,2022,Montreal
+19/01/2023 21:39:56,Beslogic,2nd,23,0,2022,Montreal
+21/01/2023 12:47:32,Microsemi/Microchip,2nd,23.5,0,2023,Montreal
+26/01/2023 13:22:12,Matrox,1st,22,0,2022,West Island
+26/01/2023 15:06:34,Genetec,2nd,23,0,2023,St-Laurent
+07/02/2023 18:10:10,Datadog,Greater than 3rd,70,8000,2023,New York City
+11/02/2023 17:18:32,Nuance Communications,3rd,27,0,2023,Montreal
+22/02/2023 07:05:14,Modulus Data ,1st,22,0,2023,Montreal
+22/02/2023 17:44:52,Croogloo,3rd,20,0,2023,Montreal
+03/03/2023 09:28:50,Bombardier,1st,20,0,2023,Montreal
+16/03/2023 10:18:16,Arcelor Mittal,2nd,29,0,2023,Remote
+28/03/2023 21:17:53,Amazon,2nd,46.5,10800,2023,Vancouver
+30/03/2023 17:32:57,Fujitsu,1st,25,0,2023,Montreal
+10/04/2023 19:24:20,Matrox,1st,19,0,2023,Montreal
+10/04/2023 19:31:16,Healthcare Systems R&A,1st,18,0,2023,Montreal
+10/04/2023 19:34:51,MDA,2nd,24,1000,2023,Halifax
+10/04/2023 20:29:10,CAE,3rd,26,0,2023,Montreal
+10/04/2023 21:41:26,ubicquia,1st,22,0,2023,Montreal
+11/04/2023 13:08:35,Airbus-ACE,1st,30,0,2023,Mirabel
+12/04/2023 13:00:35,Matrox,1st,22.5,0,2022,West Island
+14/04/2023 00:56:08,EI3,1st,15.25,0,2023,Montreal
+18/04/2023 02:38:35,Vitac Canada,2nd,24,0,2023,Montreal
+18/04/2023 22:59:06,Bombardier,2nd,22.5,0,2023,Montreal
+19/04/2023 09:18:02,Intact,3rd,29.7,0,2022,Montreal
+19/04/2023 22:30:45,CAE,2nd,22,0,2023,St-Laurent
+20/04/2023 10:02:07,Big Bang,2nd,22,0,2023,Montreal
+25/04/2023 00:16:05,Health systems R&A,1st,20,0,2022,Remote
+27/04/2023 20:22:44,Gsoft,Greater than 3rd,35,0,2023,Montreal
+27/04/2023 21:19:05,Evident scientific,1st,21,0,2023,Montreal
+28/04/2023 11:51:18,Coveo,3rd,27.5,0,2023,Montreal
+09/05/2023 18:57:17,Bell,3rd,27,0,2023,Montreal
+10/05/2023 01:57:53,OneSpan,1st,21,0,2023,Montreal
+22/05/2023 15:20:03,Morgan Stanley,1st,27,2000,2023,Montreal
+08/06/2023 09:20:35,Coveo,2nd,26,0,2023,Montreal
+16/06/2023 21:05:46,Matrox,1st,20,0,2023,Montreal
+24/06/2023 21:30:44,Vffice,1st,17,0,2023,St-Hubert
+02/07/2023 20:35:28,Signify,2nd,23,0,2023,Boisbriand 
+11/07/2023 10:36:55,Airbus,1st,23.9,0,2023,Mirabel
+14/07/2023 14:56:44,DatexCorp,1st,25,0,2023,Montreal
+21/07/2023 14:50:21,Genetec,1st,20,0,2023,Montreal
+19/08/2023 05:18:30,Google,2nd,30,4000,2023,Montreal
+21/08/2023 10:30:19,Bombardier,2nd,22.5,0,2023,Montreal
+27/08/2023 23:46:14,Airbus,1st,22.6,0,2023,Mirabel
+05/09/2023 15:44:13,Arcelor Mittal,2nd,29,0,2023,Contrecoeur
+08/09/2023 11:18:30,Nuance ,1st,23,0,2022,Montreal
+09/09/2023 12:57:38,Amazon,2nd,46.5,16700,2023,Vancouver
+11/09/2023 15:56:20,Matrox,2nd,22,0,2023,Montreal
+11/09/2023 16:18:30,Matrox,2nd,25.5,0,2023,West Island
+20/09/2023 15:44:07,Concordia University,1st,20,0,2023,Montreal
+21/09/2023 14:08:59,Salesforce,3rd,73,10500,2024,San Francisco
+03/10/2023 21:43:43,Sun Life Financial,3rd,28.33,0,2023,Montreal
+14/10/2023 11:00:50,Microsoft,3rd,30.58,9000,2024,Vancouver
+16/10/2023 16:52:35,Genetec,2nd,23,0,2023,Montreal
+16/10/2023 19:08:14,McGill,1st,19,0,2023,Montreal
+17/10/2023 15:09:45,GE Renewable Energy,1st,21.5,0,2022,South Shore
+18/10/2023 14:33:49,Intact,1st,30,0,2024,Montreal
+19/10/2023 12:43:12,MDA,2nd,25,0,2023,West Island
+19/10/2023 17:31:14,Ricardo PLC,2nd,25.15,0,2023,Montreal
+30/10/2023 17:21:51,CN National Railway (Internship),Greater than 3rd,22,0,2023,Montreal
+30/10/2023 19:50:39,Concordia University,1st,22,0,2023,Montreal
+31/10/2023 09:12:22,Ericsson,1st,20.5,0,2023,St-Laurent
+31/10/2023 09:14:40,KPMG,1st,28,0,2021,Montreal
+31/10/2023 09:15:14,IBM,2nd,34,0,2022,Montreal
+31/10/2023 09:15:42,BlackBerry,3rd,33,0,2022,Waterloo
+31/10/2023 09:16:02,Intact,Greater than 3rd,33,0,2023,Montreal
+31/10/2023 09:16:25,Autodesk,Greater than 3rd,33,500,2023,Montreal
+13/11/2023 16:42:45,Genetec,1st,22.5,0,2023,Montreal
+16/12/2023 21:02:29,Coveo,2nd,26,0,2023,Montreal
+20/12/2023 14:06:34,Microsoft,3rd,34.95,0,2024,Remote
+06/01/2024 12:47:00,Google,Greater than 3rd,75,13372.5,2024,Bay Area
+11/01/2024 21:00:20,Haivision,1st,19,0,2024,St-Laurent
+21/01/2024 11:18:15,Amazon,3rd,46.51,17000,2024,Vancouver
+24/01/2024 16:40:17,Lyft,3rd,38,6000,2024,Toronto
+24/01/2024 17:47:35,SynergX,1st,21,0,2023,Laval
+28/01/2024 17:51:30,Genetec,2nd,23.75,0,2024,St-Laurent
+29/01/2024 21:09:53,Coveo,3rd,26,0,2023,Montreal
+30/01/2024 13:49:37,Airbus,1st,22.6,0,2023,Mirabel
+30/01/2024 13:53:19,Genetec,1st,21.5,0,2023,Montreal
+30/01/2024 14:36:07,Ciena,1st,24.5,0,2021,Montreal
+30/01/2024 14:36:41,Cisco,2nd,34,2000,2023,Ottawa
+30/01/2024 14:37:13,Ericsson,3rd,28.5,0,2023,Ottawa
+30/01/2024 14:48:28,Vuwall Technology,1st,20,0,2023,West Island
+02/02/2024 22:25:12,CAE,1st,22,0,2023,Montreal
+05/02/2024 17:42:37,InnovMetric,2nd,30.625,1500,2024,Quebec City
+06/02/2024 13:50:14,CAE,2nd,22.75,0,2023,St-Laurent
+08/02/2024 09:40:39,Intact,Greater than 3rd,33.43,0,2024,Montreal
+08/02/2024 09:40:56,Dayforce,Greater than 3rd,31,0,2024,Remote
+10/02/2024 21:55:15,Pratt & Whitney,3rd,25.2,0,2024,South Shore
+23/02/2024 20:59:57,Autodesk,3rd,30,1000,2024,Montreal
+28/02/2024 17:10:43,Genetec,1st,21.25,0,2022,Montreal
+28/02/2024 17:11:05,Lockheed Martin,2nd,23.65,0,2023,Halifax
+28/02/2024 17:11:29,Genetec,3rd,25,0,2024,Montreal
+28/02/2024 17:11:51,BlackBerry,3rd,26,300,2024,Ottawa
+28/02/2024 21:31:34,RBC,1st,26,0,2024,Montreal
+06/03/2024 01:17:14,Pratt & Whitney,2nd,23.44,0,2024,South Shore
+06/03/2024 01:17:45,Pratt & Whitney,3rd,25.5,0,2024,South Shore
+11/03/2024 15:12:19,Dormakaba,2nd,26,0,2024,Montreal
+14/05/2024 20:43:17,Genetec,2nd,23.75,0,2024,Montreal
+16/05/2024 00:38:41,Netflix,3rd,85.71,14284.88,2024,Bay Area
+21/05/2024 20:08:07,Ericsson,1st,24.5,0,2024,Montreal
+22/05/2024 12:59:12,Groupe SolAirEau,1st,18,0,2023,Montreal
+28/05/2024 20:45:21,Intact,1st,32.31,0,2024,Montreal
+28/05/2024 20:45:49,RBC,1st,27.75,0,2024,Toronto
+05/06/2024 13:01:35,Manulife,Greater than 3rd,34,0,2024,Toronto
+26/06/2024 17:19:20,Aheeva,1st,21,0,2024,St-Laurent
+06/07/2024 09:31:39,IBS Software,2nd,25,0,2024,Montreal
+06/07/2024 09:55:47,Savoir-faire Linux,3rd,24,0,2024,Montreal
+07/07/2024 21:46:45,Autodesk,2nd,33,0,2024,Montreal
+07/07/2024 21:47:30,Intact,2nd,37.69,0,2024,Montreal
+07/07/2024 21:48:49,Innovmetric,2nd,31.875,1500,2024,Quebec City
+07/07/2024 21:49:16,Petal Health,2nd,24.5,0,2024,Montreal
+07/07/2024 22:08:13,Beta Technologies,1st,23,0,2024,St-Laurent
+24/07/2024 01:13:20,Genetec,1st,22.75,0,2024,St-Laurent
+24/07/2024 09:35:09,X2O media,1st,25,0,2024,Montreal
+24/07/2024 11:54:32,Genetec,1st,22.5,0,2024,St-Laurent
+02/08/2024 13:34:11,Intact,3rd,38,0,2024,Montreal
+02/08/2024 13:34:33,Autodesk,3rd,33,0,2024,Montreal
+02/08/2024 13:36:21,Innovmetric,3rd,31.875,1500,2024,Quebec
+29/08/2024 12:27:22,Novatek international,1st,23,0,2024,Montreal
+19/09/2024 15:17:38,OKIOK,1st,26,0,2024,Laval
+03/10/2024 15:04:37,Intact,2nd,27.57,0,2024,Montreal
+03/10/2024 15:08:12,Intact,2nd,27.57,0,2024,Montreal
+08/10/2024 12:36:19,CAE,1st,23,0,2024,Montreal
+09/10/2024 22:55:41,RBC,3rd,31.5,0,2024,Montreal
+04/11/2024 17:01:32,gbi,Greater than 3rd,30,0,2024,Montreal
+04/11/2024 17:26:59,CN,Greater than 3rd,22.5,0,2024,Montreal
+04/11/2024 17:31:26,Frequentis,1st,30,0,2023,Ottawa
+04/11/2024 17:31:55,Nokia,3rd,22.5,0,2023,Ottawa
+04/11/2024 17:32:31,RCMP,2nd,21,0,2021,Ottawa
+04/11/2024 17:32:57,Cheetah Networks,2nd,23,0,2022,Ottawa
+04/11/2024 21:26:02,Union Lighting,1st,19,0,2024,Montreal
+15/11/2024 18:30:57,Genetec,1st,23.25,0,2025,Montreal
+05/01/2025 22:39:40,Morgan Stanley,2nd,29.81,2000,2024,Montreal
+05/01/2025 23:32:34,X2O Media,1st,25,0,2024,Montreal
+06/01/2025 00:35:51,Genetec,1st,23.25,0,2025,Montreal
+06/01/2025 01:50:00,Amazon,2nd,50,0,2025,Toronto
+10/01/2025 01:17:16,CAE,2nd,40,0,2021,Montreal
+13/01/2025 19:12:48,Desjardins,1st,25.5,0,2024,Montreal
+18/01/2025 21:13:47,Coveo,3rd,29,0,2025,Montreal
+27/01/2025 10:13:45,Fundica,1st,20,0,2024,Montreal
