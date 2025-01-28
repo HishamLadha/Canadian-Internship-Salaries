@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
 
 // Mock data for autocomplete suggestions
@@ -24,6 +24,30 @@ const companies = [
 const Search: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [companies, setCompanies] = useState<string[]>([]);
+//   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+        try{
+            const response = await fetch('');
+            if(!response.ok){
+                throw new Error("Failed to fetch companies");
+            }
+            const data = await response.json();
+            setCompanies(data);
+
+        }catch(error){
+            console.error("Error fetching companies: ", error);
+        }finally {
+            // setLoading(false);
+        }
+
+    }
+
+    fetchCompanies();
+
+  }, []);
 
   // Handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +87,13 @@ const Search: React.FC = () => {
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
       />
+      {/* Display loading state */}
+      {/* {loading && (
+        <div className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg px-4 py-2">
+          Loading...
+        </div>
+      )} */}
+
       {/* Display suggestions */}
       {suggestions.length > 0 && (
         <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
