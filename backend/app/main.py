@@ -24,6 +24,9 @@ class ReportedSalary(SQLModel, table=True):
 # create the engine to talk to the database
 engine = create_engine(DATABASE_URL, echo=True)
 
+SQLModel.metadata.create_all(engine)
+
+
 
 app = FastAPI()
 
