@@ -1,0 +1,2 @@
+# My requirements are: fastapi[standard]
+fastapi[standard]
