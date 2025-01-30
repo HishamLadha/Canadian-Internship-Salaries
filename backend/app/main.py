@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
+
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -31,12 +33,20 @@ def create_db_and_tables():
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
 
 
-@app.post("/submit-salary")
+@app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):
     with Session(engine) as session:
         session.add(reportedSalary)
@@ -44,8 +54,15 @@ def create_salary(reportedSalary: ReportedSalary):
         session.refresh(reportedSalary)
         return reportedSalary
     
-@app.get("/all-salaries")
+@app.get("/all-salaries", response_model=list[ReportedSalary])
 def read_salaries():
     with Session(engine) as session:
         salaries = session.exec(select(ReportedSalary)).all()
         return salaries
+
+@app.get("/all-companies", response_model=list[str])
+def read_companies():
+    with Session(engine) as session:
+        # return only the company names
+        companies = session.exec(select(ReportedSalary.company)).all()
+        return companies

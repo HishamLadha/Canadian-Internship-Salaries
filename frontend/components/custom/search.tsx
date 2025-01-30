@@ -3,23 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
 
-// Mock data for autocomplete suggestions
-const companies = [
-  'Apple',
-  'Microsoft',
-  'Google',
-  'Amazon',
-  'Tesla',
-    'Twitter',
-    "TikTok",
-    "Snapchat",
-    "Pinterest",
-  'Facebook',
-  'Netflix',
-  'Adobe',
-  'Intel',
-  'IBM',
-];
 
 const Search: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,7 +13,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
         try{
-            const response = await fetch('');
+            const response = await fetch('http://localhost:8000/all-companies');
             if(!response.ok){
                 throw new Error("Failed to fetch companies");
             }
