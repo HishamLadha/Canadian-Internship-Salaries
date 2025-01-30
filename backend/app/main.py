@@ -4,6 +4,7 @@ from sqlmodel import Field, SQLModel, create_engine, Session, select
 import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+import pandas as pd
 
 
 load_dotenv()
@@ -16,7 +17,7 @@ class ReportedSalary(SQLModel, table=True):
     company: str
     year: int
     salary: int
-    university: str
+    university: str 
     term: int | None = None
     location: str
     bonus: int | None = None
@@ -43,13 +44,32 @@ app.add_middleware(
 
 
 
+# The ** (double asterisk) operator is used for dictionary unpacking. It takes the key-value pairs in the record dictionary and passes them as keyword arguments to the ReportedSalary constructor.
 # parsing the script to create the database and tables
+def load_csv_data():
+    csv_file = "/app/data/ConcordiaResponses.csv"
+    df = pd.read_csv(csv_file)
 
+    df = df.drop(columns=["Timestamp"])
+    df["term"] = df["term"].str.extract(r'(\d+)').astype(int)
+    df["university"] = "Concordia University"
+
+    # Convert the DataFrame to a list of dictionaries
+    data = df.to_dict(orient="records")
+    # Now insert each salary into the database
+    with Session(engine) as session:
+        for record in data:
+            salary = ReportedSalary(**record)
+            session.add(salary)
+        session.commit()
+    
+    print("Data successfully added to database!!")
+
+load_csv_data()
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):

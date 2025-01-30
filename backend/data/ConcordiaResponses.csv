@@ -1,4 +1,4 @@
-Timestamp,"Where Did you work? (""Other"" at bottom if not listed)",Which work term was this?,How much did you make per hour?,"If there was a signing bonus, how much was it?",What year was it?,Where was it?
+Timestamp,company,term,salary,bonus,year,location
 13/02/2020 12:31:25,Morgan Stanley,1st,22.6,2000,2018,Montreal
 13/02/2020 12:31:52,Morgan Stanley,2nd,25,2000,2019,Montreal
 13/02/2020 12:32:14,Morgan Stanley,3rd,27.4,2000,2020,Montreal
