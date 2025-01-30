@@ -41,6 +41,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+
+# parsing the script to create the database and tables
+
+
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
