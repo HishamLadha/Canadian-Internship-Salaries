@@ -1,4 +1,5 @@
 # My requirements are: fastapi[standard]
 fastapi[standard]
 sqlmodel
-sqalchemy
+asyncpg
+psycopg2-binary
