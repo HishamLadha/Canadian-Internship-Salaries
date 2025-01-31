@@ -42,7 +42,7 @@ const Search: React.FC = () => {
       const filteredSuggestions = companies.filter((company) =>
         company.toLowerCase().startsWith(value.toLowerCase())
       );
-      setSuggestions(filteredSuggestions.length > 0 ? filteredSuggestions : [value]);
+      setSuggestions(filteredSuggestions.length > 0 ? filteredSuggestions : [`No results for: ${value}`]);
     } else {
       setSuggestions([]);
     }
@@ -57,7 +57,7 @@ const Search: React.FC = () => {
 
   // Handle Enter key press
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && suggestions.length > 0) {
       alert(`You searched for: ${searchTerm}`); // Replace with your desired action
     }
   };

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path, Query
 from pydantic import BaseModel
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 import os
@@ -88,6 +88,13 @@ def read_salaries():
 @app.get("/all-companies", response_model=list[str])
 def read_companies():
     with Session(engine) as session:
-        # return only the company names
-        companies = session.exec(select(ReportedSalary.company)).all()
+        # return only the unique company names
+        companies = session.exec(select(ReportedSalary.company).distinct()).all()
         return companies
+
+@app.get("/company", response_model=list[ReportedSalary])
+def get_company(company: str):
+    with Session(engine) as session:
+        companies = session.exec(select(ReportedSalary).where(ReportedSalary.company == company)).all()
+        return companies
+
