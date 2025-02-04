@@ -21,6 +21,7 @@ class ReportedSalary(SQLModel, table=True):
     term: int | None = None
     location: str
     bonus: int | None = None
+    role: str
 
 connect_args = {"check_same_thread": False}
 
@@ -53,6 +54,7 @@ def load_csv_data():
     df = df.drop(columns=["Timestamp"])
     df["term"] = df["term"].str.extract(r'(\d+)').astype(int)
     df["university"] = "Concordia University"
+    df["role"] = "Unreported"
 
     # Convert the DataFrame to a list of dictionaries
     data = df.to_dict(orient="records")
@@ -65,11 +67,10 @@ def load_csv_data():
     
     print("Data successfully added to database!!")
 
-load_csv_data()
-
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
+    load_csv_data()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):

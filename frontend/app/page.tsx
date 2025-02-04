@@ -1,34 +1,42 @@
-import Image from "next/image";
-import Nav from "@/components/custom/nav";
-import { DataTableDemo } from "@/components/custom/test-table";
+import { HomeTable } from "@/components/custom/test-table";
+import Footer from "@/components/custom/footer";
+import Search from "@/components/custom/search";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Nav />
-      <main className="border-0 border-black p-2 w-full">
-        <DataTableDemo />
-        {/* <div>
-          TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING
-        </div> */}
+    <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
+      {/* Hero Section */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1
+              className="
+                text-4xl 
+                sm:text-5xl 
+                font-extrabold 
+                tracking-tight 
+                text-gray-900 
+                bg-clip-text 
+              "
+            >
+              Discover Internship Salaries Across Canada
+            </h1>
+            <p className="mt-4 text-lg text-gray-600">
+              Search for competitive internship salaries or contribute your own insights.
+            </p>
+            <div className="mt-8 sm:flex hidden sm:justify-center sm:items-center sm:w-full">
+              <Search />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <main id="data-table" className="px-4 sm:px-24">
+        <HomeTable />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://github.com/HishamLadha/Canadian-Internship-Salaries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="./github-logo.svg"
-            alt="Github Logo"
-            width={16}
-            height={16}
-          />
-          Source Code →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
 }

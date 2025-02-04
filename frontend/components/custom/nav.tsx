@@ -1,20 +1,68 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Search from './search';
+import { Button } from '../ui/button';
+import { Plus, Menu, X } from "lucide-react";
+import { Separator } from '../ui/separator';
 
 const Nav: React.FC = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
-        <nav>
-            <ul className='flex flex-row gap-6 items-center'>
-                <li className='hover:opacity-20 underline'><a href="/">
-                    <Image src="/github-logo.svg" alt="Logo" width={32} height={32} />
-                </a></li>
+        <>
+        <nav className='mt-2 mb-2 mx-6 sm:mx-24'>
+            <ul className='flex flex-row justify-between items-center'>
                 <li>
-                    <Search />
+                    <ul className='flex flex-row gap-6'>
+                        <li className='hover:opacity-20 underline'>
+                            <a href="/">
+                                <Image src="/github-logo.svg" alt="Logo" width={32} height={32} />
+                            </a>
+                        </li>
+                        <li>
+                            <Search />
+                        </li>
+                    </ul>
                 </li>
-                <li className='hover:opacity-20 underline'><a href="/submit">Submit</a></li>
+                <li className='relative'>
+                    {/* Hamburger Menu Button (Visible on Small Screens) */}
+                    <button onClick={toggleMenu} className="sm:hidden p-2">
+                        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+
+                    {/* Add Salary Button (Visible on Larger Screens) */}
+                    <div className="hidden sm:block">
+                        <a href="/submit">
+                            <Button>
+                                <span className="inline-flex items-center">
+                                    <Plus size={16} className="mr-2" /> Add Salary
+                                </span>
+                            </Button>
+                        </a>
+                    </div>
+
+                    {/* Hamburger Menu Card (Visible on Small Screens) */}
+                    {menuOpen && (
+                        <div className="sm:hidden absolute top-12 right-0 bg-white border border-gray-200 shadow-lg rounded-lg p-4 z-50">
+                            <a href="/submit">
+                                <Button className="w-full">
+                                    <span className="inline-flex items-center">
+                                        <Plus size={16} className="mr-2" /> Add Salary
+                                    </span>
+                                </Button>
+                            </a>
+                        </div>
+                    )}
+                </li>
             </ul>
         </nav>
+        <Separator />
+        </>
     );
 };
 

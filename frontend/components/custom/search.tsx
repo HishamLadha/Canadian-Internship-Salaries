@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
+import {useRouter} from 'next/navigation'
 
 
 const Search: React.FC = () => {
@@ -48,34 +49,37 @@ const Search: React.FC = () => {
     }
   };
 
+  const router = useRouter()
+
   // Handle suggestion click
   const handleSuggestionClick = (suggestion: string) => {
     setSearchTerm(suggestion);
     setSuggestions([]); // Clear suggestions after selection
-    alert(`You selected: ${suggestion}`); // Replace with your desired action
+    if (suggestions.length > 0){
+      router.push(`/company/${suggestion}`)
+    }
+    else{
+      alert(`Not a valid company`); 
+      setSearchTerm("");
+    }
+    
   };
 
   // Handle Enter key press
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && suggestions.length > 0) {
-      alert(`You searched for: ${searchTerm}`); // Replace with your desired action
+      router.push(`/company/${suggestions[0]}`)
     }
   };
 
   return (
     <div className="relative">
       <Input
-        placeholder="Search"
+        placeholder="Search by Company"
         value={searchTerm}
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
       />
-      {/* Display loading state */}
-      {/* {loading && (
-        <div className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg px-4 py-2">
-          Loading...
-        </div>
-      )} */}
 
       {/* Display suggestions */}
       {suggestions.length > 0 && (
