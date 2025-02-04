@@ -1,6 +1,7 @@
+# TODO: split this file into multiple files
 from fastapi import FastAPI, Path, Query
 from pydantic import BaseModel
-from sqlmodel import Field, SQLModel, create_engine, Session, select
+from sqlmodel import Field, SQLModel, create_engine, Session, select, desc, func
 import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
@@ -70,7 +71,7 @@ def load_csv_data():
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    load_csv_data()
+    # load_csv_data()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):
@@ -79,11 +80,12 @@ def create_salary(reportedSalary: ReportedSalary):
         session.commit()
         session.refresh(reportedSalary)
         return reportedSalary
-    
+
+# TODO: Make this endpoing work with limit and offset and sync this with front-end pagination for efficiency
 @app.get("/all-salaries", response_model=list[ReportedSalary])
 def read_salaries():
     with Session(engine) as session:
-        salaries = session.exec(select(ReportedSalary)).all()
+        salaries = session.exec(select(ReportedSalary).order_by(desc(ReportedSalary.year))).all()
         return salaries
 
 @app.get("/all-companies", response_model=list[str])
@@ -93,9 +95,45 @@ def read_companies():
         companies = session.exec(select(ReportedSalary.company).distinct()).all()
         return companies
 
-@app.get("/company", response_model=list[ReportedSalary])
+
+# TODO: distill into multiple endpoints: /company/all-salaries, /company/average-salary, /company/top-university, /company/top-location
+@app.get("/company/all-salaries", response_model=list[ReportedSalary])
 def get_company(company: str):
     with Session(engine) as session:
-        companies = session.exec(select(ReportedSalary).where(ReportedSalary.company == company)).all()
-        return companies
+        companyData = session.exec(select(ReportedSalary).where(ReportedSalary.company == company).order_by(desc(ReportedSalary.year))).all()
+        return companyData
+
+@app.get("/company/average-salary")
+def get_company_average(company: str):
+    with Session(engine) as session:
+        companyAverage = session.exec(select(func.avg(ReportedSalary.salary)).where(ReportedSalary.company == company)).first()
+        return companyAverage if companyAverage is not None else 0.0
+    
+@app.get("/company/top-university")
+def get_company_top_university(company: str):
+    with Session(engine) as session:
+        top_university = session.exec(
+            select(ReportedSalary.university, func.count(ReportedSalary.university))
+            .where(ReportedSalary.company == company)
+            .group_by(ReportedSalary.university)
+            .order_by(func.count(ReportedSalary.university).desc())
+            .limit(1)
+        ).first()
+        return {top_university[0]}
+        
+
+
+@app.get("/company/top-location")
+def get_company_top_location(company: str):
+    with Session(engine) as session:
+        top_location = session.exec(
+            select(ReportedSalary.location, func.count(ReportedSalary.location))
+            .where(ReportedSalary.company == company)
+            .group_by(ReportedSalary.location)
+            .order_by(func.count(ReportedSalary.location).desc())
+            .limit(1)
+        ).first()
+        return {top_location[0]}
+
+    
 

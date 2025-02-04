@@ -143,7 +143,7 @@ export const columns: ColumnDef<Salary>[] = [
   },
 ]
 
-export function CompanyTable() {
+export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -152,32 +152,7 @@ export function CompanyTable() {
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const [data, setData] = React.useState<Salary[]>([])
-  const [loading, setLoading] = React.useState(false)
-
-  React.useEffect(() => {
-      const fetchCompanies = async () => {
-          try{
-              setLoading(true)
-              // await new Promise(resolve => setTimeout(resolve, 5000)); 
-              const response = await fetch('http://localhost:8000/all-salaries');
-              if(!response.ok){
-                  throw new Error("Failed to fetch companies");
-              }
-              const response_data = await response.json();
-              setData(response_data);
-  
-          }catch(error){
-              console.error("Error fetching companies: ", error);
-          }finally {
-              setLoading(false);
-          }
-  
-      }
-  
-      fetchCompanies();
-  
-    }, []);
+  const data: Salary[] = companyRecords;
 
   const table = useReactTable({
     data,
@@ -201,39 +176,7 @@ export function CompanyTable() {
   return (
     <div className="w-full">
       <div className="rounded-md border">
-        {loading ? (
-          <Table>
-            <TableHeader>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableHead key={header.id}>
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
-                      </TableHead>
-                    )
-                  })}
-                </TableRow>
-              ))}
-            </TableHeader>
-            <TableBody>
-              {Array.from({ length: 5 }).map((_, rowIndex) => (
-                <TableRow key={rowIndex}>
-                  {columns.map((column, colIndex) => (
-                    <TableCell key={colIndex}>
-                      <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        ) : (
+        {(
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (

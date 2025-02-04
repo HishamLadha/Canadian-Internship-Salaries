@@ -14,6 +14,10 @@ export default function Company() {
   const params = useParams();
   const { companyName } = params;
   const [decodedCompanyName, setDecodedCompanyName] = useState('');
+  const [companyRecords, setCompanyRecords] = useState([]);
+  const [averageSalary, setAverageSalary] = useState(0.0);
+  const [topUniversity, setTopUniversity] = useState('');
+  const [topLocation, setTopLocation] = useState('');
 
   // Decode the companyName when it becomes available or changes.
   useEffect(() => {
@@ -39,15 +43,30 @@ export default function Company() {
     }
     const fetchCompanyData = async (decodedCompanyName: string) => {
       try{
-        const response = await fetch(`http://localhost:8000/company?company=${decodedCompanyName}`)
-        if(!response.ok){
-          throw new Error("Failed to fetch this companies data")
+        const [allSalariesRes, averageSalariesRes, topLocationRes, topUniversityRes] = await Promise.all([
+          fetch(`http://localhost:8000/company/all-salaries?company=${decodedCompanyName}`),
+          fetch(`http://localhost:8000/company/average-salary?company=${decodedCompanyName}`),
+          fetch(`http://localhost:8000/company/top-location?company=${decodedCompanyName}`),
+          fetch(`http://localhost:8000/company/top-university?company=${decodedCompanyName}`)
+           ]);
+        if(!allSalariesRes.ok || !averageSalariesRes.ok || !topLocationRes.ok || !topUniversityRes.ok){
+          throw new Error("Failed to fetch this companies data");
         }
-        const data = await response.json();
-        console.log(data)
+        const [salariesData, averageSalaryData, topLocationData, topUniversityData] = await Promise.all([
+          allSalariesRes.json(),
+          averageSalariesRes.json(),
+          topLocationRes.json(),
+          topUniversityRes.json()
+        ]);
+        setCompanyRecords(salariesData);
+        setAverageSalary(averageSalaryData);
+        setTopLocation(topLocationData);
+        setTopUniversity(topUniversityData);
 
       }
-      catch{
+      catch (error){
+        console.log("An error occured fetching all salaries: ", error);
+
 
       }finally{
 
@@ -81,7 +100,7 @@ export default function Company() {
             <CardTitle>💰 Average Salary</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <p>{averageSalary.toLocaleString('en-US', { style: 'currency', currency: 'CAD' })}</p>
           </CardContent>
         </Card>
 
@@ -90,7 +109,7 @@ export default function Company() {
             <CardTitle>🎓 Top University</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <p>{topUniversity}</p>
           </CardContent>
         </Card>
 
@@ -99,7 +118,7 @@ export default function Company() {
             <CardTitle>📍 Top Location</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <p>{topLocation}</p>
           </CardContent>
         </Card>
 
@@ -107,7 +126,7 @@ export default function Company() {
 
       {/* Table  */}
       <div className="sm:px-14 px-6">
-        <CompanyTable />
+        <CompanyTable companyRecords={companyRecords}/>
       </div>
     </div>
 )
