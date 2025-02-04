@@ -99,7 +99,7 @@ export default function Company() {
           <CardHeader>
             <CardTitle>💰 Average Salary</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='text-xl'>
             <p>{averageSalary.toLocaleString('en-US', { style: 'currency', currency: 'CAD' })}</p>
           </CardContent>
         </Card>
