@@ -9,8 +9,8 @@ The purpose of this app is to provide a platform where students can view and rep
 **Tech Stack:**
 - Next.js
 - React
-- JavaScript/TypeScript
-- CSS/SCSS
+- TypeScript
+- Tailwind
 
 ### Backend
 
