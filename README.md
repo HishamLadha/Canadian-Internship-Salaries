@@ -11,6 +11,7 @@ The purpose of this app is to provide a platform where students can view and rep
 - React
 - TypeScript
 - Tailwind
+- Shadcn
 
 ### Backend
 
