@@ -66,11 +66,11 @@ const Search: React.FC = () => {
   };
 
   // Handle Enter key press
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && suggestions.length > 0) {
-      router.push(`/company/${suggestions[0]}`)
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Enter' && suggestions.length > 0) {
+  //     router.push(`/company/${suggestions[0]}`)
+  //   }
+  // };
 
   return (
     <div className="relative">
@@ -78,7 +78,7 @@ const Search: React.FC = () => {
         placeholder="Search by Company"
         value={searchTerm}
         onChange={handleInputChange}
-        onKeyDown={handleKeyPress}
+        // onKeyDown={handleKeyPress}
       />
 
       {/* Display suggestions */}

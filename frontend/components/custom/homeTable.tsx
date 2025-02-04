@@ -51,13 +51,6 @@ export const columns: ColumnDef<Salary>[] = [
     ),
   },
   {
-    accessorKey: "role",
-    header: "Role",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("role")}</div>
-    ),
-  },
-  {
     accessorKey: "salary",
     header: ({ column }) => {
       return (
@@ -96,6 +89,13 @@ export const columns: ColumnDef<Salary>[] = [
       )
     },
     cell: ({ row }) => <div className="lowercase text-center sm:text-start">{row.getValue("year")}</div>,
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("role")}</div>
+    ),
   },
   {
     accessorKey: "location",

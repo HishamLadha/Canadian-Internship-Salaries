@@ -1,4 +1,4 @@
-import { HomeTable } from "@/components/custom/test-table";
+import { HomeTable } from "@/components/custom/homeTable";
 import Footer from "@/components/custom/footer";
 import Search from "@/components/custom/search";
 
