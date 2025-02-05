@@ -10,11 +10,12 @@ const Search: React.FC = () => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [companies, setCompanies] = useState<string[]>([]);
 //   const [loading, setLoading] = useState(true);
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
     const fetchCompanies = async () => {
         try{
-            const response = await fetch('http://localhost:8000/all-companies');
+            const response = await fetch(`${BACKEND_URL}/all-companies`);
             if(!response.ok){
                 throw new Error("Failed to fetch companies");
             }

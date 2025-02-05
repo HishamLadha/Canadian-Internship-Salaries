@@ -10,6 +10,7 @@ import pandas as pd
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
+FRONTEND_URL = os.getenv("FRONTEND_URL")
 
 
 # Model for the Reported Salary Table
@@ -38,7 +39,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

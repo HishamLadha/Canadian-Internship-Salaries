@@ -18,6 +18,7 @@ export default function Company() {
   const [averageSalary, setAverageSalary] = useState(0.0);
   const [topUniversity, setTopUniversity] = useState('');
   const [topLocation, setTopLocation] = useState('');
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   // Decode the companyName when it becomes available or changes.
   useEffect(() => {
@@ -44,10 +45,10 @@ export default function Company() {
     const fetchCompanyData = async (decodedCompanyName: string) => {
       try{
         const [allSalariesRes, averageSalariesRes, topLocationRes, topUniversityRes] = await Promise.all([
-          fetch(`http://localhost:8000/company/all-salaries?company=${decodedCompanyName}`),
-          fetch(`http://localhost:8000/company/average-salary?company=${decodedCompanyName}`),
-          fetch(`http://localhost:8000/company/top-location?company=${decodedCompanyName}`),
-          fetch(`http://localhost:8000/company/top-university?company=${decodedCompanyName}`)
+          fetch(`${BACKEND_URL}/company/all-salaries?company=${decodedCompanyName}`),
+          fetch(`${BACKEND_URL}/company/average-salary?company=${decodedCompanyName}`),
+          fetch(`${BACKEND_URL}/company/top-location?company=${decodedCompanyName}`),
+          fetch(`${BACKEND_URL}/company/top-university?company=${decodedCompanyName}`)
            ]);
         if(!allSalariesRes.ok || !averageSalariesRes.ok || !topLocationRes.ok || !topUniversityRes.ok){
           throw new Error("Failed to fetch this companies data");

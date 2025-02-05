@@ -149,18 +149,20 @@ export function HomeTable() {
     []
   )
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
-  const [data, setData] = React.useState<Salary[]>([])
-  const [loading, setLoading] = React.useState(false)
+  const [data, setData] = React.useState<Salary[]>([]);
+  const [loading, setLoading] = React.useState(false);
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  // const BACKEND_URL = "http://100.71.157.55:8000";
 
   React.useEffect(() => {
       const fetchCompanies = async () => {
           try{
               setLoading(true)
               // await new Promise(resolve => setTimeout(resolve, 5000)); 
-              const response = await fetch('http://localhost:8000/all-salaries');
+              const response = await fetch(`${BACKEND_URL}/all-salaries`);
               if(!response.ok){
                   throw new Error("Failed to fetch companies");
               }
