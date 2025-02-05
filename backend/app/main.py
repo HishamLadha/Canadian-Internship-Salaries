@@ -57,6 +57,16 @@ def load_csv_data():
     df["university"] = "Concordia University"
     df["role"] = "Unreported"
 
+    # Define a dictionary of replacements
+    replacements = {
+        "Pratt & Whitney": "Pratt and Whitney",
+        "Pratt & Whitney Canada": "Pratt and Whitney",
+        "Pratt and Whitney Canada": "Pratt and Whitney",
+        "Pratt & whitney canada": "Pratt and Whitney",
+        "Pratt and Whitney ": "Pratt and Whitney"
+    }
+    df['company'] = df['company'].replace(replacements)
+
     # Convert the DataFrame to a list of dictionaries
     data = df.to_dict(orient="records")
     # Now insert each salary into the database
@@ -71,7 +81,7 @@ def load_csv_data():
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    # load_csv_data()
+    load_csv_data()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):
