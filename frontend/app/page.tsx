@@ -22,7 +22,7 @@ export default function Home() {
               Discover Internship Salaries Across Canada
             </h1>
             <p className="mt-4 text-lg text-gray-600">
-              Search for competitive internship salaries or contribute your own insights.
+              Search for competitive internship salaries or contribute your own!
             </p>
             <div className="mt-8 sm:flex hidden sm:justify-center sm:items-center sm:w-full">
               <Search />

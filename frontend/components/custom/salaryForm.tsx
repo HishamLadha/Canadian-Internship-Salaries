@@ -15,10 +15,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+
+const VALUES = ["test", "hisham"] as const;
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
+  company: z.enum(VALUES, {
+    message: "Please type in either hisham or test",
+  }),
+
 })
 
 export function SalaryForm() {
@@ -27,6 +34,7 @@ export function SalaryForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      company: "",
     },
   })
 
@@ -51,6 +59,22 @@ export function SalaryForm() {
               </FormControl>
               <FormDescription>
                 This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Company</FormLabel>
+              <FormControl>
+                <Input placeholder="Company" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter the company you received an offer from
               </FormDescription>
               <FormMessage />
             </FormItem>
