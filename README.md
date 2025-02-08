@@ -1,5 +1,7 @@
 # Canadian Internship Salaries
 
+https://github.com/user-attachments/assets/7c59a343-29f7-474d-bd59-9b20a95b8a17
+
 The purpose of this app is to provide a platform where students can view and report internship salaries in Canada. This helps students get a better understanding of the salary landscape in various industries and companies.
 
 ## Description
