@@ -20,25 +20,21 @@ const page = () => {
                     Add your Salary
       </h1>
 
-      <div>
+      <div className='m-5 sm:m-5'>
         {/* Anonymous alert banner */}
-        <Alert className='sm:max-w-sm max-w-xs'>
+        <Alert className='sm:w-sm w-xs'>
           <SmilePlus className="h-4 w-4" />
-          <AlertTitle>Your submission is anonymous and private!</AlertTitle>
+          <AlertTitle>Your submission is anonymous!</AlertTitle>
           <AlertDescription className='text-gray-600'>
-            No data is collected nor stored on our servers! The code is fully open-source.
+            No personally identifiable information is collected. Our code is fully open source!
           </AlertDescription>
         </Alert>
         
         {/* Actual form down below */}
-        <div className='sm:w-sm w-xs border-slate-400 p-5 rounded-md'>
+        <div className='sm:w-sm w-xs border-slate-400 rounded-md mt-3'>
           <SalaryForm />
         </div>
       </div>
-      
-
-
-        
       
     </div>
   )
