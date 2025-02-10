@@ -82,7 +82,7 @@ def load_csv_data():
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    # load_csv_data()
+    load_csv_data()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):

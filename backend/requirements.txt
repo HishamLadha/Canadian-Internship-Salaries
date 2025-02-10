@@ -4,3 +4,5 @@ sqlmodel
 asyncpg
 psycopg2-binary
 pandas
+requests
+json

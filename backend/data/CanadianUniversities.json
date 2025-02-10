@@ -1,0 +1,956 @@
+[
+    {
+        "name": "Toronto Baptist Seminary and Bible College",
+        "domains": [
+            "tbs.edu"
+        ]
+    },
+    {
+        "name": "Cégep de Saint-Jérôme",
+        "domains": [
+            "cstj.qc.ca"
+        ]
+    },
+    {
+        "name": "Lambton College",
+        "domains": [
+            "lambtoncollege.ca",
+            "mylambton.ca"
+        ]
+    },
+    {
+        "name": "Acadia University",
+        "domains": [
+            "acadiau.ca"
+        ]
+    },
+    {
+        "name": "Algonquin College",
+        "domains": [
+            "algonquincollege.com"
+        ]
+    },
+    {
+        "name": "Ashton College",
+        "domains": [
+            "ashtoncollege.com"
+        ]
+    },
+    {
+        "name": "Assumption University",
+        "domains": [
+            "assumptionu.ca"
+        ]
+    },
+    {
+        "name": "Athabasca University",
+        "domains": [
+            "athabascau.ca"
+        ]
+    },
+    {
+        "name": "Augustana University College",
+        "domains": [
+            "augustana.ab.ca"
+        ]
+    },
+    {
+        "name": "British Columbia Institute of Technology",
+        "domains": [
+            "bcit.ca"
+        ]
+    },
+    {
+        "name": "British Columbia Open University",
+        "domains": [
+            "bcou.ca"
+        ]
+    },
+    {
+        "name": "William and Catherine Booth College",
+        "domains": [
+            "boothcollege.ca"
+        ]
+    },
+    {
+        "name": "Collège Boréal",
+        "domains": [
+            "borealc.on.ca"
+        ]
+    },
+    {
+        "name": "Bow Valley College",
+        "domains": [
+            "bowvalleycollege.ca"
+        ]
+    },
+    {
+        "name": "Brandon University",
+        "domains": [
+            "brandonu.ca"
+        ]
+    },
+    {
+        "name": "Brock University",
+        "domains": [
+            "brocku.ca"
+        ]
+    },
+    {
+        "name": "DeVry Institute of Technology",
+        "domains": [
+            "cal.devry.ca"
+        ]
+    },
+    {
+        "name": "Camosun College",
+        "domains": [
+            "camosun.bc.ca"
+        ]
+    },
+    {
+        "name": "Capilano College",
+        "domains": [
+            "capcollege.bc.ca"
+        ]
+    },
+    {
+        "name": "University College of the Cariboo",
+        "domains": [
+            "cariboo.bc.ca"
+        ]
+    },
+    {
+        "name": "Carleton University",
+        "domains": [
+            "carleton.ca"
+        ]
+    },
+    {
+        "name": "Canadian College of Business & Computers",
+        "domains": [
+            "ccbc.ca"
+        ]
+    },
+    {
+        "name": "Centennial College",
+        "domains": [
+            "centennialcollege.ca"
+        ]
+    },
+    {
+        "name": "Canadian Mennonite University",
+        "domains": [
+            "cmu.ca"
+        ]
+    },
+    {
+        "name": "College of New Caledonia",
+        "domains": [
+            "cnc.bc.ca"
+        ]
+    },
+    {
+        "name": "Columbia College",
+        "domains": [
+            "columbiacollege.ca"
+        ]
+    },
+    {
+        "name": "Concordia University College of Alberta",
+        "domains": [
+            "concordia.ab.ca"
+        ]
+    },
+    {
+        "name": "Concordia University",
+        "domains": [
+            "concordia.ca"
+        ]
+    },
+    {
+        "name": "Conestoga College",
+        "domains": [
+            "conestogac.on.ca"
+        ]
+    },
+    {
+        "name": "College of the Rockies",
+        "domains": [
+            "cotr.bc.ca"
+        ]
+    },
+    {
+        "name": "University of Moncton, Shippagan",
+        "domains": [
+            "cus.ca"
+        ]
+    },
+    {
+        "name": "University of Moncton, Edmundston",
+        "domains": [
+            "cuslm.ca"
+        ]
+    },
+    {
+        "name": "Dalhousie University",
+        "domains": [
+            "dal.ca"
+        ]
+    },
+    {
+        "name": "Douglas College",
+        "domains": [
+            "douglas.bc.ca"
+        ]
+    },
+    {
+        "name": "Durham College",
+        "domains": [
+            "dcmail.ca"
+        ]
+    },
+    {
+        "name": "Emily Carr Institute of Art + Design",
+        "domains": [
+            "eciad.bc.ca"
+        ]
+    },
+    {
+        "name": "École nationale d'administration publique, Université du Québec",
+        "domains": [
+            "enap.uquebec.ca"
+        ]
+    },
+    {
+        "name": "École de technologie supérieure, Université du Québec",
+        "domains": [
+            "etsmtl.ca"
+        ]
+    },
+    {
+        "name": "First Nations University of Canada",
+        "domains": [
+            "firstnationsuniversity.ca"
+        ]
+    },
+    {
+        "name": "George Brown College",
+        "domains": [
+            "gbrownc.on.ca"
+        ]
+    },
+    {
+        "name": "École des Hautes Études Commerciales",
+        "domains": [
+            "hec.ca"
+        ]
+    },
+    {
+        "name": "Humber College",
+        "domains": [
+            "humber.ca",
+            "humbermail.ca"
+        ]
+    },
+    {
+        "name": "Huron University College",
+        "domains": [
+            "huronuc.on.ca"
+        ]
+    },
+    {
+        "name": "Institut Armand-Frappier, Université du Québec",
+        "domains": [
+            "iaf.inrs.ca"
+        ]
+    },
+    {
+        "name": "Institut National de la Recherche Scientifique, Université du Québec",
+        "domains": [
+            "inrs.uquebec.ca"
+        ]
+    },
+    {
+        "name": "Kingston College",
+        "domains": [
+            "kingston.edu"
+        ]
+    },
+    {
+        "name": "King's University College",
+        "domains": [
+            "kingsu.ab.ca"
+        ]
+    },
+    {
+        "name": "Kwantleen University College",
+        "domains": [
+            "kwantlen.bc.ca"
+        ]
+    },
+    {
+        "name": "Lakehead University",
+        "domains": [
+            "lakeheadu.ca"
+        ]
+    },
+    {
+        "name": "Langara College",
+        "domains": [
+            "langara.bc.ca",
+            "langara.ca"
+        ]
+    },
+    {
+        "name": "Lansbridge University",
+        "domains": [
+            "lansbridge.com"
+        ]
+    },
+    {
+        "name": "Laurentian University of Sudbury",
+        "domains": [
+            "laurentian.ca"
+        ]
+    },
+    {
+        "name": "MacEwan University",
+        "domains": [
+            "macewan.ca"
+        ]
+    },
+    {
+        "name": "Malaspina University College",
+        "domains": [
+            "mala.bc.ca"
+        ]
+    },
+    {
+        "name": "McGill University",
+        "domains": [
+            "mcgill.ca"
+        ]
+    },
+    {
+        "name": "McMaster University",
+        "domains": [
+            "mcmaster.ca"
+        ]
+    },
+    {
+        "name": "Mount Saint Vincent University",
+        "domains": [
+            "msvu.ca"
+        ]
+    },
+    {
+        "name": "Mount Allison University",
+        "domains": [
+            "mta.ca"
+        ]
+    },
+    {
+        "name": "Mount Royal University",
+        "domains": [
+            "mtroyal.ca"
+        ]
+    },
+    {
+        "name": "Northern Alberta Institute of Technology",
+        "domains": [
+            "nait.ca"
+        ]
+    },
+    {
+        "name": "North Island College",
+        "domains": [
+            "nic.bc.ca"
+        ]
+    },
+    {
+        "name": "Nipissing University",
+        "domains": [
+            "nipissingu.ca"
+        ]
+    },
+    {
+        "name": "Northern Lights College",
+        "domains": [
+            "nlc.bc.ca"
+        ]
+    },
+    {
+        "name": "Nova Scotia Agricultural College",
+        "domains": [
+            "nsac.ns.ca"
+        ]
+    },
+    {
+        "name": "Nova Scotia College of Art and Design",
+        "domains": [
+            "nscad.ns.ca"
+        ]
+    },
+    {
+        "name": "Nicola Valley Institute of Technology",
+        "domains": [
+            "nvit.bc.ca"
+        ]
+    },
+    {
+        "name": "Ontario College of Art and Design",
+        "domains": [
+            "ocad.ca"
+        ]
+    },
+    {
+        "name": "Okanagan University College",
+        "domains": [
+            "okanagan.bc.ca"
+        ]
+    },
+    {
+        "name": "Dominican College of Philosophy and Theology",
+        "domains": [
+            "op.org"
+        ]
+    },
+    {
+        "name": "Pacific International College",
+        "domains": [
+            "picollege.ca"
+        ]
+    },
+    {
+        "name": "École Polytechnique de Montréal, Université de Montréal",
+        "domains": [
+            "polymtl.ca"
+        ]
+    },
+    {
+        "name": "Queen's University",
+        "domains": [
+            "queensu.ca"
+        ]
+    },
+    {
+        "name": "Quest University",
+        "domains": [
+            "questu.ca"
+        ]
+    },
+    {
+        "name": "Redeemer College",
+        "domains": [
+            "redeemer.ca"
+        ]
+    },
+    {
+        "name": "Regent College",
+        "domains": [
+            "regent-college.edu"
+        ]
+    },
+    {
+        "name": "Royal Military College of Canada",
+        "domains": [
+            "rmc.ca"
+        ]
+    },
+    {
+        "name": "Royal Roads University",
+        "domains": [
+            "royalroads.ca"
+        ]
+    },
+    {
+        "name": "Ryerson Polytechnic University",
+        "domains": [
+            "ryerson.ca"
+        ]
+    },
+    {
+        "name": "Southern Alberta Institute of Technology",
+        "domains": [
+            "sait.ca"
+        ]
+    },
+    {
+        "name": "Luther College",
+        "domains": [
+            "saskweb.com"
+        ]
+    },
+    {
+        "name": "Sauder School of Business",
+        "domains": [
+            "sauder.ubc.ca"
+        ]
+    },
+    {
+        "name": "University of Toronto, Scarborough",
+        "domains": [
+            "scar.utoronto.ca"
+        ]
+    },
+    {
+        "name": "Selkirk College",
+        "domains": [
+            "selkirk.bc.ca"
+        ]
+    },
+    {
+        "name": "Seneca College",
+        "domains": [
+            "senecacollege.ca",
+            "myseneca.ca"
+        ]
+    },
+    {
+        "name": "Simon Fraser University",
+        "domains": [
+            "sfu.ca"
+        ]
+    },
+    {
+        "name": "Sheridan College",
+        "domains": [
+            "sheridancollege.ca"
+        ]
+    },
+    {
+        "name": "Saskatchewan Indian Federated College",
+        "domains": [
+            "sifc.edu"
+        ]
+    },
+    {
+        "name": "St. Clair College",
+        "domains": [
+            "stclairc.on.ca",
+            "stclairconnect.ca",
+            "myscc.ca"
+        ]
+    },
+    {
+        "name": "St. Francis Xavier University",
+        "domains": [
+            "stfx.ca"
+        ]
+    },
+    {
+        "name": "St. Mary's University",
+        "domains": [
+            "stmarys.ca",
+            "smu.ca"
+        ]
+    },
+    {
+        "name": "St. Thomas University",
+        "domains": [
+            "stthomasu.ca"
+        ]
+    },
+    {
+        "name": "Télé-université, Université du Québec",
+        "domains": [
+            "teluq.uquebec.ca"
+        ]
+    },
+    {
+        "name": "Trent University",
+        "domains": [
+            "trentu.ca"
+        ]
+    },
+    {
+        "name": "University of Trinity College",
+        "domains": [
+            "trinity.utoronto.ca"
+        ]
+    },
+    {
+        "name": "Thompson Rivers University",
+        "domains": [
+            "tru.ca"
+        ]
+    },
+    {
+        "name": "Trinity Western University",
+        "domains": [
+            "twu.ca"
+        ]
+    },
+    {
+        "name": "University of Alberta",
+        "domains": [
+            "ualberta.ca"
+        ]
+    },
+    {
+        "name": "University of British Columbia",
+        "domains": [
+            "ubc.ca"
+        ]
+    },
+    {
+        "name": "Bishop's University",
+        "domains": [
+            "ubishops.ca"
+        ]
+    },
+    {
+        "name": "University of Calgary",
+        "domains": [
+            "ucalgary.ca"
+        ]
+    },
+    {
+        "name": "University College of Cape Breton",
+        "domains": [
+            "uccb.ns.ca"
+        ]
+    },
+    {
+        "name": "University of the Fraser Valley",
+        "domains": [
+            "ufv.ca"
+        ]
+    },
+    {
+        "name": "Memorial University of Newfoundland",
+        "domains": [
+            "ucs.mun.ca"
+        ]
+    },
+    {
+        "name": "University of King's College",
+        "domains": [
+            "ukings.ns.ca"
+        ]
+    },
+    {
+        "name": "Université Laval",
+        "domains": [
+            "ulaval.ca"
+        ]
+    },
+    {
+        "name": "University of Lethbridge",
+        "domains": [
+            "uleth.ca"
+        ]
+    },
+    {
+        "name": "University of Manitoba",
+        "domains": [
+            "umanitoba.ca"
+        ]
+    },
+    {
+        "name": "University of Moncton",
+        "domains": [
+            "umoncton.ca"
+        ]
+    },
+    {
+        "name": "Université de Montréal",
+        "domains": [
+            "umontreal.ca"
+        ]
+    },
+    {
+        "name": "University of New Brunswick",
+        "domains": [
+            "unb.ca"
+        ]
+    },
+    {
+        "name": "University of Northern British Columbia",
+        "domains": [
+            "unbc.ca"
+        ]
+    },
+    {
+        "name": "University of New Brunswick, Saint John",
+        "domains": [
+            "unbsj.ca"
+        ]
+    },
+    {
+        "name": "University Canada West",
+        "domains": [
+            "universitycanadawest.ca"
+        ]
+    },
+    {
+        "name": "University of Guelph",
+        "domains": [
+            "uoguelph.ca"
+        ]
+    },
+    {
+        "name": "University of Ontario Institute of Technology",
+        "domains": [
+            "uoit.ca"
+        ]
+    },
+    {
+        "name": "University of Ottawa",
+        "domains": [
+            "uottawa.ca"
+        ]
+    },
+    {
+        "name": "University of Prince Edward Island",
+        "domains": [
+            "upei.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec à Chicoutimi",
+        "domains": [
+            "uqac.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec à Montréal",
+        "domains": [
+            "uqam.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec à Rimouski",
+        "domains": [
+            "uqar.uquebec.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec en Abitibi-Témiscamingue",
+        "domains": [
+            "uqat.uquebec.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec en Outaouais",
+        "domains": [
+            "uqo.ca"
+        ]
+    },
+    {
+        "name": "Université du Québec à Trois-Rivières",
+        "domains": [
+            "uqtr.uquebec.ca"
+        ]
+    },
+    {
+        "name": "University of Québec",
+        "domains": [
+            "uquebec.ca"
+        ]
+    },
+    {
+        "name": "University of Regina",
+        "domains": [
+            "uregina.ca"
+        ]
+    },
+    {
+        "name": "University of Saskatchewan",
+        "domains": [
+            "usask.ca"
+        ]
+    },
+    {
+        "name": "Université de Sherbrooke",
+        "domains": [
+            "usherb.ca"
+        ]
+    },
+    {
+        "name": "University of St. Jerome's College",
+        "domains": [
+            "usjc.uwaterloo.ca"
+        ]
+    },
+    {
+        "name": "St. Anne University",
+        "domains": [
+            "ustanne.ednet.ns.ca"
+        ]
+    },
+    {
+        "name": "University College of Saint-Boniface",
+        "domains": [
+            "ustboniface.mb.ca"
+        ]
+    },
+    {
+        "name": "St. Paul University",
+        "domains": [
+            "ustpaul.ca"
+        ]
+    },
+    {
+        "name": "University of Sudbury",
+        "domains": [
+            "usudbury.com"
+        ]
+    },
+    {
+        "name": "University of Toronto, Mississauga",
+        "domains": [
+            "utm.utoronto.ca"
+        ]
+    },
+    {
+        "name": "University of Toronto",
+        "domains": [
+            "utoronto.ca",
+            "toronto.edu"
+        ]
+    },
+    {
+        "name": "University of Victoria",
+        "domains": [
+            "uvic.ca"
+        ]
+    },
+    {
+        "name": "University of Waterloo",
+        "domains": [
+            "uwaterloo.ca"
+        ]
+    },
+    {
+        "name": "University of Windsor",
+        "domains": [
+            "uwindsor.ca"
+        ]
+    },
+    {
+        "name": "University of Winnipeg",
+        "domains": [
+            "uwinnipeg.ca"
+        ]
+    },
+    {
+        "name": "University of Western Ontario",
+        "domains": [
+            "uwo.ca"
+        ]
+    },
+    {
+        "name": "Vancouver Community College",
+        "domains": [
+            "vcc.ca"
+        ]
+    },
+    {
+        "name": "Victoria University Toronto, University of Toronto",
+        "domains": [
+            "vicu.utoronto.ca"
+        ]
+    },
+    {
+        "name": "Wilfrid Laurier University",
+        "domains": [
+            "wlu.ca",
+            "mylaurier.ca"
+        ]
+    },
+    {
+        "name": "York University",
+        "domains": [
+            "yorku.ca"
+        ]
+    },
+    {
+        "name": "Yukon College",
+        "domains": [
+            "yukoncollege.yk.ca"
+        ]
+    },
+    {
+        "name": "Mohawk College",
+        "domains": [
+            "mohawkcollege.ca"
+        ]
+    },
+    {
+        "name": "College of Bois-de-Boulogne",
+        "domains": [
+            "bdeb.qc.ca"
+        ]
+    },
+    {
+        "name": "Fanshawe College",
+        "domains": [
+            "fanshawec.ca",
+            "fanshaweonline.ca"
+        ]
+    },
+    {
+        "name": "Vanier College",
+        "domains": [
+            "vaniercollege.qc.ca"
+        ]
+    },
+    {
+        "name": "Ontario Tech University",
+        "domains": [
+            "ontariotechu.ca",
+            "ontariotechu.net"
+        ]
+    },
+    {
+        "name": "Toronto Metropolitan University",
+        "domains": [
+            "torontomu.ca"
+        ]
+    },
+    {
+        "name": "Collège Universel Gatineau",
+        "domains": [
+            "collegeuniversel.ca"
+        ]
+    },
+    {
+        "name": "Cambrian College",
+        "domains": [
+            "cambriancollege.ca"
+        ]
+    },
+    {
+        "name": "Georgian College",
+        "domains": [
+            "georgiancollege.ca"
+        ]
+    },
+    {
+        "name": "Lethbridge College",
+        "domains": [
+            "lethbridgecollege.ca"
+        ]
+    },
+    {
+        "name": "Niagara College Canada",
+        "domains": [
+            "niagaracollege.ca"
+        ]
+    },
+    {
+        "name": "Cambrian College",
+        "domains": [
+            "mycambrian.ca",
+            "cambriancollege.ca"
+        ]
+    },
+    {
+        "name": "Dawson College",
+        "domains": [
+            "dawsoncollege.qc.ca"
+        ]
+    }
+]

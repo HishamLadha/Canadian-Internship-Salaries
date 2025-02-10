@@ -12,15 +12,14 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import useFetchCompanies from "@/hooks/useFetchCompanies"
+import useFetchFieldData from "@/hooks/useFetchFieldData"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import SuggestionInput from "./suggestionInput"
 
 
 const VALUES = ["test", "hisham"] as const;
-
-
-
 
 const formSchema = z.object({
   company: z.enum(VALUES, {
@@ -39,8 +38,7 @@ const formSchema = z.object({
 })
 
 export function SalaryForm() {
-  const {companies, loading, error} = useFetchCompanies();
-  console.log(companies);
+  const {data: companies} = useFetchFieldData('all-companies');
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,7 +64,12 @@ export function SalaryForm() {
             <FormItem>
               <FormLabel>Company*</FormLabel>
               <FormControl>
-                <Input placeholder="Company" {...field} />
+                <SuggestionInput 
+                  suggestions={companies || []}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Company"
+                />
               </FormControl>
               <FormDescription>
                 Company you received an offer from
@@ -179,7 +182,7 @@ export function SalaryForm() {
             name="term"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Work Term</FormLabel>
+                <FormLabel>Work Term (optional)</FormLabel>
                 <FormControl>
                   <Input type="number" placeholder="1" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
                 </FormControl>
