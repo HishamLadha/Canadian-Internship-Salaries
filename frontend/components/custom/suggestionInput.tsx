@@ -35,7 +35,7 @@ const SuggestionInput = ({suggestions, value, onChange, placeholder, type="text"
         // Filter suggestions
         if (inputValue){
             const filtered = suggestions.filter(suggestion => suggestion.toLowerCase().startsWith(inputValue.toLowerCase()));
-            setFilteredSuggestions(filtered.length > 0 ? filtered : [inputValue]);
+            setFilteredSuggestions(filtered.length > 0 ? filtered : [`No search results for : ${inputValue}`]);
             setShowSuggestions(true);
         }else{
             setFilteredSuggestions([]);

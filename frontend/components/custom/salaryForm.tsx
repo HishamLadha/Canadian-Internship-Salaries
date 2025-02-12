@@ -17,40 +17,53 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import SuggestionInput from "./suggestionInput"
+import { RoleSelect } from "./roleSelect"
+import { TermSelect } from "./termSelect"
 
-
-const VALUES = ["test", "hisham"] as const;
 
 const formSchema = z.object({
-  company: z.enum(VALUES, {
-    message: "Please select a valid company",
+  company: z.string({
+    message: "Please enter a company",
   }),
-  salary: z.number().int().positive({
-    message: "Salary must be a positive number",
-  }),
+  salary: z.number({
+    required_error: "Salary is required",
+    invalid_type_error: "Salary must be a number",
+  }).int().positive().or(z.literal("")),
   role: z.string().nonempty(),
   location: z.string().nonempty(),
-  year: z.number().int().positive(),
+  year: z.number({
+    required_error: "Year is required",
+    invalid_type_error: "Year must be a number",
+  }).int().positive().or(z.literal("")),
   university: z.string().nonempty(),
-  bonus: z.number().int().positive(),
-  term: z.number().int().positive(),
-
+  bonus: z.number().int().positive().optional(),
+  term: z.string().nonempty(),
 })
 
 export function SalaryForm() {
+  // Fetch Data from backend
   const {data: companies} = useFetchFieldData('all-companies');
-  // 1. Define your form.
+  const {data: universities} = useFetchFieldData('all-universities');
+  const {data: roles} = useFetchFieldData('internship-roles');
+  
+  // Defining the form 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       company: "",
+      salary: undefined,
+      role: "",
+      location: "",
+      year: undefined, 
+      university: "",
+      bonus: undefined,
+      term: "",
     },
   })
 
-  // 2. Define a submit handler.
+  // Defining a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     alert(JSON.stringify(values))
   }
 
@@ -85,7 +98,11 @@ export function SalaryForm() {
             <FormItem>
               <FormLabel>Role* </FormLabel>
               <FormControl>
-                <Input placeholder="Role" {...field} />
+                <RoleSelect 
+                  roles={roles}
+                  onValueChange={field.onChange}
+                  defaultValue=""
+                />
               </FormControl>
               <FormDescription>
                 Role you received an offer for
@@ -102,7 +119,16 @@ export function SalaryForm() {
               <FormItem>
                 <FormLabel>Hourly Salary*</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="$20" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
+                  <Input 
+                    type="number" 
+                    placeholder="$20" 
+                    {...field} 
+                    value={field.value === undefined ? "" : field.value}
+                    onChange={(e) => {
+                      const value = e.target.value === "" ? undefined : Number(e.target.value);
+                      field.onChange(value);
+                    }} 
+                  />
                 </FormControl>
                 <FormDescription>
                   Salary you received
@@ -118,7 +144,16 @@ export function SalaryForm() {
               <FormItem>
                 <FormLabel>Year*</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="2025" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
+                  <Input 
+                    type="number" 
+                    placeholder="2025" 
+                    {...field}
+                    value={field.value === undefined ? "" : field.value}
+                    onChange={(e) => {
+                      const value = e.target.value === "" ? undefined : Number(e.target.value);
+                      field.onChange(value);
+                    }} 
+                  />
                 </FormControl>
                 <FormDescription>
                   Year you received the offer
@@ -135,7 +170,12 @@ export function SalaryForm() {
             <FormItem>
               <FormLabel>University*</FormLabel>
               <FormControl>
-                <Input placeholder="University" {...field} />
+              <SuggestionInput 
+                  suggestions={universities || []}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="University"
+                />
               </FormControl>
               <FormDescription>
                 University you attended
@@ -168,7 +208,16 @@ export function SalaryForm() {
               <FormItem>
                 <FormLabel>Bonus (optional)</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="2000" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
+                  <Input 
+                    type="number" 
+                    placeholder="2000" 
+                    {...field}
+                    value={field.value === undefined ? "" : field.value}
+                    onChange={(e) => {
+                      const value = e.target.value === "" ? undefined : Number(e.target.value);
+                      field.onChange(value);
+                    }} 
+                  />
                 </FormControl>
                 <FormDescription>
                   Bonus you received (if applicable)
@@ -184,7 +233,12 @@ export function SalaryForm() {
               <FormItem>
                 <FormLabel>Work Term (optional)</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="1" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
+                <TermSelect 
+                  terms={["1","2","3","4","5","6","7","8"
+                  ]}
+                  onValueChange={field.onChange}
+                  defaultValue=""
+                />
                 </FormControl>
                 <FormDescription>
                   Work term when you received the offer

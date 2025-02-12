@@ -1,11 +1,15 @@
 # TODO: split this file into multiple files
 from fastapi import FastAPI, Path, Query
+from typing import List
 from pydantic import BaseModel
 from sqlmodel import Field, SQLModel, create_engine, Session, select, desc, func
 import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
+from sqlalchemy.dialects.postgresql import ARRAY
+import json
+from sqlalchemy import Column, String
 
 
 load_dotenv()
@@ -24,6 +28,11 @@ class ReportedSalary(SQLModel, table=True):
     location: str
     bonus: int | None = None
     role: str
+
+class Universities(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    name: str
+    domains: List[str] = Field(sa_column=Column(ARRAY(String)))
 
 connect_args = {"check_same_thread": False}
 
@@ -79,10 +88,24 @@ def load_csv_data():
     
     print("Data successfully added to database!!")
 
+
+def load_universities_json():
+    with open("/app/data/CanadianUniversities.json", "r") as file:
+        universities_data = json.load(file)
+
+    with Session(engine) as session:
+        for uni in universities_data:
+            university = Universities(name=uni["name"], domains=uni["domains"])
+            session.add(university)
+        session.commit()
+
+
+
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
     load_csv_data()
+    load_universities_json()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):
@@ -98,6 +121,13 @@ def read_salaries():
     with Session(engine) as session:
         salaries = session.exec(select(ReportedSalary).order_by(desc(ReportedSalary.year))).all()
         return salaries
+    
+@app.get("/all-universities", response_model=list[str])
+def read_universities():
+    with Session(engine) as session:
+        universities = session.exec(select(Universities.name)).all()
+        return universities
+
 
 @app.get("/all-companies", response_model=list[str])
 def read_companies():
@@ -145,6 +175,35 @@ def get_company_top_location(company: str):
             .limit(1)
         ).first()
         return {top_location[0]}
+    
+popular_internship_roles = [
+    "Software Developer",
+    "Data Scientist",
+    "Product Manager",
+    "UX/UI Designer",
+    "Business Analyst",
+    "Marketing Intern",
+    "Sales Intern",
+    "Finance Intern",
+    "Operations Intern",
+    "IT Intern",
+    "Consulting Intern",
+    "Mechanical Engineer Intern",
+    "Electrical Engineer Intern",
+    "Civil Engineer Intern",
+    "Chemical Engineer Intern",
+    "Biomedical Engineer Intern",
+    "Environmental Engineer Intern",
+    "Industrial Engineer Intern",
+    "Human Resources Intern",
+    "Graphic Designer Intern",
+    "Journalism Intern",
+    "Other"
+]
+
+@app.get("/internship-roles")
+def get_internship_roles():
+    return popular_internship_roles
 
     
 

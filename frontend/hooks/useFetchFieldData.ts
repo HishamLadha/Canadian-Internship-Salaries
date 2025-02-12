@@ -1,7 +1,5 @@
 import {useState, useEffect} from "react";
 
-
-
 const useFetchFieldData = (endpoint: string) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState<boolean>(false);
