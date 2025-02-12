@@ -11,7 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import useFetchCompanies from "@/hooks/useFetchCompanies"
 import useFetchFieldData from "@/hooks/useFetchFieldData"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -19,6 +18,7 @@ import { z } from "zod"
 import SuggestionInput from "./suggestionInput"
 import { RoleSelect } from "./roleSelect"
 import { TermSelect } from "./termSelect"
+import { useState } from "react"
 
 
 const formSchema = z.object({
@@ -41,6 +41,7 @@ const formSchema = z.object({
 })
 
 export function SalaryForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   // Fetch Data from backend
   const {data: companies} = useFetchFieldData('all-companies');
   const {data: universities} = useFetchFieldData('all-universities');
@@ -62,9 +63,32 @@ export function SalaryForm() {
   })
 
   // Defining a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+ async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
-    alert(JSON.stringify(values))
+    setIsSubmitting(true);
+    try{
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if(!response.ok){
+        throw new Error('Failed to submit salary information');
+      }
+
+      const data = await response.json();
+
+      console.log("Submission successful!");
+
+      form.reset();
+    }catch(error){
+      console.error("Error submitting salary: ", error)
+    }finally{
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -248,7 +272,9 @@ export function SalaryForm() {
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </Button>
       </form>
     </Form>
   )
