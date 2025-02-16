@@ -220,7 +220,7 @@ export function SalaryForm() {
                 placeholder="Enter company location"
               />
               <FormDescription>
-                Location of the company
+                City where the company is located
               </FormDescription>
               <FormMessage />
             </FormItem>
