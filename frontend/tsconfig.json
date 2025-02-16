@@ -4,6 +4,9 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "types": [
+      "@types/google.maps"
+    ],
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

@@ -19,7 +19,7 @@ import SuggestionInput from "./suggestionInput"
 import { RoleSelect } from "./roleSelect"
 import { TermSelect } from "./termSelect"
 import { useState } from "react"
-
+import PlacesAutocomplete from './PlacesAutocomplete';
 
 const formSchema = z.object({
   company: z.string({
@@ -214,9 +214,11 @@ export function SalaryForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Location*</FormLabel>
-              <FormControl>
-                <Input placeholder="Location" {...field} />
-              </FormControl>
+              <PlacesAutocomplete
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Enter company location"
+              />
               <FormDescription>
                 Location of the company
               </FormDescription>

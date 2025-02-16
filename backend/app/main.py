@@ -104,8 +104,8 @@ def load_universities_json():
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    load_csv_data()
-    load_universities_json()
+    # load_csv_data()
+    # load_universities_json()
 
 @app.post("/submit-salary", response_model=ReportedSalary)
 def create_salary(reportedSalary: ReportedSalary):
@@ -178,27 +178,25 @@ def get_company_top_location(company: str):
     
 popular_internship_roles = [
     "Software Developer",
-    "Data Scientist",
-    "Product Manager",
-    "UX/UI Designer",
     "Business Analyst",
-    "Marketing Intern",
-    "Sales Intern",
-    "Finance Intern",
-    "Operations Intern",
-    "IT Intern",
-    "Consulting Intern",
-    "Mechanical Engineer Intern",
-    "Electrical Engineer Intern",
-    "Civil Engineer Intern",
     "Chemical Engineer Intern",
-    "Biomedical Engineer Intern",
+    "Civil Engineer Intern",
+    "Consulting Intern",
+    "Data Scientist",
+    "Electrical Engineer Intern",
     "Environmental Engineer Intern",
-    "Industrial Engineer Intern",
+    "Finance Intern",
+    "Designer Intern",
     "Human Resources Intern",
-    "Graphic Designer Intern",
+    "Industrial Engineer Intern",
+    "IT Intern",
     "Journalism Intern",
-    "Other"
+    "Marketing Intern",
+    "Mechanical Engineer Intern",
+    "Operations Intern",
+    "Product Manager",
+    "Sales Intern",
+    "Other",
 ]
 
 @app.get("/internship-roles")
