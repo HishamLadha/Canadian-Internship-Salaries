@@ -127,6 +127,7 @@ export const columns: ColumnDef<Salary>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => toast.success("Thank you for reporting potential spam!")}
             >
@@ -151,7 +152,6 @@ export function HomeTable() {
   const [data, setData] = React.useState<Salary[]>([]);
   const [loading, setLoading] = React.useState(false);
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-  // const BACKEND_URL = "http://100.71.157.55:8000";
 
   React.useEffect(() => {
       const fetchCompanies = async () => {

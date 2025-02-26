@@ -207,7 +207,7 @@ export function SalaryForm() {
                 />
               </FormControl>
               <FormDescription>
-                University you attended
+                Canadian university you attended
               </FormDescription>
               <FormMessage />
             </FormItem>

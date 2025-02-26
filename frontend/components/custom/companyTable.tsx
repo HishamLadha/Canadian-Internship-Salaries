@@ -127,6 +127,7 @@ export const columns: ColumnDef<Salary>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => toast.success("Thank you for reporting potential spam!")}
             >
