@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -20,6 +19,8 @@ import { RoleSelect } from "./roleSelect"
 import { TermSelect } from "./termSelect"
 import { useState } from "react"
 import PlacesAutocomplete from './PlacesAutocomplete';
+import { toast } from "sonner"
+
 
 const formSchema = z.object({
   company: z.string({
@@ -37,7 +38,7 @@ const formSchema = z.object({
   }).int().positive().or(z.literal("")),
   university: z.string().nonempty(),
   bonus: z.number().int().positive().optional(),
-  term: z.string().nonempty(),
+  term: z.string().transform((val) => val ? parseInt(val) : undefined).optional(),
 })
 
 export function SalaryForm() {
@@ -67,12 +68,16 @@ export function SalaryForm() {
     // Do something with the form values.
     setIsSubmitting(true);
     try{
+      const formattedValues = {
+        ...values,
+        term: values.term ? parseInt(values.term) : undefined
+      };
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(formattedValues),
       });
 
       if(!response.ok){
@@ -81,11 +86,11 @@ export function SalaryForm() {
 
       const data = await response.json();
 
-      console.log("Submission successful!");
+      toast.success("Thank you for contributing 🎉")
 
       form.reset();
     }catch(error){
-      console.error("Error submitting salary: ", error)
+      toast.error("Oh no! An error occured. Please try again.")
     }finally{
       setIsSubmitting(false);
     }
@@ -260,7 +265,7 @@ export function SalaryForm() {
                 <FormLabel>Work Term (optional)</FormLabel>
                 <FormControl>
                 <TermSelect 
-                  terms={["1","2","3","4","5","6","7","8"
+                  terms={["1","2","3","4","5","6","7"
                   ]}
                   onValueChange={field.onChange}
                   defaultValue=""

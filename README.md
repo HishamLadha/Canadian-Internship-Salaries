@@ -51,3 +51,10 @@ Add an optional -v to remove the volumes as well.
 docker-compose down -v
 ```
 
+## Potential room for improvements:
+
+User incentivisation is an issue - what motivates a user to submit their salary?
+
+Potential idea: Create a salary insights dashboard that's more detailed for contributors
+Show comparative analytics (e.g., "See how your salary compares to others")
+

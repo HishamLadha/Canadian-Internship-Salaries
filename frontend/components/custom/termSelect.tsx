@@ -20,13 +20,13 @@ export function TermSelect({ terms, onValueChange, defaultValue }: TermSelectPro
     return (
         <Select onValueChange={onValueChange} defaultValue={defaultValue}>
             <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a role" />
+                <SelectValue placeholder="Select work term" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    {terms.map((role) => (
-                        <SelectItem key={role} value={role}>
-                            {role}
+                    {terms.map((term) => (
+                        <SelectItem key={term} value={term}>
+                            {`${term}`}
                         </SelectItem>
                     ))}
                 </SelectGroup>
