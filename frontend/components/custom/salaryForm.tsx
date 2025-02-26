@@ -38,7 +38,7 @@ const formSchema = z.object({
   }).int().positive().or(z.literal("")),
   university: z.string().nonempty(),
   bonus: z.number().int().positive().optional(),
-  term: z.string().transform((val) => val ? parseInt(val) : undefined).optional(),
+  term: z.string().optional(),
 })
 
 export function SalaryForm() {
@@ -59,7 +59,7 @@ export function SalaryForm() {
       year: undefined, 
       university: "",
       bonus: undefined,
-      term: "",
+      term: ""
     },
   })
 

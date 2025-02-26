@@ -32,6 +32,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { toast } from "sonner"
 
 export type Salary = {
   company: string
@@ -114,10 +115,8 @@ export const columns: ColumnDef<Salary>[] = [
   
   {
     id: "actions",
-    enableHiding: false,
+    enableHiding: true,
     cell: ({ row }) => {
-      const salary = row.original
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -129,13 +128,10 @@ export const columns: ColumnDef<Salary>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(salary.company)}
+              onClick={() => toast.success("Thank you for reporting potential spam!")}
             >
-              Copy payment ID
+              Report as spam
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
