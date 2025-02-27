@@ -1,16 +1,25 @@
 services:
+  # to automatically look for new image builds for all the services running below 
+  watchtower:
+    image: containrrr/watchtower
+    command:
+      - --cleanup=true
+      - --interval 30
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  # for reverse proxy, load balancing and SSL certificate issuing 
   traefik:
     image: traefik:latest
     container_name: traefik
     ports:
       - "80:80"    # HTTP
       - "443:443"  # HTTPS
-      - "8080:8080"  # Traefik dashboard (optional)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock  # Access Docker
       - ./letsencrypt:/letsencrypt  # Store SSL certificates
     command:
-      - "--api.dashboard=true"
+      - "--api.dashboard=false"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
@@ -18,13 +27,7 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.email=hishamladha@gmail.com"  # Replace with your email
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.salaries.hishamladha.com`)"  # Dashboard domain
-      - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
-
+  # front end service ofc...
   frontend:
     image: ghcr.io/hishamladha/intern-salaries-frontend:latest
     environment:
@@ -39,7 +42,7 @@ services:
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
       - "traefik.http.services.frontend.loadbalancer.server.port=3000"  # Frontend port
-
+  # backend service, ofc
   backend:
     image: ghcr.io/hishamladha/intern-salaries-backend:latest
     environment:
@@ -61,7 +64,7 @@ services:
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
       - "traefik.http.services.backend.loadbalancer.server.port=8000"  # Backend port
-
+  # database, ofc
   db:
     image: postgres:16
     environment:
