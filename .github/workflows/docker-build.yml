@@ -22,11 +22,11 @@ jobs:
       # Build and Push Frontend Image
       - name: Build and Push Frontend
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/intern-salaries-frontend:latest ./frontend
-          docker push ghcr.io/${{ github.repository_owner }}/intern-salaries-frontend:latest
+          docker build -t ghcr.io/hishamladha/intern-salaries-frontend:latest ./frontend
+          docker push ghcr.io/hishamladha/intern-salaries-frontend:latest
 
       # Build and Push Backend Image
       - name: Build and Push Backend
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/intern-salaries-backend:latest ./backend
-          docker push ghcr.io/${{ github.repository_owner }}/intern-salaries-backend:latest
+          docker build -t ghcr.io/hishamladha/intern-salaries-backend:latest ./backend
+          docker push ghcr.io/hishamladha/intern-salaries-backend:latest
