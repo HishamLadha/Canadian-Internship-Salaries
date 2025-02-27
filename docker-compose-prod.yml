@@ -47,6 +47,14 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
     depends_on:
       - db
+    deploy: # For running 3 identical containers simultaneously for load balancing with traefik
+      # mode: replicated
+      # replicas: 3
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1200M
+    restart: always
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=Host(`api.salaries.hishamladha.com`)"  # Replace with your domain
