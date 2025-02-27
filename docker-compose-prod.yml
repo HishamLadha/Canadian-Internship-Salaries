@@ -3,9 +3,11 @@ services:
   watchtower:
     image: containrrr/watchtower
     command:
-      - --cleanup=true
-      - --interval 30
-    restart: always
+      - "--cleanup=true"
+      - "--label-enable"
+      - "--interval"
+      - "30"
+      - "--rolling-restart"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   # for reverse proxy, load balancing and SSL certificate issuing 
