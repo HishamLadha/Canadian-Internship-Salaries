@@ -279,9 +279,11 @@ export function SalaryForm() {
             )}
           />
         </div>
-        <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit"}
-      </Button>
+        <div className="flex justify-center sm:justify-start">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Button>
+        </div>
       </form>
     </Form>
   )

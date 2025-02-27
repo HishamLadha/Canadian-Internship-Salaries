@@ -22,7 +22,7 @@ jobs:
       # Build and Push Frontend Image
       - name: Build and Push Frontend
         run: |
-          docker build -t ghcr.io/hishamladha/intern-salaries-frontend:latest ./frontend
+          docker build -t ghcr.io/hishamladha/intern-salaries-frontend:latest --build-arg NODE_ENV=production ./frontend
           docker push ghcr.io/hishamladha/intern-salaries-frontend:latest
 
       # Build and Push Backend Image

@@ -1,6 +1,9 @@
 services:
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+          - NODE_ENV=development  # pass development mode for local builds
     ports:
       - "3000:3000"
     volumes:
