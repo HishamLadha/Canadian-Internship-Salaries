@@ -1,0 +1,32 @@
+name: Auto Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main  # Runs on every push to the main branch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # Allow pushing images to GHCR
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      # Build and Push Frontend Image
+      - name: Build and Push Frontend
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/intern-salaries-frontend:latest ./frontend
+          docker push ghcr.io/${{ github.repository_owner }}/intern-salaries-frontend:latest
+
+      # Build and Push Backend Image
+      - name: Build and Push Backend
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/intern-salaries-backend:latest ./backend
+          docker push ghcr.io/${{ github.repository_owner }}/intern-salaries-backend:latest
