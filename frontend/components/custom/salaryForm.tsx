@@ -29,7 +29,7 @@ const formSchema = z.object({
   salary: z.number({
     required_error: "Salary is required",
     invalid_type_error: "Salary must be a number",
-  }).int().positive().or(z.literal("")),
+  }).positive().or(z.literal("")),
   role: z.string().nonempty(),
   location: z.string().nonempty(),
   year: z.number({

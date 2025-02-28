@@ -11,11 +11,9 @@ from sqlalchemy.dialects.postgresql import ARRAY
 import json
 from sqlalchemy import Column, String
 
-
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 FRONTEND_URL = os.getenv("FRONTEND_URL")
-
 
 # Model for the Reported Salary Table
 class ReportedSalary(SQLModel, table=True):
@@ -53,8 +51,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
 
 # The ** (double asterisk) operator is used for dictionary unpacking. It takes the key-value pairs in the record dictionary and passes them as keyword arguments to the ReportedSalary constructor.
 # parsing the script to create the database and tables
