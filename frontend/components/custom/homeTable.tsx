@@ -150,14 +150,12 @@ export function HomeTable() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   const [data, setData] = React.useState<Salary[]>([]);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   React.useEffect(() => {
       const fetchCompanies = async () => {
           try{
-              setLoading(true)
-              // await new Promise(resolve => setTimeout(resolve, 5000)); 
               const response = await fetch(`${BACKEND_URL}/all-salaries`);
               if(!response.ok){
                   throw new Error("Failed to fetch companies");

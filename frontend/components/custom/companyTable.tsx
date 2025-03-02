@@ -173,7 +173,39 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
   return (
     <div className="w-full">
       <div className="rounded-md border">
-        {(
+        {data.length == 0 ? (
+                  <Table>
+                    <TableHeader>
+                      {table.getHeaderGroups().map((headerGroup) => (
+                        <TableRow key={headerGroup.id}>
+                          {headerGroup.headers.map((header) => {
+                            return (
+                              <TableHead key={header.id}>
+                                {header.isPlaceholder
+                                  ? null
+                                  : flexRender(
+                                      header.column.columnDef.header,
+                                      header.getContext()
+                                    )}
+                              </TableHead>
+                            )
+                          })}
+                        </TableRow>
+                      ))}
+                    </TableHeader>
+                    <TableBody>
+                      {Array.from({ length: 5 }).map((_, rowIndex) => (
+                        <TableRow key={rowIndex}>
+                          {columns.map((column, colIndex) => (
+                            <TableCell key={colIndex}>
+                              <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                ) :(
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (

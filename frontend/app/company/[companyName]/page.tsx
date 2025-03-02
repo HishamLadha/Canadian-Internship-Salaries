@@ -68,7 +68,6 @@ export default function Company() {
       catch (error){
         console.log("An error occured fetching all salaries: ", error);
 
-
       }finally{
 
       }

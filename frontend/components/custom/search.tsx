@@ -55,8 +55,8 @@ const Search: React.FC = () => {
   // Handle suggestion click
   const handleSuggestionClick = (suggestion: string) => {
     setSearchTerm(suggestion);
-    setSuggestions([]); // Clear suggestions after selection
-    if (suggestions.length > 0){
+    setSuggestions([]);
+    if (suggestions.length > 0 && !(suggestions[0].includes("No results"))){
       router.push(`/company/${suggestion}`)
     }
     else{
