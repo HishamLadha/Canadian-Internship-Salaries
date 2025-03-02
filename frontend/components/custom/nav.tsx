@@ -15,15 +15,16 @@ const Nav: React.FC = () => {
 
     return (
         <>
-        <nav className='mt-2 mb-2 mx-1 sm:mx-6'>
+        <nav className='mt-2 mb-2 mx-4 sm:mx-6'>
             <ul className='flex flex-row justify-between items-center'>
                 <li>
                     <ul className='flex flex-row gap-3 items-center'>
-                        <li className='flex flex-row sm:gap-2 gap-1 hover:opacity-40'>
-                            <a href="/">
+                        <li className='hover:opacity-40'>
+                            <a className='flex flex-row sm:gap-2 gap-1' href="/">
                                 <Image src="/Logo1.svg" alt="Logo" width={32} height={32} />
+                            
+                                <h1 className='font-semibold sm:text-[20px] hidden sm:block'>Scoper</h1>
                             </a>
-                            <h1 className='font-semibold sm:text-[20px] hidden sm:block'>Scoper</h1>
                         </li>
                         <li>
                             <Search />

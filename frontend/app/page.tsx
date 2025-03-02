@@ -1,10 +1,12 @@
 import { HomeTable } from "@/components/custom/homeTable";
 import Footer from "@/components/custom/footer";
 import Search from "@/components/custom/search";
+import { AnnouncementBanner } from "@/components/custom/announcement-banner";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <AnnouncementBanner />
       {/* Hero Section */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
