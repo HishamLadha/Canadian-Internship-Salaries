@@ -16,9 +16,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Intern Salaries",
-  description: "Reported Canadian Intern Salaries",
-};
+  title: 'Scoper - Canadian Internship Salaries',
+  description: 'Your go-to resource for Canadian internship salary data.',
+}
 
 export default function RootLayout({
   children,
