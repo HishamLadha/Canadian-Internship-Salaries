@@ -2,11 +2,13 @@
 
 <div align="center">
 
-![Project Banner](https://github.com/user-attachments/assets/7c59a343-29f7-474d-bd59-9b20a95b8a17)
+![Project Banner](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/home-page.png)
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white
+)](https://digitalocean.com)
 
 A platform for students to view and share internship salary data across Canada, promoting transparency in the tech industry.
 
@@ -20,9 +22,9 @@ A platform for students to view and share internship salary data across Canada, 
 - Submit anonymous salary reports
 - Coming soon: Search and filter by location
 
-> Hosted on a custom production configured VPS instance with load balancing, autobuilds, github actions and more!
+> Hosted on a custom production VPS instance configured with load balancing, autobuilds, github actions and more!
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - Next.js 
@@ -45,7 +47,7 @@ A platform for students to view and share internship salary data across Canada, 
 - ufw (firewall)
 - Github actions
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -88,6 +90,7 @@ docker-compose down  # Add -v flag to remove volumes
 ### Current Focus
 - [ ] Enabling search by location
 - [ ] Implementing paginated API calls for the tables
+- [ ] Refactor codebase
 - [ ] Expanding the information on the home and company tables
 
 ### Future Improvements
