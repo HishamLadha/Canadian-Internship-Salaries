@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About | Scoper",
-  description: "Learn more about the motivation and data behind Canadian Internship Salaries",
+  description: "Learn more about the motivation and data behind Scoper | Canadian Internship Salaries",
 };
 
 export default function AboutPage() {
@@ -30,7 +30,7 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg">
                 <p>
-                I want to be able to search up a company and immediately see the average salary and previous salaries reported. Besides levels.fyi, glassdoor and the occasional reddit post, I haven't really found any platform for viewing intern salaries within Canada. Frankly, the problem with these platforms is that there is simply too much information or it takes too long to get the information I need.  
+                I want to be able to search up a company and immediately see the average salary and previous salaries reported. Besides levels.fyi, glassdoor and the occasional reddit post, I haven't really found any platform for viewing intern salaries within Canada. Frankly, the problem with these platforms is either: a. A lack of enough Canadian data or b. It takes too long to get the information I need.  
                 </p>
               </div>
             </section>
@@ -38,11 +38,11 @@ export default function AboutPage() {
             {/* Data Section */}
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Our Data
+                Data
               </h2>
               <div className="prose prose-lg">
                 <p>
-                  Quite honestly, the biggest problem with starting a platorm like this is access to data.
+                  Quite honestly, the biggest problem with creating a platform like this is access to data. Thankfully, I came across an old reddit post that linked a google sheet (<a className="underline font-medium hover:opacity-45" href="https://docs.google.com/spreadsheets/d/1oYRPr1_NL8kD6ei06C6BWgVo51GTH6e5oGsR5suqwUA/edit?gid=335472327">Concordia Coop Compensation Chart</a>) with student-reported salaries. 
                 </p>
               </div>
             </section>
