@@ -1,60 +1,103 @@
-# Canadian Internship Salaries
+# Scoper - Canadian Internship Salaries 
 
-https://github.com/user-attachments/assets/7c59a343-29f7-474d-bd59-9b20a95b8a17
+<div align="center">
 
-The purpose of this app is to provide a platform where students can view and report internship salaries in Canada. This helps students get a better understanding of the salary landscape in various industries and companies.
+![Project Banner](https://github.com/user-attachments/assets/7c59a343-29f7-474d-bd59-9b20a95b8a17)
 
-## Description
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
+
+A platform for students to view and share internship salary data across Canada, promoting transparency in the tech industry.
+
+[Features](#features) • [Tech Stack](#tech-stack) • [Getting Started](#getting-started) • [Contributing](#contributing) • [Roadmap](#roadmap)
+
+</div>
+
+## Features
+
+- View internship salaries across different companies in Canada
+- Submit anonymous salary reports
+- Coming soon: Search and filter by location
+
+> Hosted on a custom production configured VPS instance with load balancing, autobuilds, github actions and more!
+
+## Tech Stack
 
 ### Frontend
-
-**Tech Stack:**
-- Next.js
-- React
-- TypeScript
-- Tailwind
-- Shadcn
+- Next.js 
+- TypeScript 
+- Tailwind CSS
+- Shadcn 
+- Zod 
 
 ### Backend
+- FastAPI 
+- Python 
+- SQLModel 
+- PostgreSQL 
+- Pandas
 
-**Tech Stack:**
-- FastAPI
-- Python
-- SQLModel
-- PostgreSQL
+### Deployment
+- Traefik (reverse proxying, load balancing, https)
+- Watchtower (autobuilds)
+- Docker + docker-compose
+- ufw (firewall)
+- Github actions
 
 ## Getting Started
 
-To get started with the project, make sure you have `docker` and `docker-compose` installed on your machine.
-Then, create a .env file and populate it with the following, replacing the appropriate values:
+### Prerequisites
 
+- Docker
+- Docker Compose
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/Canadian-Internship-Salaries.git
+cd Canadian-Internship-Salaries
+```
+
+2. Create `.env` file and configure your environment:
 ```bash
 POSTGRES_USER=replace_with_your_username
 POSTGRES_PASSWORD=replace_with_your_password
 POSTGRES_DB=replace_with_your_database_name
 DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+FRONTEND_URL=http://localhost:3000
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=replace_your_api_key
 ```
-Then, run the following commands:
 
+3. Start the application:
 ```bash
 docker-compose up --build
 ```
 
-To stop running the containers, run the following command:
-
+To stop the application:
 ```bash
-docker-compose down
-```
-Add an optional -v to remove the volumes as well.
-
-```bash
-docker-compose down -v
+docker-compose down  # Add -v flag to remove volumes
 ```
 
-## Potential room for improvements:
+## 🗺️ Roadmap
 
-User incentivisation is an issue - what motivates a user to submit their salary?
+> **Note**: For detailed task tracking, please see [GitHub Issues](https://github.com/HishamLadha/Canadian-Internship-Salaries/issues)
 
-Potential idea: Create a salary insights dashboard that's more detailed for contributors
-Show comparative analytics (e.g., "See how your salary compares to others")
+### Current Focus
+- [ ] Enabling search by location
+- [ ] Implementing paginated API calls for the tables
+- [ ] Expanding the information on the home and company tables
+
+### Future Improvements
+- [ ] Add salary insights dashboard for contributors
+- [ ] Develop comparative analytics features
+- [ ] Add email verification system
+- [ ] Implement company verification process
+- [ ] Add data export functionality
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request or start a Github Issue.
 
