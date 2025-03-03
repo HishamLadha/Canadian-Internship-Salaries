@@ -24,6 +24,7 @@ jobs:
         run: |
           docker build \
             -t ghcr.io/hishamladha/intern-salaries-frontend:latest \
+            --build-arg NODE_ENV=production \
             --build-arg NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }} \
             --build-arg NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }} \
             ./frontend
