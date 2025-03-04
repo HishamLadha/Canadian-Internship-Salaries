@@ -15,7 +15,12 @@ COPY . .
 
 # Accept a build argument (default: development)
 ARG NODE_ENV=development
+ARG NEXT_PUBLIC_BACKEND_URL
+ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 ENV NODE_ENV=$NODE_ENV
+ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
+ENV NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+
 
 # Run `npm run build` only if building for production
 RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi

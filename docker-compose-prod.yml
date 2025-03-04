@@ -34,8 +34,6 @@ services:
     image: ghcr.io/hishamladha/intern-salaries-frontend:latest
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
-      - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
     depends_on:
       - backend
     labels:
