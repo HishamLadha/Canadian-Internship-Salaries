@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/custom/nav";
 import { Toaster } from "@/components/ui/sonner"
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="8e9948ac-32f0-4108-a8e3-c570a5b35a3b"></script>
+        <Script 
+          async
+          src="https://cloud.umami.is/script.js" 
+          data-website-id="8e9948ac-32f0-4108-a8e3-c570a5b35a3b"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
