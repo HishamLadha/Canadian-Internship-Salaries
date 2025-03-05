@@ -1,13 +1,6 @@
 import pandas as pd
-import json
-from .database import engine, Session
-from .models.salary import ReportedSalary
-from .models.university import Universities
-
-# The ** (double asterisk) operator is used for dictionary unpacking. It takes the key-value pairs in the record dictionary and passes them as keyword arguments to the ReportedSalary constructor.
-# parsing the script to create the database and tables
 def load_csv_data():
-    csv_file = "/app/data/ConcordiaResponses.csv"
+    csv_file = "ConcordiaResponses.csv"
     df = pd.read_csv(csv_file)
 
     df = df.drop(columns=["Timestamp"])
@@ -38,7 +31,17 @@ def load_csv_data():
         "X2O media": "X2O Media",
     }
     df['company'] = df['company'].replace(company_replacements)
-
+    
+    # The unique locations in the dataset are:
+    #     ['Montreal' 'Mirabel' 'West Island' 'New York City' 'Vancouver' 'Bay Area'
+    #  'St-Laurent' 'St-Bruno' 'toronto' 'San Francisco' 'San Jose'
+    #  'Vaudreuil Dorion' 'Ottawa' 'Sorel-Tracy' 'Toronto' 'Remote' 'Dorval'
+    #  'South Shore' 'Waterloo' 'Seattle' 'Laval' 'remote' 'Saint hubert'
+    #  'Brossard' 'Québec' 'Québec ' 'Amos' 'Halifax' 'St-Hubert' 'Boisbriand '
+    #  'Contrecoeur' 'Quebec City' 'Quebec']
+    # need to map them to include the province
+    # also need to map then to cleanup the duplicates of different cases e.g. remote, Remote
+    # also need to remove leading and trailing spaces
     location_replacements = {
         # Quebec locations
         "Montreal": "Montreal, QC",
@@ -84,26 +87,6 @@ def load_csv_data():
         "Seattle": "Seattle, WA"
     }
     df['location'] = df['location'].str.strip().replace(location_replacements)
+    print(df["location"].unique())
 
-    # Convert the DataFrame to a list of dictionaries
-    data = df.to_dict(orient="records")
-    # Now insert each salary into the database
-    with Session(engine) as session:
-        for record in data:
-            salary = ReportedSalary(**record)
-            session.add(salary)
-        session.commit()
-    
-    print("All salaries successfully added to database!!")
-
-
-def load_universities_json():
-    with open("/app/data/CanadianUniversities.json", "r") as file:
-        universities_data = json.load(file)
-
-    with Session(engine) as session:
-        for uni in universities_data:
-            university = Universities(name=uni["name"], domains=uni["domains"])
-            session.add(university)
-        session.commit()
-    print("Universities successfully added to database!!")
+load_csv_data()

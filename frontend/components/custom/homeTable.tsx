@@ -41,6 +41,7 @@ export type Salary = {
   year: number
   location: string
   university: string
+  term: number
 }
 
 export const columns: ColumnDef<Salary>[] = [
@@ -110,6 +111,28 @@ export const columns: ColumnDef<Salary>[] = [
     header: "University",
     cell: ({ row }) => (
       <div className="capitalize text-center sm:text-start">{row.getValue("university")}</div>
+    ),
+  },
+  // {
+  //   accessorKey: "term",
+  //   header: ({ column }) => {
+  //     return (
+  //       <Button
+  //         variant="ghost"
+  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //       >
+  //         Work Term
+  //         <ArrowUpDown />
+  //       </Button>
+  //     )
+  //   },
+  //   cell: ({ row }) => <div className="text-center sm:text-start">{row.getValue("term")}</div>,
+  // },
+  {
+    accessorKey: "term",
+    header: "Work Term",
+    cell: ({ row }) => (
+      <div className="capitalize text-center sm:text-start">{row.getValue("term")}</div>
     ),
   },
   
@@ -281,7 +304,7 @@ export function HomeTable() {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
-          Showing {table.getState().pagination.pageSize * table.getState().pagination.pageIndex + table.getRowModel().rows.length} out of {table.getCoreRowModel().rows.length} results found.
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <div className="space-x-2">
           <Button

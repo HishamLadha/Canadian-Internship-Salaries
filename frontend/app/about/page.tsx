@@ -30,7 +30,7 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg">
                 <p>
-                I want to be able to search up a company and immediately see the average salary and previous salaries reported. Besides levels.fyi, glassdoor and the occasional reddit post, I haven't really found any platform for viewing intern salaries within Canada. Frankly, the problem with these platforms is either: a. A lack of enough Canadian data or b. It takes too long to get the information I need.  
+               While platforms like levels.fyi and Glassdoor exist, they lack comprehensive Canadian data or require extensive navigation to find relevant information. The problem with these platforms is either: a. A lack of enough Canadian data or b. It takes too long to get the information I need. I want to be able to search up a company and immediately see the average salary and previous salaries reported. 
                 </p>
               </div>
             </section>
