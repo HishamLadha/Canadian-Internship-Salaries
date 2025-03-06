@@ -37,8 +37,6 @@ export default function Home() {
       <main id="data-table" className="px-4 sm:px-24">
         <HomeTable />
       </main>
-
-      <Footer />
     </div>
   );
 }
