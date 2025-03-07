@@ -1,17 +1,34 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request, HTTPException
 from sqlmodel import select, Session, desc
 from typing import List
 from ..models.salary import ReportedSalary
 from ..database import get_session
+from ..models.pending_salary import PendingSalary, SubmissionStatus
+from ..core.rate_limiter import limiter
 
 router = APIRouter()
 
-@router.post("/submit-salary", response_model=ReportedSalary)
-def create_salary(reportedSalary: ReportedSalary, session: Session = Depends(get_session)):
-    session.add(reportedSalary)
-    session.commit()
-    session.refresh(reportedSalary)
-    return reportedSalary
+@router.post("/submit-salary")
+@limiter.limit("5/hour")  # 5 submissions per hour per IP
+async def submit_salary(
+    request: Request,
+    salary_data: ReportedSalary,
+    session: Session = Depends(get_session)
+):
+    try:
+        # Now actually create the pending submission
+        pending_salary = PendingSalary(
+            **salary_data.dict(),
+            ip_address=request.client.host,
+            status=SubmissionStatus.PENDING
+        )
+        
+        session.add(pending_salary)
+        session.commit()
+        
+        return {"message": "Submission received and pending review", "id": pending_salary.id}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 # TODO: Make this endpoing work with limit and offset and sync this with front-end pagination for efficiency
 @router.get("/all-salaries", response_model=list[ReportedSalary])

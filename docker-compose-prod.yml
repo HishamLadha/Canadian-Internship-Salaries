@@ -26,9 +26,9 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"  
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      - "--certificatesresolvers.letsencrypt.acme.email=hishamladha@gmail.com"  # Replace with your email
+      - "--certificatesresolvers.letsencrypt.acme.email=hishamladha@gmail.com"  
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
   # front end service ofc...
@@ -36,14 +36,16 @@ services:
     image: ghcr.io/hishamladha/intern-salaries-frontend:latest
     environment:
       - NODE_ENV=production
+      - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
+      - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
     depends_on:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`salaries.hishamladha.com`)"  # Replace with your domain
+      - "traefik.http.routers.frontend.rule=Host(`salaries.hishamladha.com`)" 
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.frontend.loadbalancer.server.port=3000"  # Frontend port
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000" # FE port
       - "com.centurylinklabs.watchtower.enable=true"
   # backend service, ofc
   backend:
@@ -51,6 +53,8 @@ services:
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - FRONTEND_URL=${FRONTEND_URL}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     depends_on:
       - db
     deploy: # For running 3 identical containers simultaneously for load balancing with traefik
@@ -63,10 +67,10 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`api.salaries.hishamladha.com`)"  # Replace with your domain
+      - "traefik.http.routers.backend.rule=Host(`api.salaries.hishamladha.com`)"  
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.backend.loadbalancer.server.port=8000"  # Backend port
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"  # BE port
       - "com.centurylinklabs.watchtower.enable=true"
   # database, ofc
   db:

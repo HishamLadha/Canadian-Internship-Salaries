@@ -5,3 +5,4 @@ asyncpg
 psycopg2-binary
 pandas
 requests
+slowapi
