@@ -1,15 +1,13 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import secrets
-import os
+from .config import correct_username, correct_password
 
 security = HTTPBasic()
 
 def get_admin_user(
     credentials: HTTPBasicCredentials = Depends(security)
 ):
-    correct_username = os.getenv("ADMIN_USERNAME")
-    correct_password = os.getenv("ADMIN_PASSWORD")
     
     is_correct_username = secrets.compare_digest(
         credentials.username.encode("utf8"),

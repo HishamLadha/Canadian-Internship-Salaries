@@ -124,6 +124,7 @@ export default function AdminPage() {
                 <TableHead>Company</TableHead>
                 <TableHead>Salary</TableHead>
                 <TableHead>Role</TableHead>
+                <TableHead>University</TableHead>
                 <TableHead>Location</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
@@ -134,6 +135,7 @@ export default function AdminPage() {
                   <TableCell>{salary.company}</TableCell>
                   <TableCell>${salary.salary}/hr</TableCell>
                   <TableCell>{salary.role}</TableCell>
+                  <TableCell>{salary.university}</TableCell>
                   <TableCell>{salary.location}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">

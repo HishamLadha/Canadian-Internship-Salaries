@@ -132,7 +132,7 @@ export const columns: ColumnDef<Salary>[] = [
     accessorKey: "term",
     header: "Work Term",
     cell: ({ row }) => (
-      <div className="capitalize text-center sm:text-start">{row.getValue("term")}</div>
+      <div className="capitalize text-center sm:text-start">{row.getValue("term") ? row.getValue("term") : "-"}</div>
     ),
   },
   
