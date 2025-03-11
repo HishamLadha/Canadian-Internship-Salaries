@@ -19,6 +19,6 @@ setup_middleware(app)
 @app.on_event("startup")
 def on_startup(): 
     create_db_and_tables() 
-    load_csv_data() 
-    load_universities_json() 
+    # load_csv_data() 
+    # load_universities_json() 
     

@@ -1,11 +1,14 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import secrets
 from .config import correct_username, correct_password
+from .core.rate_limiter import limiter
 
 security = HTTPBasic()
 
+@limiter.limit("2/minute")
 def get_admin_user(
+    request: Request,
     credentials: HTTPBasicCredentials = Depends(security)
 ):
     
