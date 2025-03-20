@@ -16,8 +16,8 @@ interface Announcement {
 const announcements: Announcement[] = [
   {
     id: 1,
-    message: "Currently only featuring Concordia University internships",
-    type: "warning",
+    message: "More Universities are being added!",
+    type: "info",
     action: {
       label: "Share Your Experience",
       href: "/submit"
