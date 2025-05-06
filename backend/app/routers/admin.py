@@ -12,7 +12,7 @@ from ..data_loader import load_csv_data, load_universities_json
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 @router.get("/pending-submissions", response_model=List[PendingSalary])
-@limiter.limit("5/minute")
+@limiter.limit("10/minute")
 async def get_pending_submissions(
     request: Request,  # Required for rate limiter
     admin: dict = Depends(get_admin_user),
@@ -23,7 +23,6 @@ async def get_pending_submissions(
     ).all()
 
 @router.post("/approve/{submission_id}")
-@limiter.limit("5/minute")
 async def approve_submission(
     request: Request,  # Required for rate limiter
     submission_id: int,
@@ -45,7 +44,6 @@ async def approve_submission(
     return {"message": "Submission approved"}
 
 @router.post("/reject/{submission_id}")
-@limiter.limit("5/minute")
 async def reject_submission(
     request: Request,  # Required for rate limiter
     submission_id: int,
