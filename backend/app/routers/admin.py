@@ -6,6 +6,8 @@ from ..database import get_session
 from ..models.pending_salary import PendingSalary, SubmissionStatus
 from ..models.salary import ReportedSalary
 from ..core.rate_limiter import limiter
+from ..data_loader import load_csv_data, load_universities_json
+
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
@@ -59,3 +61,14 @@ async def reject_submission(
     session.commit()
     
     return {"message": "Submission rejected"}
+
+
+@router.get("/populate-db")
+@limiter.limit("5/minute")
+async def populate_db(
+    request: Request,  # Required for rate limiter
+    admin: dict = Depends(get_admin_user),
+    session: Session = Depends(get_session)
+):
+    load_csv_data()
+    load_universities_json()
