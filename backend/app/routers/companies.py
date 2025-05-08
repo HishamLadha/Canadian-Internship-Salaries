@@ -12,6 +12,12 @@ def read_companies(session: Session = Depends(get_session)):
     companies = session.exec(select(ReportedSalary.company).distinct()).all()
     return companies
 
+@router.get("/all-locations", response_model=list[str])
+def read_locations(session: Session = Depends(get_session)):
+    # return only the unique locations
+    locations = session.exec(select(ReportedSalary.location).distinct()).all()
+    return locations
+
 @router.get("/company/all-salaries", response_model=list[ReportedSalary])
 def get_company(company: str, session: Session = Depends(get_session)):
     companyData = session.exec(select(ReportedSalary).where(ReportedSalary.company == company).order_by(desc(ReportedSalary.year))).all()

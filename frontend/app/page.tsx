@@ -1,5 +1,4 @@
 import { HomeTable } from "@/components/custom/homeTable";
-import Footer from "@/components/custom/footer";
 import Search from "@/components/custom/search";
 import { AnnouncementBanner } from "@/components/custom/announcement-banner";
 
