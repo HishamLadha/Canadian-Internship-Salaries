@@ -53,15 +53,15 @@ export default function Company() {
         setError(null); 
 
         const [allSalariesRes, averageSalariesRes, topCompanyRes, topUniversityRes] = await Promise.all([
-          fetch(`${BACKEND_URL}/company/all-salaries?company=${decodedlocationName}`),
-          fetch(`${BACKEND_URL}/company/average-salary?company=${decodedlocationName}`),
-          fetch(`${BACKEND_URL}/company/top-location?company=${decodedlocationName}`),
-          fetch(`${BACKEND_URL}/company/top-university?company=${decodedlocationName}`),
+          fetch(`${BACKEND_URL}/location/all-salaries?location=${decodedlocationName}`),
+          fetch(`${BACKEND_URL}/location/average-salary?location=${decodedlocationName}`),
+          fetch(`${BACKEND_URL}/location/top-company?location=${decodedlocationName}`),
+          fetch(`${BACKEND_URL}/location/top-university?location=${decodedlocationName}`),
         ]);
 
         // Check if any response failed and immediately throw an error
         if (!allSalariesRes.ok || !averageSalariesRes.ok || !topCompanyRes.ok || !topUniversityRes.ok) {
-          throw new Error("Company not found or data unavailable");
+          throw new Error("Location not found or data unavailable");
         }
 
         const [salariesData, averageSalaryData, topCompanyData, topUniversityData] = await Promise.all([
