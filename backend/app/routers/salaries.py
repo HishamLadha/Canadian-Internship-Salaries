@@ -16,6 +16,11 @@ async def submit_salary(
     session: Session = Depends(get_session)
 ):
     try:
+        # Modify the location to remove content after the last comma
+        if salary_data.location and ',' in salary_data.location:
+            last_comma_index = salary_data.location.rfind(',')
+            salary_data.location = salary_data.location[:last_comma_index].strip()
+
         # Now actually create the pending submission
         pending_salary = PendingSalary(
             **salary_data.dict(),

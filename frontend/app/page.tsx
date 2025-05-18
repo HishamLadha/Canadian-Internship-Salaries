@@ -25,9 +25,9 @@ export default function Home() {
             <p className="mt-4 text-lg text-gray-600">
               Search for competitive internship salaries or contribute your own!
             </p>
-            <div className="mt-8 sm:flex hidden sm:justify-center sm:items-center sm:w-full">
+            {/* <div className="mt-8 sm:flex hidden sm:justify-center sm:items-center sm:w-full">
               <Search />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

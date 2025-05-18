@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from typing import List
-from sqlmodel import Session
+from sqlmodel import Session, select  
 from ..auth import get_admin_user
 from ..database import get_session
 from ..models.pending_salary import PendingSalary, SubmissionStatus
@@ -14,7 +14,7 @@ router = APIRouter(prefix="/admin", tags=["admin"])
 @router.get("/pending-submissions", response_model=List[PendingSalary])
 @limiter.limit("10/minute")
 async def get_pending_submissions(
-    request: Request,  # Required for rate limiter
+    request: Request,  
     admin: dict = Depends(get_admin_user),
     session: Session = Depends(get_session)
 ):
@@ -24,7 +24,7 @@ async def get_pending_submissions(
 
 @router.post("/approve/{submission_id}")
 async def approve_submission(
-    request: Request,  # Required for rate limiter
+    request: Request, 
     submission_id: int,
     admin: dict = Depends(get_admin_user),
     session: Session = Depends(get_session)
@@ -45,7 +45,7 @@ async def approve_submission(
 
 @router.post("/reject/{submission_id}")
 async def reject_submission(
-    request: Request,  # Required for rate limiter
+    request: Request, 
     submission_id: int,
     admin: dict = Depends(get_admin_user),
     session: Session = Depends(get_session)
@@ -64,9 +64,35 @@ async def reject_submission(
 @router.get("/populate-db")
 @limiter.limit("5/minute")
 async def populate_db(
-    request: Request,  # Required for rate limiter
+    request: Request,  
     admin: dict = Depends(get_admin_user),
     session: Session = Depends(get_session)
 ):
     load_csv_data()
     load_universities_json()
+
+# remove the wrong locations
+# instead of toronto, on, canada, it should be toronto, on
+@router.get("/modify-db")
+@limiter.limit("5/minute")
+async def modify_db(
+    request: Request,  
+    admin: dict = Depends(get_admin_user),
+    session: Session = Depends(get_session)
+):
+    salaries_to_update = session.exec(select(ReportedSalary)).all()
+    updated_count = 0
+    for salary in salaries_to_update:
+        if salary.location and salary.location.count(',') > 1:
+            parts = salary.location.split(',')
+            new_location = f"{parts[0].strip()}, {parts[1].strip()}"
+            if salary.location != new_location:
+                salary.location = new_location
+                session.add(salary)
+                updated_count += 1
+    
+    if updated_count > 0:
+        session.commit()
+        return {"message": f"Database modified. {updated_count} location(s) updated."}
+    else:
+        return {"message": "No locations needed an update."}
