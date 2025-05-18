@@ -77,11 +77,17 @@ const Search: React.FC = () => {
   const router = useRouter();
 
   // Handle suggestion click
-  const handleSuggestionClick = (suggestion: string) => {
-    setSearchTerm(suggestion);
+  const handleSuggestionClick = (suggestion: Suggestion) => {
+    setSearchTerm(suggestion.value);
     setSuggestions([]);
     if (suggestions.length > 0 && !(suggestions[0].value.includes("No results"))) {
-      router.push(`/company/${suggestion}`);
+      // alert(suggestion.type)
+      if(suggestion.type === "Location"){
+        router.push(`/location/${suggestion.value}`)
+      }
+      if(suggestion.type === "Company"){
+        router.push(`/company/${suggestion.value}`);
+      }
     } else {
       alert(`Not a valid company`);
       setSearchTerm("");
@@ -103,7 +109,7 @@ const Search: React.FC = () => {
             <li
               key={index}
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleSuggestionClick(suggestion.value)}
+              onClick={() => handleSuggestionClick(suggestion)}
             >
               {suggestion.value}
               <p className="text-sm text-gray-400">

@@ -44,13 +44,13 @@ export type Salary = {
 }
 
 export const columns: ColumnDef<Salary>[] = [
-  // {
-  //   accessorKey: "company",
-  //   header: "Company",
-  //   cell: ({ row }) => (
-  //     <div className="capitalize">{row.getValue("company")}</div>
-  //   ),
-  // },
+  {
+    accessorKey: "company",
+    header: "Company",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("company")}</div>
+    ),
+  },
   {
     accessorKey: "salary",
     header: ({ column }) => {
@@ -98,13 +98,13 @@ export const columns: ColumnDef<Salary>[] = [
       <div className="capitalize">{row.getValue("role")}</div>
     ),
   },
-  {
-    accessorKey: "location",
-    header: "Location",
-    cell: ({ row }) => (
-      <div className="capitalize text-center sm:text-start">{row.getValue("location")}</div>
-    ),
-  },
+  // {
+  //   accessorKey: "location",
+  //   header: "Location",
+  //   cell: ({ row }) => (
+  //     <div className="capitalize text-center sm:text-start">{row.getValue("location")}</div>
+  //   ),
+  // },
   {
     accessorKey: "university",
     header: "University",
@@ -140,7 +140,7 @@ export const columns: ColumnDef<Salary>[] = [
   },
 ]
 
-export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
+export function LocationTable({ locationRecords }: { locationRecords: Salary[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -149,7 +149,7 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const data: Salary[] = companyRecords;
+  const data: Salary[] = locationRecords;
 
   const table = useReactTable({
     data,
