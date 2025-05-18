@@ -45,6 +45,8 @@ const Search: React.FC = () => {
 
     fetchCompanies();
     fetchLocations();
+
+    // setSuggestions([{type: "Company", value: "Google"}, {type: "Company", value: "Amazon"}, {type: "Company", value: "RBC"}])
   }, []);
 
   // Handle input change
@@ -95,31 +97,61 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className="relative">
-      <Input
-        placeholder="Search by Company, Location"
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
+    <>
+      <div className="hidden sm:block sm:relative">
+        <Input
+          placeholder="Search by Company, Location"
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+        
 
-      {/* Display suggestions */}
-      {suggestions.length > 0 && (
-        <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
-          {suggestions.map((suggestion, index) => (
-            <li
-              key={index}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleSuggestionClick(suggestion)}
-            >
-              {suggestion.value}
-              <p className="text-sm text-gray-400">
-                {suggestion.type === "No results" ? "" : suggestion.type}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+        {/* Display suggestions */}
+        {suggestions.length > 0 && (
+          <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+            {suggestions.map((suggestion, index) => (
+              <li
+                key={index}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+                {suggestion.value}
+                <p className="text-sm text-gray-400">
+                  {suggestion.type === "No results" ? "" : suggestion.type}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="sm:hidden block relative">
+        <Input
+          placeholder="Explore Salaries"
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+        
+
+        {/* Display suggestions */}
+        {suggestions.length > 0 && (
+          <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+            {suggestions.map((suggestion, index) => (
+              <li
+                key={index}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+                {suggestion.value}
+                <p className="text-sm text-gray-400">
+                  {suggestion.type === "No results" ? "" : suggestion.type}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
   );
 };
 

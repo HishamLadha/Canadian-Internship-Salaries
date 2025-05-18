@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
                                 <h1 className='font-semibold sm:text-[20px] hidden sm:block'>Scoper</h1>
                             </a>
                         </li>
-                        <li className='w-full sm:ml-8 ml-2'>
+                        <li className='w-full sm:ml-10 ml-3'>
                             <Search />
                         </li>
                     </ul>
