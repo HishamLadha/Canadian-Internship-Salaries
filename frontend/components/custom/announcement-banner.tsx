@@ -1,12 +1,11 @@
 "use client"
-import { Info,TriangleAlert,  X } from "lucide-react";
+import { Info, Check } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Button } from "../ui/button";
 
 interface Announcement {
   id: number;
   message: string;
-  type: "info" | "warning";
+  type: "info" | "warning" | "update";
   action?: {
     label: string;
     href: string;
@@ -18,15 +17,15 @@ const announcements: Announcement[] = [
     id: 1,
     message: "More Universities are being added!",
     type: "info",
-    action: {
-      label: "Share Your Experience",
-      href: "/submit"
-    }
+    // action: {
+    //   label: "Share Your Experience",
+    //   href: "/submit"
+    // }
   },
   {
     id: 2,
-    message: "Coming soon: Search and filter by location 🌎",
-    type: "info"
+    message: "Now available: search and filter by location 🌎",
+    type: "update"
   }
 ];
 
@@ -63,9 +62,8 @@ export function AnnouncementBanner() {
   return (
     <div className="bg-muted px-4 py-3 relative">
       <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-        {
-            currentAnnouncement.type == "info" ? (<Info className="h-4 w-4" />) : (<TriangleAlert className="h-4 w-4" />)
-        }
+        {currentAnnouncement.type === "info" && <Info className="h-4 w-4" />}
+        {currentAnnouncement.type === "update" && <Check className="h-4 w-4" />}
         
         <span>{currentAnnouncement.message}</span>
 
