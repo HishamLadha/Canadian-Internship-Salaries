@@ -61,38 +61,38 @@ async def reject_submission(
     return {"message": "Submission rejected"}
 
 
-@router.get("/populate-db")
-@limiter.limit("5/minute")
-async def populate_db(
-    request: Request,  
-    admin: dict = Depends(get_admin_user),
-    session: Session = Depends(get_session)
-):
-    load_csv_data()
-    load_universities_json()
+# @router.get("/populate-db")
+# @limiter.limit("5/minute")
+# async def populate_db(
+#     request: Request,  
+#     admin: dict = Depends(get_admin_user),
+#     session: Session = Depends(get_session)
+# ):
+#     load_csv_data()
+#     load_universities_json()
 
 # remove the wrong locations
 # instead of toronto, on, canada, it should be toronto, on
-@router.get("/modify-db")
-@limiter.limit("5/minute")
-async def modify_db(
-    request: Request,  
-    admin: dict = Depends(get_admin_user),
-    session: Session = Depends(get_session)
-):
-    salaries_to_update = session.exec(select(ReportedSalary)).all()
-    updated_count = 0
-    for salary in salaries_to_update:
-        if salary.location and salary.location.count(',') > 1:
-            parts = salary.location.split(',')
-            new_location = f"{parts[0].strip()}, {parts[1].strip()}"
-            if salary.location != new_location:
-                salary.location = new_location
-                session.add(salary)
-                updated_count += 1
+# @router.get("/modify-db")
+# @limiter.limit("5/minute")
+# async def modify_db(
+#     request: Request,  
+#     admin: dict = Depends(get_admin_user),
+#     session: Session = Depends(get_session)
+# ):
+#     salaries_to_update = session.exec(select(ReportedSalary)).all()
+#     updated_count = 0
+#     for salary in salaries_to_update:
+#         if salary.location and salary.location.count(',') > 1:
+#             parts = salary.location.split(',')
+#             new_location = f"{parts[0].strip()}, {parts[1].strip()}"
+#             if salary.location != new_location:
+#                 salary.location = new_location
+#                 session.add(salary)
+#                 updated_count += 1
     
-    if updated_count > 0:
-        session.commit()
-        return {"message": f"Database modified. {updated_count} location(s) updated."}
-    else:
-        return {"message": "No locations needed an update."}
+#     if updated_count > 0:
+#         session.commit()
+#         return {"message": f"Database modified. {updated_count} location(s) updated."}
+#     else:
+#         return {"message": "No locations needed an update."}
