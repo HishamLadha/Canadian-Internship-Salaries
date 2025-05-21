@@ -125,7 +125,7 @@ export function SalaryForm() {
           name="role"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Role* </FormLabel>
+              <FormLabel>Role (internship)* </FormLabel>
               <FormControl>
                 <RoleSelect 
                   roles={roles}
@@ -134,7 +134,7 @@ export function SalaryForm() {
                 />
               </FormControl>
               <FormDescription>
-                Role you received an offer for
+                Internship role you received an offer for
               </FormDescription>
               <FormMessage />
             </FormItem>

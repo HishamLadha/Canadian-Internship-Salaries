@@ -12,7 +12,6 @@ from ..data_loader import load_csv_data, load_universities_json
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 @router.get("/pending-submissions", response_model=List[PendingSalary])
-@limiter.limit("10/minute")
 async def get_pending_submissions(
     request: Request,  
     admin: dict = Depends(get_admin_user),

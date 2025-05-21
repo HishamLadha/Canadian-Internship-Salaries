@@ -26,7 +26,7 @@ const page = () => {
           <SmilePlus className="h-4 w-4" />
           <AlertTitle>Your submission is anonymous!</AlertTitle>
           <AlertDescription className='text-gray-600'>
-            No personally identifiable information is collected. Our code is fully open source!
+            No personally identifiable information is collected. The codebase is fully open source!
           </AlertDescription>
         </Alert>
         

@@ -3,6 +3,7 @@ import json
 from .database import engine, Session
 from .models.salary import ReportedSalary
 from .models.university import Universities
+from .models.roles import Role
 
 # The ** (double asterisk) operator is used for dictionary unpacking. It takes the key-value pairs in the record dictionary and passes them as keyword arguments to the ReportedSalary constructor.
 # parsing the script to create the database and tables
@@ -107,3 +108,33 @@ def load_universities_json():
             session.add(university)
         session.commit()
     print("Universities successfully added to database!!")
+
+def seed_roles():
+    popular_internship_roles = [
+    "Software Developer",
+    "Software Engineer"
+    "Business Analyst",
+    "Chemical Engineer",
+    "Civil Engineer",
+    "Consulting",
+    "Data Scientist",
+    "Electrical Engineer",
+    "Environmental Engineer",
+    "Finance",
+    "Designer",
+    "Human Resources",
+    "Industrial Engineer",
+    "IT",
+    "Journalism",
+    "Marketing",
+    "Mechanical Engineer",
+    "Operations",
+    "Product Manager",
+    "Sales",
+    ]
+    with Session(engine) as session:
+        for role in popular_internship_roles:
+            role_object = Role(role_name=role)
+            session.add(role_object)
+        session.commit()
+        print("Internship roles successfully added")
