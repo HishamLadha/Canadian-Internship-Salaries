@@ -65,40 +65,8 @@ export function SalaryForm() {
     },
   })
 
-//   // Defining a submit handler.
-//  async function onSubmit(values: z.infer<typeof formSchema>) {
-//     // Do something with the form values.
-//     setIsSubmitting(true);
-//     try{
-//       const formattedValues = {
-//         ...values,
-//         term: values.term ? parseInt(values.term) : undefined
-//       };
-//       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(formattedValues),
-//       });
-
-//       if(!response.ok){
-//         throw new Error('Failed to submit salary information');
-//       }
-
-//       const data = await response.json();
-
-//       toast.success("Thank you for contributing 🎉")
-
-//       form.reset();
-//     }catch(error){
-//       toast.error("Oh no! An error occured. Please try again.")
-//     }finally{
-//       setIsSubmitting(false);
-//     }
-//   }
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  // Defining a submit handler.
+ async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     setIsSubmitting(true);
     try{
@@ -106,22 +74,21 @@ export function SalaryForm() {
         ...values,
         term: values.term ? parseInt(values.term) : undefined
       };
-      // const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formattedValues),
-      // });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formattedValues),
+      });
 
-      // if(!response.ok){
-      //   throw new Error('Failed to submit salary information');
-      // }
+      if(!response.ok){
+        throw new Error('Failed to submit salary information');
+      }
 
-      // const data = await response.json();
+      const data = await response.json();
 
-      // toast.success("Thank you for contributing 🎉")
-      console.log(formattedValues)
+      toast.success("Thank you for contributing 🎉")
 
       form.reset();
     }catch(error){
@@ -130,6 +97,8 @@ export function SalaryForm() {
       setIsSubmitting(false);
     }
   }
+
+
 
   return (
     <Form {...form}>

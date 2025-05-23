@@ -22,6 +22,9 @@ interface PendingSalary {
   university: string;
   bonus?: number;
   term?: number;
+  arrangement?: string;
+  status: string;
+  ip_address: string;
   submitted_at: string;
 }
 
@@ -126,6 +129,13 @@ export default function AdminPage() {
                 <TableHead>Role</TableHead>
                 <TableHead>University</TableHead>
                 <TableHead>Location</TableHead>
+                <TableHead>Year</TableHead>
+                <TableHead>Bonus</TableHead>
+                <TableHead>Term</TableHead>
+                <TableHead>Arrangement</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>IP Address</TableHead>
+                <TableHead>Submitted At</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -136,7 +146,22 @@ export default function AdminPage() {
                   <TableCell>${salary.salary}/hr</TableCell>
                   <TableCell>{salary.role}</TableCell>
                   <TableCell>{salary.university}</TableCell>
-                  <TableCell>{salary.location}</TableCell>
+                  <TableCell>{salary.location || 'N/A'}</TableCell>
+                  <TableCell>{salary.year}</TableCell>
+                  <TableCell>{salary.bonus ? `$${salary.bonus}` : 'N/A'}</TableCell>
+                  <TableCell>{salary.term || 'N/A'}</TableCell>
+                  <TableCell>{salary.arrangement || 'N/A'}</TableCell>
+                  <TableCell>
+                    <span className={`px-2 py-1 rounded text-xs ${
+                      salary.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                      salary.status === 'approved' ? 'bg-green-100 text-green-800' :
+                      'bg-red-100 text-red-800'
+                    }`}>
+                      {salary.status}
+                    </span>
+                  </TableCell>
+                  <TableCell className="font-mono text-xs">{salary.ip_address}</TableCell>
+                  <TableCell>{new Date(salary.submitted_at).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
                       <Button 

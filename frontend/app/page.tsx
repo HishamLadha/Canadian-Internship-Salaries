@@ -1,5 +1,4 @@
 import { HomeTable } from "@/components/custom/homeTable";
-import Search from "@/components/custom/search";
 import { AnnouncementBanner } from "@/components/custom/announcement-banner";
 
 export default function Home() {
