@@ -17,6 +17,7 @@ class PendingSalary(SQLModel, table=True):
     university: str
     bonus: float | None = None
     term: int | None = None
+    arrangement: str | None = None
     status: SubmissionStatus = Field(default=SubmissionStatus.PENDING)
     ip_address: str
     submitted_at: datetime = Field(default_factory=datetime.utcnow)

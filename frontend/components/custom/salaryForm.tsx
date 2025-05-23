@@ -31,7 +31,7 @@ const formSchema = z.object({
     invalid_type_error: "Salary must be a number",
   }).positive().or(z.literal("")),
   role: z.string().nonempty(),
-  location: z.string().nonempty(),
+  location: z.string().optional(),
   year: z.number({
     required_error: "Year is required",
     invalid_type_error: "Year must be a number",
@@ -39,6 +39,7 @@ const formSchema = z.object({
   university: z.string().nonempty(),
   bonus: z.number().int().positive().optional(),
   term: z.string().optional(),
+  arrangement: z.string().nonempty(),
 })
 
 export function SalaryForm() {
@@ -46,7 +47,7 @@ export function SalaryForm() {
   // Fetch Data from backend
   const {data: companies} = useFetchFieldData('all-companies');
   const {data: universities} = useFetchFieldData('all-universities');
-  const {data: roles} = useFetchFieldData('internship-roles');
+  const {data: roles} = useFetchFieldData('all-roles');
   
   // Defining the form 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,12 +60,45 @@ export function SalaryForm() {
       year: undefined, 
       university: "",
       bonus: undefined,
-      term: ""
+      term: "",
+      arrangement: ""
     },
   })
 
-  // Defining a submit handler.
- async function onSubmit(values: z.infer<typeof formSchema>) {
+//   // Defining a submit handler.
+//  async function onSubmit(values: z.infer<typeof formSchema>) {
+//     // Do something with the form values.
+//     setIsSubmitting(true);
+//     try{
+//       const formattedValues = {
+//         ...values,
+//         term: values.term ? parseInt(values.term) : undefined
+//       };
+//       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(formattedValues),
+//       });
+
+//       if(!response.ok){
+//         throw new Error('Failed to submit salary information');
+//       }
+
+//       const data = await response.json();
+
+//       toast.success("Thank you for contributing 🎉")
+
+//       form.reset();
+//     }catch(error){
+//       toast.error("Oh no! An error occured. Please try again.")
+//     }finally{
+//       setIsSubmitting(false);
+//     }
+//   }
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     setIsSubmitting(true);
     try{
@@ -72,21 +106,22 @@ export function SalaryForm() {
         ...values,
         term: values.term ? parseInt(values.term) : undefined
       };
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formattedValues),
-      });
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/submit-salary`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formattedValues),
+      // });
 
-      if(!response.ok){
-        throw new Error('Failed to submit salary information');
-      }
+      // if(!response.ok){
+      //   throw new Error('Failed to submit salary information');
+      // }
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      toast.success("Thank you for contributing 🎉")
+      // toast.success("Thank you for contributing 🎉")
+      console.log(formattedValues)
 
       form.reset();
     }catch(error){
@@ -125,12 +160,13 @@ export function SalaryForm() {
           name="role"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Role (internship)* </FormLabel>
+              <FormLabel>Internship Role* </FormLabel>
               <FormControl>
-                <RoleSelect 
-                  roles={roles}
-                  onValueChange={field.onChange}
-                  defaultValue=""
+                <SuggestionInput 
+                  suggestions={roles || []}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Role"
                 />
               </FormControl>
               <FormDescription>
@@ -140,57 +176,61 @@ export function SalaryForm() {
             </FormItem>
           )}
         />
-        <div className="flex flex-row space-x-3">
-          <FormField
-            control={form.control}
-            name="salary"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Hourly Salary*</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    placeholder="$20" 
-                    {...field} 
-                    value={field.value === undefined ? "" : field.value}
-                    onChange={(e) => {
-                      const value = e.target.value === "" ? undefined : Number(e.target.value);
-                      field.onChange(value);
-                    }} 
-                  />
-                </FormControl>
-                <FormDescription>
-                  Salary you received
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="year"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Year*</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    placeholder="2025" 
-                    {...field}
-                    value={field.value === undefined ? "" : field.value}
-                    onChange={(e) => {
-                      const value = e.target.value === "" ? undefined : Number(e.target.value);
-                      field.onChange(value);
-                    }} 
-                  />
-                </FormControl>
-                <FormDescription>
-                  Year you received the offer
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className="flex flex-row space-x-3 justify-between">
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="salary"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Hourly Salary*</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      placeholder="$20" 
+                      {...field} 
+                      value={field.value === undefined ? "" : field.value}
+                      onChange={(e) => {
+                        const value = e.target.value === "" ? undefined : Number(e.target.value);
+                        field.onChange(value);
+                      }} 
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Salary you received
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="year"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Year*</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      placeholder="2025" 
+                      {...field}
+                      value={field.value === undefined ? "" : field.value}
+                      onChange={(e) => {
+                        const value = e.target.value === "" ? undefined : Number(e.target.value);
+                        field.onChange(value);
+                      }} 
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Year you received the offer
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
         <FormField
           control={form.control}
@@ -213,71 +253,104 @@ export function SalaryForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="location"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Location*</FormLabel>
-              <PlacesAutocomplete
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Enter company location"
-              />
-              <FormDescription>
-                City where the company is located
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex flex-row space-x-3">
-          <FormField
-            control={form.control}
-            name="bonus"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Bonus (optional)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    placeholder="2000" 
-                    {...field}
+        <div className="flex flex-row space-x-4">
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Location (optional)</FormLabel>
+                  <PlacesAutocomplete
                     value={field.value === undefined ? "" : field.value}
-                    onChange={(e) => {
-                      const value = e.target.value === "" ? undefined : Number(e.target.value);
-                      field.onChange(value);
-                    }} 
+                    onChange={field.onChange}
+                    placeholder="Enter company location"
                   />
-                </FormControl>
-                <FormDescription>
-                  Bonus you received (if applicable)
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+                  <FormDescription>
+                    City where the company is located
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="w-full">
+            <FormField
             control={form.control}
-            name="term"
+            name="arrangement"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Work Term (optional)</FormLabel>
+                <FormLabel>Arrangement*</FormLabel>
                 <FormControl>
                 <TermSelect 
-                  terms={["1","2","3","4","5","6","7"
+                  terms={["Hybrid", "In-Office", "Remote"
                   ]}
                   onValueChange={field.onChange}
-                  defaultValue=""
+                  defaultValue={field.value}
+                  placeholder="Select work arrangement"
                 />
                 </FormControl>
                 <FormDescription>
-                  Work term when you received the offer
+                  Your work arrangement with the company
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+          </div>
+        </div>
+        <div className="flex flex-row space-x-3">
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="bonus"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Bonus (optional)</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      placeholder="2000" 
+                      {...field}
+                      value={field.value === undefined ? "" : field.value}
+                      onChange={(e) => {
+                        const value = e.target.value === "" ? undefined : Number(e.target.value);
+                        field.onChange(value);
+                      }} 
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Bonus you received (if applicable)
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="term"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Work Term (optional)</FormLabel>
+                  <FormControl>
+                  <TermSelect 
+                    terms={["1","2","3","4","5","6","7"
+                    ]}
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  placeholder="Select work term"
+                  />
+                  </FormControl>
+                  <FormDescription>
+                    Work term when you received the offer
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
         <div className="flex justify-center sm:justify-start">
           <Button type="submit" disabled={isSubmitting}>

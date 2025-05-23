@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .middleware import setup_middleware
-from .data_loader import load_csv_data, load_universities_json
+from .data_loader import load_csv_data, load_universities_json, seed_roles, fix_incorrect_role
 from .routers import roles, salaries, universities, companies, admin, locations
 from .database import engine, create_db_and_tables
 
@@ -21,6 +21,8 @@ setup_middleware(app)
 @app.on_event("startup")
 def on_startup(): 
     create_db_and_tables() 
+    # fix_incorrect_role()
+    # seed_roles()
     # load_csv_data() 
     # load_universities_json() 
     

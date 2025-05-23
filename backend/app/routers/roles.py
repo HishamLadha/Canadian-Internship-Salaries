@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.get("/all-roles", response_model=list[str])
 def read_roles(session: Session = Depends(get_session)):
-    all_roles = session.exec(select(Role.role_name)).all()
+    all_roles = session.exec(select(Role.role_name).distinct()).all()
     return all_roles
 
 

@@ -17,7 +17,7 @@ const page = () => {
                   m-3 
                   text-center
                   '>
-                    Add your Salary
+                    Add your Internship Salary
       </h1>
 
       <div className='m-5 sm:m-5'>

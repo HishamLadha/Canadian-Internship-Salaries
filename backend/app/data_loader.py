@@ -112,7 +112,7 @@ def load_universities_json():
 def seed_roles():
     popular_internship_roles = [
     "Software Developer",
-    "Software Engineer"
+    "Software Engineer",
     "Business Analyst",
     "Chemical Engineer",
     "Civil Engineer",
@@ -138,3 +138,15 @@ def seed_roles():
             session.add(role_object)
         session.commit()
         print("Internship roles successfully added")
+
+def fix_incorrect_role():
+    with Session(engine) as session:
+        # Delete incorrect entry
+        session.query(Role).filter(Role.role_name == "Software EngineerBusiness Analyst").delete()
+        
+        # Add correct entries
+        session.add(Role(role_name="Software Engineer"))
+        session.add(Role(role_name="Business Analyst"))
+        
+        session.commit()
+        print("Role entry fixed successfully")

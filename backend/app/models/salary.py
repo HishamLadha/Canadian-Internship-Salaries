@@ -8,6 +8,7 @@ class ReportedSalary(SQLModel, table=True):
     salary: float
     university: str 
     term: int | None = None
-    location: str
+    location: str | None = None
     bonus: float | None = None
     role: str
+    arrangement: str | None = None

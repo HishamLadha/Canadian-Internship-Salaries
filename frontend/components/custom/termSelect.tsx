@@ -14,13 +14,14 @@ interface TermSelectProps {
     terms: string[]
     onValueChange?: (value: string) => void
     defaultValue?: string
+    placeholder?: string
 }
 
-export function TermSelect({ terms, onValueChange, defaultValue }: TermSelectProps) {
+export function TermSelect({ terms, onValueChange, defaultValue, placeholder }: TermSelectProps) {
     return (
         <Select onValueChange={onValueChange} defaultValue={defaultValue}>
             <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select work term" />
+                <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
