@@ -1,12 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from typing import List
-from sqlmodel import Session, select  
+from sqlmodel import Session  
 from ..auth import get_admin_user
 from ..database import get_session
 from ..models.pending_salary import PendingSalary, SubmissionStatus
 from ..models.salary import ReportedSalary
-from ..core.rate_limiter import limiter
-from ..data_loader import load_csv_data, load_universities_json, seed_roles
 
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -60,10 +58,3 @@ async def reject_submission(
     return {"message": "Submission rejected"}
 
 
-@router.get("/seed-roles")
-async def seed_roles_in_db(
-    request: Request,  
-    admin: dict = Depends(get_admin_user),
-    session: Session = Depends(get_session)
-):
-    seed_roles()

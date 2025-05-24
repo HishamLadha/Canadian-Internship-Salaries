@@ -1,12 +1,17 @@
-from fastapi import APIRouter, Depends, Request, HTTPException
-from sqlmodel import select, Session, desc
+from fastapi import APIRouter, Depends, Request, HTTPException, Query
+from sqlmodel import select, Session, desc, func
 from typing import List
+from pydantic import BaseModel
 from ..models.salary import ReportedSalary
 from ..database import get_session
 from ..models.pending_salary import PendingSalary, SubmissionStatus
 from ..core.rate_limiter import limiter
 
 router = APIRouter()
+
+class SalaryResponse(BaseModel):
+    data: list[ReportedSalary]
+    total: int
 
 @router.post("/submit-salary")
 @limiter.limit("5/hour")  # 5 submissions per hour per IP
@@ -36,10 +41,20 @@ async def submit_salary(
         raise HTTPException(status_code=400, detail=str(e))
 
 # TODO: Make this endpoing work with limit and offset and sync this with front-end pagination for efficiency
-@router.get("/all-salaries", response_model=list[ReportedSalary])
-def read_salaries(session: Session = Depends(get_session)):
-    salaries = session.exec(select(ReportedSalary).order_by(desc(ReportedSalary.year))).all()
-    return salaries
+@router.get("/all-salaries", response_model=SalaryResponse)
+def read_salaries(session: Session = Depends(get_session), offset: int = 0, limit: int = Query(default=20, le=20)):
+    # Get total count
+    total = session.exec(select(func.count()).select_from(ReportedSalary)).one()
+    
+    # Get paginated data
+    salaries = session.exec(
+        select(ReportedSalary)
+        .offset(offset)
+        .limit(limit)
+        .order_by(desc(ReportedSalary.year))
+    ).all()
+    
+    return SalaryResponse(data=salaries, total=total)
 
 
 # # TODO: Find a better fix for this

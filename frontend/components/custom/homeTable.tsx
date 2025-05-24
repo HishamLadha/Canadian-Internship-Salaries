@@ -42,6 +42,7 @@ export type Salary = {
   location: string
   university: string
   term: number
+  arrangement: string
 }
 
 export const columns: ColumnDef<Salary>[] = [
@@ -92,13 +93,13 @@ export const columns: ColumnDef<Salary>[] = [
     },
     cell: ({ row }) => <div className="lowercase text-center sm:text-start">{row.getValue("year")}</div>,
   },
-  {
-    accessorKey: "role",
-    header: "Role",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("role")}</div>
-    ),
-  },
+  // {
+  //   accessorKey: "role",
+  //   header: "Role",
+  //   cell: ({ row }) => (
+  //     <div className="capitalize">{row.getValue("role") === "Unreported" ? "-" : row.getValue("role")}</div>
+  //   ),
+  // },
   {
     accessorKey: "location",
     header: "Location",
@@ -113,21 +114,6 @@ export const columns: ColumnDef<Salary>[] = [
       <div className="capitalize text-center sm:text-start">{row.getValue("university")}</div>
     ),
   },
-  // {
-  //   accessorKey: "term",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Work Term
-  //         <ArrowUpDown />
-  //       </Button>
-  //     )
-  //   },
-  //   cell: ({ row }) => <div className="text-center sm:text-start">{row.getValue("term")}</div>,
-  // },
   {
     accessorKey: "term",
     header: "Work Term",
@@ -135,6 +121,13 @@ export const columns: ColumnDef<Salary>[] = [
       <div className="capitalize text-center sm:text-start">{row.getValue("term") ? row.getValue("term") : "-"}</div>
     ),
   },
+  // {
+  //   accessorKey: "arrangement",
+  //   header: "Work Arrangement",
+  //   cell: ({ row }) => (
+  //     <div className="capitalize text-center sm:text-start">{row.getValue("arrangement") ? row.getValue("arrangement"): "-"}</div>
+  //   ),
+  // },
   
   {
     id: "actions",
@@ -165,55 +158,62 @@ export const columns: ColumnDef<Salary>[] = [
 
 export function HomeTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [{ pageIndex, pageSize }, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 12,
+  });
+  const [totalRows, setTotalRows] = React.useState(0);
 
   const [data, setData] = React.useState<Salary[]>([]);
   const [loading, setLoading] = React.useState(true);
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   React.useEffect(() => {
-      const fetchCompanies = async () => {
-          try{
-              const response = await fetch(`${BACKEND_URL}/all-salaries`);
-              if(!response.ok){
-                  throw new Error("Failed to fetch companies");
-              }
-              const response_data = await response.json();
-              setData(response_data);
-  
-          }catch(error){
-              console.error("Error fetching companies: ", error);
-          }finally {
-              setLoading(false);
-          }
-  
+    const fetchCompanies = async () => {
+      try {
+        const offset = pageIndex * pageSize;
+        const response = await fetch(`${BACKEND_URL}/all-salaries?offset=${offset}&limit=${pageSize}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch companies");
+        }
+        const response_data = await response.json();
+        setData(response_data.data || response_data);
+        setTotalRows(response_data.total || response_data.length);
+      } catch (error) {
+        console.error("Error fetching companies: ", error);
+      } finally {
+        setLoading(false);
       }
-  
-      fetchCompanies();
-  
-    }, []);
+    }
+
+    fetchCompanies();
+  }, [pageIndex, pageSize]);
 
   const table = useReactTable({
     data,
     columns,
+    pageCount: Math.ceil(totalRows / pageSize),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
+    manualPagination: true,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination: {
+        pageIndex,
+        pageSize,
+      },
     },
   })
 
