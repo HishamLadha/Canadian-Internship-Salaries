@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2, Clock } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -41,14 +41,23 @@ export type Salary = {
   year: number
   location: string
   university: string
+  term: number
+  arrangement: string
 }
 
 export const columns: ColumnDef<Salary>[] = [
   {
     accessorKey: "company",
-    header: "Company",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Building2 className="w-4 h-4 mr-2" />
+        Company
+      </div>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("company")}</div>
+      <div className="capitalize flex items-center">
+        <span className="font-medium">{row.getValue("company")}</span>
+      </div>
     ),
   },
   {
@@ -58,9 +67,11 @@ export const columns: ColumnDef<Salary>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="hover:bg-blue-50"
         >
+          <DollarSign className="w-4 h-4 mr-2" />
           Salary (/hr)
-          <ArrowUpDown />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       )
     },
@@ -73,7 +84,13 @@ export const columns: ColumnDef<Salary>[] = [
         currency: "CAD",
       }).format(amount)
 
-      return <div className="font-medium text-center sm:text-start">{formatted}</div>
+      return (
+        <div className="font-semibold text-center sm:text-start">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            {formatted}
+          </span>
+        </div>
+      )
     },
   },
   {
@@ -83,19 +100,36 @@ export const columns: ColumnDef<Salary>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="hover:bg-blue-50"
         >
+          <Calendar className="w-4 h-4 mr-2" />
           Year
-          <ArrowUpDown />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase text-center sm:text-start">{row.getValue("year")}</div>,
+    cell: ({ row }) => (
+      <div className="text-center sm:text-start">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+          {row.getValue("year")}
+        </span>
+      </div>
+    ),
   },
   {
     accessorKey: "role",
-    header: "Role",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Briefcase className="w-4 h-4 mr-2" />
+        Role
+      </div>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("role")}</div>
+      <div className="capitalize">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+          {row.getValue("role")}
+        </span>
+      </div>
     ),
   },
   // {
@@ -107,9 +141,39 @@ export const columns: ColumnDef<Salary>[] = [
   // },
   {
     accessorKey: "university",
-    header: "University",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <GraduationCap className="w-4 h-4 mr-2" />
+        University
+      </div>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize text-center sm:text-start">{row.getValue("university")}</div>
+      <div className="capitalize text-center sm:text-start flex items-center">
+        <GraduationCap className="w-3 h-3 mr-1 text-gray-500" />
+        <span className="truncate max-w-[200px]" title={row.getValue("university")}>
+          {row.getValue("university")}
+        </span>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "term",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Clock className="w-4 h-4 mr-2" />
+        Work Term
+      </div>
+    ),
+    cell: ({ row }) => (
+      <div className="text-center sm:text-start">
+        {row.getValue("term") ? (
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            Term {row.getValue("term")}
+          </span>
+        ) : (
+          <span className="text-gray-400">-</span>
+        )}
+      </div>
     ),
   },
   
@@ -172,40 +236,40 @@ export function LocationTable({ locationRecords }: { locationRecords: Salary[] }
 
   return (
     <div className="w-full">
-      <div className="rounded-md border">
+      <div className="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
         {data.length == 0 ? (
-                  <Table>
-                    <TableHeader>
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id}>
-                          {headerGroup.headers.map((header) => {
-                            return (
-                              <TableHead key={header.id}>
-                                {header.isPlaceholder
-                                  ? null
-                                  : flexRender(
-                                      header.column.columnDef.header,
-                                      header.getContext()
-                                    )}
-                              </TableHead>
-                            )
-                          })}
-                        </TableRow>
-                      ))}
-                    </TableHeader>
-                    <TableBody>
-                      {Array.from({ length: 5 }).map((_, rowIndex) => (
-                        <TableRow key={rowIndex}>
-                          {columns.map((column, colIndex) => (
-                            <TableCell key={colIndex}>
-                              <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                ) :(
+          <Table>
+            <TableHeader className="bg-gray-50/80">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id} className="border-b border-gray-200">
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id} className="font-semibold text-gray-700">
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    )
+                  })}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {Array.from({ length: 5 }).map((_, rowIndex) => (
+                <TableRow key={rowIndex} className="border-b border-gray-100">
+                  {columns.map((column, colIndex) => (
+                    <TableCell key={colIndex} className="py-4">
+                      <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-100 rounded animate-pulse"></div>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        ) : (
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (

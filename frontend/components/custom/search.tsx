@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
+import { Search as SearchIcon, Building, MapPin } from 'lucide-react';
 
 interface Suggestion {
   type: "Company" | "Location" | "No results";
@@ -45,8 +46,6 @@ const Search: React.FC = () => {
 
     fetchCompanies();
     fetchLocations();
-
-    // setSuggestions([{type: "Company", value: "Google"}, {type: "Company", value: "Amazon"}, {type: "Company", value: "RBC"}])
   }, []);
 
   // Handle input change
@@ -68,7 +67,7 @@ const Search: React.FC = () => {
 
       setSuggestions(
         combinedSuggestions.length > 0
-          ? combinedSuggestions
+          ? combinedSuggestions.slice(0, 6) // Limit to 6 results
           : [{ type: "No results", value: `No results for: ${value}` }]
       );
     } else {
@@ -83,7 +82,6 @@ const Search: React.FC = () => {
     setSearchTerm(suggestion.value);
     setSuggestions([]);
     if (suggestions.length > 0 && !(suggestions[0].value.includes("No results"))) {
-      // alert(suggestion.type)
       if(suggestion.type === "Location"){
         router.push(`/location/${suggestion.value}`)
       }
@@ -96,29 +94,48 @@ const Search: React.FC = () => {
     }
   };
 
+  const getIcon = (type: string) => {
+    switch (type) {
+      case "Company":
+        return <Building className="w-4 h-4 text-blue-600" />;
+      case "Location":
+        return <MapPin className="w-4 h-4 text-purple-600" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <div className="hidden sm:block sm:relative">
-        <Input
-          placeholder="Search by Company, Location"
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-        
+        <div className="relative">
+          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
+          <Input
+            placeholder="Search by Company, Location"
+            value={searchTerm}
+            onChange={handleInputChange}
+            className="pl-10 pr-4 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 w-full min-w-0 search-input-chrome search-input-responsive search-input-macbook"
+          />
+        </div>
 
         {/* Display suggestions */}
         {suggestions.length > 0 && (
-          <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+          <ul className="absolute z-50 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
             {suggestions.map((suggestion, index) => (
               <li
                 key={index}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors"
                 onClick={() => handleSuggestionClick(suggestion)}
               >
-                {suggestion.value}
-                <p className="text-sm text-gray-400">
-                  {suggestion.type === "No results" ? "" : suggestion.type}
-                </p>
+                <div className="flex items-center gap-3">
+                  {getIcon(suggestion.type)}
+                  <div>
+                    <div className="font-medium text-gray-900">{suggestion.value}</div>
+                    {suggestion.type !== "No results" && (
+                      <div className="text-xs text-gray-500 capitalize">{suggestion.type}</div>
+                    )}
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
@@ -126,26 +143,34 @@ const Search: React.FC = () => {
       </div>
 
       <div className="sm:hidden block relative">
-        <Input
-          placeholder="Explore Salaries"
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-        
+        <div className="relative">
+          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Input
+            placeholder="Explore salaries"
+            value={searchTerm}
+            onChange={handleInputChange}
+            className="pl-10 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200"
+          />
+        </div>
 
         {/* Display suggestions */}
         {suggestions.length > 0 && (
-          <ul className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+          <ul className="absolute z-50 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
             {suggestions.map((suggestion, index) => (
               <li
                 key={index}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors"
                 onClick={() => handleSuggestionClick(suggestion)}
               >
-                {suggestion.value}
-                <p className="text-sm text-gray-400">
-                  {suggestion.type === "No results" ? "" : suggestion.type}
-                </p>
+                <div className="flex items-center gap-3">
+                  {getIcon(suggestion.type)}
+                  <div>
+                    <div className="font-medium text-gray-900">{suggestion.value}</div>
+                    {suggestion.type !== "No results" && (
+                      <div className="text-xs text-gray-500 capitalize">{suggestion.type}</div>
+                    )}
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
