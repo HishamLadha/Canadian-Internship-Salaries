@@ -109,12 +109,12 @@ const Search: React.FC = () => {
     <>
       <div className="hidden sm:block sm:relative">
         <div className="relative">
-          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
           <Input
-            placeholder="Search companies, locations..."
+            placeholder="Search by Company, Location"
             value={searchTerm}
             onChange={handleInputChange}
-            className="pl-10 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200"
+            className="pl-10 pr-4 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 w-full min-w-0 search-input-chrome search-input-responsive search-input-macbook"
           />
         </div>
 

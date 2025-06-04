@@ -15,29 +15,27 @@ const Nav: React.FC = () => {
     return (
         <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 mx-4 sm:mx-6 mt-2 mb-4 rounded-xl shadow-sm'>
             <div className='px-4 sm:px-6 py-3'>
-                <ul className='flex flex-row justify-between items-center'>
-                    <li className="flex-shrink-0">
-                        <ul className='flex flex-row items-center gap-2 sm:gap-6'>
-                            <li className='hover:opacity-70 transition-opacity'>
-                                <a className='flex flex-row items-center gap-2' href="/">
-                                    <Image
-                                        src="/Logo1.svg"
-                                        alt="Scoper Logo"
-                                        width={32}
-                                        height={32}
-                                        className="w-8 h-8"
-                                    />
-                                    <h1 className='font-bold text-xl text-gray-900 hidden sm:block'>
-                                        Scoper
-                                    </h1>
-                                </a>
-                            </li>
-                            <li className='flex-1 w-full min-w-0 max-w-none sm:max-w-lg lg:max-w-xl xl:max-w-2xl'>
-                                <Search />
-                            </li>
-                        </ul>
-                    </li>
-                    <li className='relative'>
+                <div className='flex flex-row justify-between items-center'>
+                    <div className="flex items-center gap-4">
+                        <a className='flex flex-row items-center gap-2 hover:opacity-70 transition-opacity' href="/">
+                            <Image
+                                src="/Logo1.svg"
+                                alt="Scoper Logo"
+                                width={32}
+                                height={32}
+                                className="w-8 h-8"
+                            />
+                            <h1 className='font-bold text-xl text-gray-900 hidden sm:block'>
+                                Scoper
+                            </h1>
+                        </a>
+                        
+                        <div className='w-64 sm:w-80 lg:w-96'>
+                            <Search />
+                        </div>
+                    </div>
+
+                    <div className='flex-shrink-0 relative'>
                         {/* Hamburger Menu Button (Visible on Small Screens) */}
                         <button 
                             onClick={toggleMenu} 
@@ -71,8 +69,8 @@ const Nav: React.FC = () => {
                                 </a>
                             </div>
                         )}
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </nav>
     );

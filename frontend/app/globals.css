@@ -118,3 +118,35 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Chrome-specific fix for search input placeholder text */
+@supports (-webkit-appearance: none) {
+  .search-input-chrome {
+    font-size: 13px !important;
+    letter-spacing: -0.01em;
+  }
+  
+  .search-input-chrome::placeholder {
+    font-size: 13px !important;
+    letter-spacing: -0.01em;
+    color: #6b7280 !important;
+  }
+}
+
+/* Additional Chrome/Chromium specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .search-input-responsive::placeholder {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* MacBook specific media queries for Chromium browsers */
+@media screen and (max-width: 1366px) and (-webkit-min-device-pixel-ratio: 1) {
+  .search-input-macbook::placeholder {
+    font-size: 12px !important;
+    letter-spacing: -0.02em;
+  }
+}
