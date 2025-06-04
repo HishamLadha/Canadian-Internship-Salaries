@@ -35,7 +35,7 @@ const Footer = () => {
           
           {/* Copyright */}
           <div className="text-xs text-gray-400 text-center">
-            © 2025 Scoper. All data is anonymized and community-contributed.
+            © 2025 Scoper.fyi. All data is anonymized and community-contributed.
           </div>
         </div>
       </div>

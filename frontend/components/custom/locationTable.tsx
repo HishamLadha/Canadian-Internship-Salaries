@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2 } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2, Clock } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -41,6 +41,8 @@ export type Salary = {
   year: number
   location: string
   university: string
+  term: number
+  arrangement: string
 }
 
 export const columns: ColumnDef<Salary>[] = [
@@ -54,7 +56,6 @@ export const columns: ColumnDef<Salary>[] = [
     ),
     cell: ({ row }) => (
       <div className="capitalize flex items-center">
-        <Building2 className="w-3 h-3 mr-1 text-gray-500" />
         <span className="font-medium">{row.getValue("company")}</span>
       </div>
     ),
@@ -152,6 +153,26 @@ export const columns: ColumnDef<Salary>[] = [
         <span className="truncate max-w-[200px]" title={row.getValue("university")}>
           {row.getValue("university")}
         </span>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "term",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Clock className="w-4 h-4 mr-2" />
+        Work Term
+      </div>
+    ),
+    cell: ({ row }) => (
+      <div className="text-center sm:text-start">
+        {row.getValue("term") ? (
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            Term {row.getValue("term")}
+          </span>
+        ) : (
+          <span className="text-gray-400">-</span>
+        )}
       </div>
     ),
   },

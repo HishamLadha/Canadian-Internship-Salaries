@@ -44,13 +44,13 @@ const page = () => {
         {/* Form Container */}
         <div className='bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8'>
           {/* Anonymous alert banner */}
-          <Alert className='mb-6 border-green-200 bg-green-50'>
+          {/* <Alert className='mb-6 border-green-200 bg-green-50'>
             <Shield className="h-5 w-5 text-green-600" />
             <AlertTitle className="text-green-800 font-semibold">Your privacy is protected</AlertTitle>
             <AlertDescription className='text-green-700'>
               No personally identifiable information is collected. The entire codebase is open source and available for review.
             </AlertDescription>
-          </Alert>
+          </Alert> */}
           
           {/* Actual form */}
           <SalaryForm />

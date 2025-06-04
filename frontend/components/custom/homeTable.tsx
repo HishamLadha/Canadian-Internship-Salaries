@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2, Clock } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -48,12 +48,17 @@ export type Salary = {
 export const columns: ColumnDef<Salary>[] = [
   {
     accessorKey: "company",
-    header: "Company",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Building2 className="w-4 h-4 mr-2" />
+        Company
+      </div>
+    ),
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
+        {/* <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
           {(row.getValue("company") as string).charAt(0).toUpperCase()}
-        </div>
+        </div> */}
         <div className="font-semibold text-gray-900 capitalize">{row.getValue("company")}</div>
       </div>
     ),
@@ -65,10 +70,11 @@ export const columns: ColumnDef<Salary>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="hover:bg-blue-50 text-blue-600 font-semibold"
+          className="hover:bg-blue-50"
         >
+          <DollarSign className="w-4 h-4 mr-2" />
           Salary (/hr)
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       )
     },
@@ -82,8 +88,10 @@ export const columns: ColumnDef<Salary>[] = [
       }).format(amount)
 
       return (
-        <div className="font-bold text-lg text-green-600 text-center sm:text-start">
-          {formatted}
+        <div className="font-semibold text-center sm:text-start">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            {formatted}
+          </span>
         </div>
       )
     },
@@ -95,16 +103,17 @@ export const columns: ColumnDef<Salary>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="hover:bg-blue-50 text-blue-600 font-semibold"
+          className="hover:bg-blue-50"
         >
+          <Calendar className="w-4 h-4 mr-2" />
           Year
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="w-4 h-4 ml-2" />
         </Button>
       )
     },
     cell: ({ row }) => (
       <div className="text-center sm:text-start">
-        <span className="px-2 py-1 bg-gray-100 rounded-full text-sm font-medium text-gray-700">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
           {row.getValue("year")}
         </span>
       </div>
@@ -119,30 +128,55 @@ export const columns: ColumnDef<Salary>[] = [
   // },
   {
     accessorKey: "location",
-    header: "Location",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-2 text-center sm:text-start">
-        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-        <span className="capitalize text-gray-700 font-medium">{row.getValue("location")}</span>
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <MapPin className="w-4 h-4 mr-2" />
+        Location
       </div>
     ),
+    cell: ({ row }) => {
+      const location = row.getValue("location") as string;
+      const displayLocation = !location || location.trim() === "" ? "not reported" : location;
+      
+      return (
+        <div className="capitalize text-center sm:text-start flex items-center">
+          <MapPin className="w-3 h-3 mr-1 text-gray-500" />
+          <span className={`font-medium ${!location || location.trim() === "" ? "text-gray-400 italic" : "text-gray-700"}`}>
+            {displayLocation}
+          </span>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "university",
-    header: "University",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <GraduationCap className="w-4 h-4 mr-2" />
+        University
+      </div>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize text-center sm:text-start text-gray-700 font-medium">
-        {row.getValue("university")}
+      <div className="capitalize text-center sm:text-start flex items-center">
+        <GraduationCap className="w-3 h-3 mr-1 text-gray-500" />
+        <span className="text-gray-700 font-medium truncate max-w-[200px]" title={row.getValue("university")}>
+          {row.getValue("university")}
+        </span>
       </div>
     ),
   },
   {
     accessorKey: "term",
-    header: "Work Term",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Clock className="w-4 h-4 mr-2" />
+        Work Term
+      </div>
+    ),
     cell: ({ row }) => (
       <div className="text-center sm:text-start">
         {row.getValue("term") ? (
-          <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
             Term {row.getValue("term")}
           </span>
         ) : (
@@ -346,11 +380,11 @@ export function HomeTable() {
       {/* Enhanced Pagination */}
       <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-50 to-blue-50/30 border-t border-gray-200">
         <div className="text-sm text-gray-600">
-          Showing <span className="font-semibold">{table.getState().pagination.pageIndex * pageSize + 1}</span> to{' '}
+          {/* Showing <span className="font-semibold">{table.getState().pagination.pageIndex * pageSize + 1}</span> to{' '}
           <span className="font-semibold">
             {Math.min((table.getState().pagination.pageIndex + 1) * pageSize, totalRows)}
-          </span>{' '}
-          of <span className="font-semibold">{totalRows}</span> entries
+          </span>{' '} */}
+          <span className="font-semibold">{totalRows}</span> entries
         </div>
         <div className="flex items-center gap-2">
           <Button

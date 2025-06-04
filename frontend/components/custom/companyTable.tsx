@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2 } from "lucide-react"
+import { ArrowUpDown, MoreHorizontal, DollarSign, Calendar, Briefcase, MapPin, GraduationCap, Building2, Clock } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -41,6 +41,8 @@ export type Salary = {
   year: number
   location: string
   university: string
+  term: number
+  arrangement: string
 }
 
 export const columns: ColumnDef<Salary>[] = [
@@ -131,12 +133,19 @@ export const columns: ColumnDef<Salary>[] = [
         Location
       </div>
     ),
-    cell: ({ row }) => (
-      <div className="capitalize text-center sm:text-start flex items-center">
-        <MapPin className="w-3 h-3 mr-1 text-gray-500" />
-        {row.getValue("location")}
-      </div>
-    ),
+    cell: ({ row }) => {
+      const location = row.getValue("location") as string;
+      const displayLocation = !location || location.trim() === "" ? "not reported" : location;
+      
+      return (
+        <div className="capitalize text-center sm:text-start flex items-center">
+          <MapPin className="w-3 h-3 mr-1 text-gray-500" />
+          <span className={`${!location || location.trim() === "" ? "text-gray-400 italic" : ""}`}>
+            {displayLocation}
+          </span>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "university",
@@ -152,6 +161,26 @@ export const columns: ColumnDef<Salary>[] = [
         <span className="truncate max-w-[200px]" title={row.getValue("university")}>
           {row.getValue("university")}
         </span>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "term",
+    header: ({ column }) => (
+      <div className="flex items-center">
+        <Clock className="w-4 h-4 mr-2" />
+        Work Term
+      </div>
+    ),
+    cell: ({ row }) => (
+      <div className="text-center sm:text-start">
+        {row.getValue("term") ? (
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            Term {row.getValue("term")}
+          </span>
+        ) : (
+          <span className="text-gray-400">-</span>
+        )}
       </div>
     ),
   },
@@ -228,16 +257,16 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
   })
 
   return (
-    <div className="w-full">
-      <div className="rounded-lg border border-gray-200 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
+    <div className="w-full bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden">
+      <div className="overflow-x-auto">
         {data.length == 0 ? (
           <Table>
-            <TableHeader className="bg-gray-50/80">
+            <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} className="border-b border-gray-200">
+                <TableRow key={headerGroup.id} className="border-b border-gray-200 bg-gray-50/50">
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id} className="font-semibold text-gray-700">
+                      <TableHead key={header.id} className="font-semibold text-gray-700 py-4">
                         {header.isPlaceholder
                           ? null
                           : flexRender(
@@ -251,11 +280,11 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
               ))}
             </TableHeader>
             <TableBody>
-              {Array.from({ length: 5 }).map((_, rowIndex) => (
+              {Array.from({ length: 8 }).map((_, rowIndex) => (
                 <TableRow key={rowIndex} className="border-b border-gray-100">
                   {columns.map((column, colIndex) => (
                     <TableCell key={colIndex} className="py-4">
-                      <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-100 rounded animate-pulse"></div>
+                      <div className="h-6 bg-gradient-to-r from-gray-200 to-gray-100 rounded-lg animate-pulse"></div>
                     </TableCell>
                   ))}
                 </TableRow>
@@ -264,12 +293,12 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
           </Table>
         ) : (
           <Table>
-            <TableHeader className="bg-gray-50/80">
+            <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} className="border-b border-gray-200">
+                <TableRow key={headerGroup.id} className="border-b border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50/30">
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id} className="font-semibold text-gray-700">
+                      <TableHead key={header.id} className="font-semibold text-gray-700 py-4">
                         {header.isPlaceholder
                           ? null
                           : flexRender(
@@ -287,7 +316,7 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
                 table.getRowModel().rows.map((row, index) => (
                   <TableRow
                     key={row.id}
-                    className={`border-b border-gray-100 hover:bg-blue-50/50 transition-colors ${
+                    className={`border-b border-gray-100 hover:bg-gradient-to-r hover:from-blue-50/30 hover:to-purple-50/30 transition-all duration-200 ${
                       index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
                     }`}
                   >
@@ -305,12 +334,14 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
                 <TableRow>
                   <TableCell
                     colSpan={columns.length}
-                    className="h-32 text-center"
+                    className="h-32 text-center text-gray-500"
                   >
-                    <div className="flex flex-col items-center justify-center py-8">
-                      <Building2 className="w-12 h-12 text-gray-400 mb-4" />
-                      <h3 className="text-lg font-semibold text-gray-600 mb-2">No salary data found</h3>
-                      <p className="text-gray-500">There are no salary reports for this company yet.</p>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Building2 className="w-6 h-6 text-gray-400" />
+                      </div>
+                      <div className="font-medium">No salary data found</div>
+                      <div className="text-sm text-gray-400">There are no salary reports for this company yet.</div>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -319,26 +350,35 @@ export function CompanyTable({ companyRecords }: { companyRecords: Salary[] }) {
           </Table>
         )}
       </div>
-      <div className="flex items-center justify-between space-x-2 py-6">
-        <div className="flex-1 text-sm text-gray-600">
-          Showing <span className="font-semibold">{table.getState().pagination.pageSize * table.getState().pagination.pageIndex + 1}</span>-<span className="font-semibold">{table.getState().pagination.pageSize * table.getState().pagination.pageIndex + table.getRowModel().rows.length}</span> of <span className="font-semibold">{table.getCoreRowModel().rows.length}</span> entries
+      
+      {/* Enhanced Pagination */}
+      <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-50 to-blue-50/30 border-t border-gray-200">
+        <div className="text-sm text-gray-600">
+          Showing <span className="font-semibold">{table.getState().pagination.pageSize * table.getState().pagination.pageIndex + 1}</span> to{' '}
+          <span className="font-semibold">
+            {Math.min((table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize, table.getCoreRowModel().rows.length)}
+          </span>{' '}
+          of <span className="font-semibold">{table.getCoreRowModel().rows.length}</span> entries
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="border-gray-300 hover:bg-blue-50"
+            className="hover:bg-blue-50 border-blue-200 text-blue-600 disabled:opacity-50"
           >
             Previous
           </Button>
+          <div className="px-3 py-1 bg-white rounded-lg border border-blue-200 text-sm font-medium text-blue-600">
+            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+          </div>
           <Button
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="border-gray-300 hover:bg-blue-50"
+            className="hover:bg-blue-50 border-blue-200 text-blue-600 disabled:opacity-50"
           >
             Next
           </Button>

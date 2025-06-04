@@ -40,7 +40,16 @@ const formSchema = z.object({
   bonus: z.number().int().positive().optional(),
   term: z.string().optional(),
   arrangement: z.string().nonempty(),
-})
+}).refine((data) => {
+  // Make location required for Hybrid and In-Office arrangements
+  if ((data.arrangement === "Hybrid" || data.arrangement === "In-Office") && (!data.location || data.location.trim() === "")) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Location is required for Hybrid and In-Office work arrangements",
+  path: ["location"], // This will show the error on the location field
+});
 
 export function SalaryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,6 +73,9 @@ export function SalaryForm() {
       arrangement: ""
     },
   })
+
+  // Watch the arrangement field to determine if location is required
+  const arrangement = form.watch("arrangement");
 
   // Defining a submit handler.
  async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -227,20 +239,25 @@ export function SalaryForm() {
             <FormField
               control={form.control}
               name="location"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Location (optional)</FormLabel>
-                  <PlacesAutocomplete
-                    value={field.value === undefined ? "" : field.value}
-                    onChange={field.onChange}
-                    placeholder="Enter company location"
-                  />
-                  <FormDescription>
-                    City where the company is located
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
+              render={({ field }) => {
+                const isLocationRequired = arrangement === "Hybrid" || arrangement === "In-Office";
+                return (
+                  <FormItem>
+                    <FormLabel>
+                      Location {!arrangement || isLocationRequired ? "*" : "(optional)"}
+                    </FormLabel>
+                    <PlacesAutocomplete
+                      value={field.value === undefined ? "" : field.value}
+                      onChange={field.onChange}
+                      placeholder="Enter company location"
+                    />
+                    <FormDescription>
+                      City where the company is located
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
             />
           </div>
           <div className="w-full">
@@ -325,7 +342,7 @@ export function SalaryForm() {
           <Button 
             type="submit" 
             disabled={isSubmitting}
-            className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed border border-gray-700"
           >
             {isSubmitting ? (
               <div className="flex items-center gap-2">
@@ -333,7 +350,7 @@ export function SalaryForm() {
                 Submitting...
               </div>
             ) : (
-              "Submit Salary Data"
+              "Submit Salary"
             )}
           </Button>
         </div>

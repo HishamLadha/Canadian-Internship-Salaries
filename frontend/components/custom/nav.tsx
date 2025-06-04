@@ -16,19 +16,23 @@ const Nav: React.FC = () => {
         <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 mx-4 sm:mx-6 mt-2 mb-4 rounded-xl shadow-sm'>
             <div className='px-4 sm:px-6 py-3'>
                 <ul className='flex flex-row justify-between items-center'>
-                    <li>
-                        <ul className='flex flex-row items-center gap-6'>
+                    <li className="flex-shrink-0">
+                        <ul className='flex flex-row items-center gap-2 sm:gap-6'>
                             <li className='hover:opacity-70 transition-opacity'>
                                 <a className='flex flex-row items-center gap-2' href="/">
-                                    <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-                                        <BarChart3 className="w-5 h-5 text-white" />
-                                    </div>
-                                    <h1 className='font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hidden sm:block'>
+                                    <Image
+                                        src="/Logo1.svg"
+                                        alt="Scoper Logo"
+                                        width={32}
+                                        height={32}
+                                        className="w-8 h-8"
+                                    />
+                                    <h1 className='font-bold text-xl text-gray-900 hidden sm:block'>
                                         Scoper
                                     </h1>
                                 </a>
                             </li>
-                            <li className='flex-1 max-w-md'>
+                            <li className='flex-1 w-full min-w-0 max-w-none sm:max-w-lg lg:max-w-xl xl:max-w-2xl'>
                                 <Search />
                             </li>
                         </ul>
@@ -45,7 +49,7 @@ const Nav: React.FC = () => {
                         {/* Add Salary Button (Visible on Larger Screens) */}
                         <div className="hidden sm:block">
                             <a href="/submit">
-                                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+                                <Button className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-700">
                                     <span className="inline-flex items-center">
                                         <Plus size={16} className="mr-2" /> 
                                         Add Salary
@@ -58,7 +62,7 @@ const Nav: React.FC = () => {
                         {menuOpen && (
                             <div className="sm:hidden absolute top-12 right-0 bg-white border border-gray-200 shadow-xl rounded-xl p-4 z-50 min-w-[200px]">
                                 <a href="/submit">
-                                    <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                                    <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white border border-gray-700">
                                         <span className="inline-flex items-center">
                                             <Plus size={16} className="mr-2" /> 
                                             Add Salary
