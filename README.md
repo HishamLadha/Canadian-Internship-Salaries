@@ -2,7 +2,9 @@
 
 <div align="center">
 
-![Project Banner](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/home-page.png)
+![Project Banner](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/Home-Hero.png)
+![Home Table](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/Home-Table.png)
+
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
@@ -20,7 +22,6 @@ A platform for students to view and share internship salary data across Canada, 
 
 - View internship salaries across different companies in Canada
 - Submit anonymous salary reports
-- Coming soon: Search and filter by location
 
 > Hosted on a custom production VPS instance configured with load balancing, autobuilds, github actions and more!
 
@@ -71,6 +72,8 @@ DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
 FRONTEND_URL=http://localhost:3000
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=replace_your_api_key
+ADMIN_USERNAME=replace_with_your_username
+ADMIN_PASSWORD=replace_with_your_password
 ```
 
 3. Start the application:
@@ -85,13 +88,13 @@ docker-compose down  # Add -v flag to remove volumes
 
 ## 🗺️ Roadmap
 
-> **Note**: For detailed task tracking, please see [GitHub Issues](https://github.com/HishamLadha/Canadian-Internship-Salaries/issues)
-
 ### Current Focus
-- [ ] Enabling search by location
-- [ ] Implementing paginated API calls for the tables
-- [ ] Refactor codebase
-- [ ] Expanding the information on the home and company tables
+- [X] Enabling search by location
+- [X] Implementing paginated API calls for the tables
+- [X] Refactor codebase
+- [X] Expanding the information on the home and company tables
+- [ ] Waterloo and UTSC Data
+
 
 ### Future Improvements
 - [ ] Add salary insights dashboard for contributors
