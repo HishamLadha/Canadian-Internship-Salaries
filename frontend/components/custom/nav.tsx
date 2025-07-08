@@ -44,8 +44,16 @@ const Nav: React.FC = () => {
                             {menuOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>
 
-                        {/* Add Salary Button (Visible on Larger Screens) */}
-                        <div className="hidden sm:block">
+                        {/* Navigation Links & Add Salary Button (Visible on Larger Screens) */}
+                        <div className="hidden sm:flex items-center gap-4">
+                            <a href="/analytics">
+                                <Button variant="ghost" className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                                    <span className="inline-flex items-center">
+                                        <BarChart3 size={16} className="mr-2" /> 
+                                        Analytics
+                                    </span>
+                                </Button>
+                            </a>
                             <a href="/submit">
                                 <Button className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-700">
                                     <span className="inline-flex items-center">
@@ -58,7 +66,15 @@ const Nav: React.FC = () => {
 
                         {/* Hamburger Menu Card (Visible on Small Screens) */}
                         {menuOpen && (
-                            <div className="sm:hidden absolute top-12 right-0 bg-white border border-gray-200 shadow-xl rounded-xl p-4 z-50 min-w-[200px]">
+                            <div className="sm:hidden absolute top-12 right-0 bg-white border border-gray-200 shadow-xl rounded-xl p-4 z-50 min-w-[200px] space-y-3">
+                                <a href="/analytics">
+                                    <Button variant="ghost" className="w-full text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-200">
+                                        <span className="inline-flex items-center">
+                                            <BarChart3 size={16} className="mr-2" /> 
+                                            Analytics
+                                        </span>
+                                    </Button>
+                                </a>
                                 <a href="/submit">
                                     <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white border border-gray-700">
                                         <span className="inline-flex items-center">
