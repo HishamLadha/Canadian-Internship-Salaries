@@ -5,6 +5,7 @@ from ..auth import get_admin_user
 from ..database import get_session
 from ..models.pending_salary import PendingSalary, SubmissionStatus
 from ..models.salary import ReportedSalary
+from ..data_loader import load_waterloo_data
 
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -56,5 +57,13 @@ async def reject_submission(
     session.commit()
     
     return {"message": "Submission rejected"}
+
+@router.get("populate-db")
+async def populate_db(request: Request, 
+                      admin: dict = Depends(get_admin_user),
+                      session: Session = Depends(get_session)):
+    load_waterloo_data()
+
+
 
 

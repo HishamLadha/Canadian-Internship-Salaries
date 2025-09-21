@@ -97,6 +97,62 @@ def load_csv_data():
     
     print("All salaries successfully added to database!!")
 
+def load_waterloo_data():
+    csv_file = "/app/data/CleanWaterloo.csv"
+    df = pd.read_csv(csv_file)
+    
+    df['salary'] = pd.to_numeric(df['salary'], errors='coerce')
+    df['bonus'] = pd.to_numeric(df['bonus'], errors='coerce')
+    
+    df['term'] = pd.to_numeric(df['term'], errors='coerce')
+    df['term'] = df['term'].fillna(0).astype('Int64') 
+    
+    df = df.dropna(subset=['salary'])
+    
+    data = df.to_dict(orient="records")
+    
+    with Session(engine) as session:
+        try:
+            # commit all entries from CSV (with NaN locations)
+            for i, record in enumerate(data):
+                salary = ReportedSalary(
+                    company=record.get('company'),
+                    year=int(record.get('year')) if record.get('year') else None,
+                    salary=float(record.get('salary')) if record.get('salary') else None,
+                    university=record.get('university'),
+                    term=int(record.get('term')) if record.get('term') and record.get('term') != 0 else None,
+                    location=record.get('location'),
+                    bonus=float(record.get('bonus')) if record.get('bonus') else None,
+                    role=record.get('role'),
+                    arrangement=record.get('arrangement')
+                )
+                session.add(salary)
+            
+            # Commit the initial data
+            session.commit()
+            print("Initial data committed to database")
+            
+            #  update all entries where location is NULL/empty to "Canada"
+            from sqlmodel import update
+            
+            # Update records where location is None, empty string, or 'nan'
+            stmt = update(ReportedSalary).where(
+                (ReportedSalary.location.is_(None)) | 
+                (ReportedSalary.location == '') |
+                (ReportedSalary.location == 'nan') |
+                (ReportedSalary.location == 'NaN')
+            ).values(location="Canada")
+            
+            result = session.exec(stmt)
+            session.commit()
+            
+            print(f"Updated {result.rowcount} records with location 'Canada'")
+            print("All Waterloo salaries successfully added to database!!")
+            
+        except Exception as e:
+            session.rollback()
+            print(f"Error inserting data: {e}")
+            raise
 
 def load_universities_json():
     with open("/app/data/CanadianUniversities.json", "r") as file:

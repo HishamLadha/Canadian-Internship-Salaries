@@ -1,3 +1,5 @@
+
+
 import pandas as pd
 def load_csv_data():
     csv_file = "ConcordiaResponses.csv"
@@ -89,4 +91,4 @@ def load_csv_data():
     df['location'] = df['location'].str.strip().replace(location_replacements)
     print(df["location"].unique())
 
-load_csv_data()
+# load_csv_data()
