@@ -23,7 +23,7 @@ A platform for students to view and share internship salary data across Canada, 
 - **View Salary Data**: Browse comprehensive internship salary information across Canadian companies
 - **Submit Anonymous Reports**: Contribute salary data to help fellow students make informed decisions
 - **Advanced Analytics Dashboard**: Explore salary trends, company comparisons, and market insights
-- **Search & Filter**: Find specific companies, locations, and universities
+- **Search & Filter**: Find specific companies and locations
 - **Interactive Visualizations**: Charts and graphs showing salary distributions and trends
 - **Company Profiles**: Detailed views for individual companies with salary statistics
 - **Location-based Analysis**: Salary data organized by Canadian cities and provinces
@@ -88,21 +88,14 @@ docker-compose up --build
 
 To stop the application:
 ```bash
-docker-compose down  # Add -v flag to remove volumes
+docker-compose down  # Add -v flag to remove volumes when you want to delete your db, for example
 ```
 
 ## 📊 Analytics
 
 The platform features a comprehensive **Analytics Dashboard** that provides deep insights into Canadian internship salary data:
 
-- **Interactive Visualizations**: Charts and graphs showing salary trends, distributions, and comparisons
-- **Company Analysis**: Detailed salary statistics and rankings for hiring companies
-- **University Insights**: Performance metrics for different educational institutions
-- **Geographic Analysis**: Location-based salary data across Canadian cities
-- **Market Trends**: Year-over-year salary progression and growth patterns
-- **Comparison Tools**: Side-by-side analysis of companies, roles, and regions
-
-📈 **[View Analytics Dashboard](./analytics)** | 📋 **[Analytics Documentation](./ANALYTICS.md)**
+📈 **[View Analytics Dashboard](https://scoper.fyi/analytics)** 
 
 ## 🗺️ Roadmap
 
@@ -113,18 +106,9 @@ The platform features a comprehensive **Analytics Dashboard** that provides deep
 - [X] Expanding the information on the home and company tables
 - [X] **Analytics Dashboard** - Comprehensive salary analytics with trends, comparisons, and insights
 - [X] **Company Comparison Tool** - Side-by-side salary analysis between multiple companies
-- [ ] Waterloo and UTSC Data
-
-### Future Improvements
-- [ ] Add advanced filtering and sorting options
-- [ ] Develop predictive salary models
-- [ ] Add email verification system
-- [ ] Implement company verification process
-- [ ] Add data export functionality
-- [ ] Mobile app development
-- [ ] API for third-party integrations
+- [X] Waterloo and UTSC Data
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request or start a Github Issue.
+Please feel free to submit a Pull Request or start a Github Issue.
 
