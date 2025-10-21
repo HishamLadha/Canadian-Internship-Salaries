@@ -1,16 +1,15 @@
-# Scoper - Canadian Internship Salaries 
+# Scoper - Canadian Internship Salaries
 
 <div align="center">
 
 ![Project Banner](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/Home-Hero.png)
 ![Home Table](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/Home-Table.png)
-
+![Tech Stack Overview](https://github.com/HishamLadha/Canadian-Internship-Salaries/blob/main/assets/SystemDesign.png)
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white
-)](https://digitalocean.com)
+[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white)](https://digitalocean.com)
 
 A platform for students to view and share internship salary data across Canada, promoting transparency in the tech industry.
 
@@ -33,20 +32,23 @@ A platform for students to view and share internship salary data across Canada, 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js 
-- TypeScript 
+
+- Next.js
+- TypeScript
 - Tailwind CSS
-- Shadcn 
-- Zod 
+- Shadcn
+- Zod
 
 ### Backend
-- FastAPI 
-- Python 
-- SQLModel 
-- PostgreSQL 
+
+- FastAPI
+- Python
+- SQLModel
+- PostgreSQL
 - Pandas
 
 ### Deployment
+
 - Traefik (reverse proxying, load balancing, https)
 - Watchtower (autobuilds)
 - Docker + docker-compose
@@ -63,12 +65,14 @@ A platform for students to view and share internship salary data across Canada, 
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/Canadian-Internship-Salaries.git
 cd Canadian-Internship-Salaries
 ```
 
 2. Create `.env` file and configure your environment:
+
 ```bash
 POSTGRES_USER=replace_with_your_username
 POSTGRES_PASSWORD=replace_with_your_password
@@ -82,11 +86,13 @@ ADMIN_PASSWORD=replace_with_your_password
 ```
 
 3. Start the application:
+
 ```bash
 docker-compose up --build
 ```
 
 To stop the application:
+
 ```bash
 docker-compose down  # Add -v flag to remove volumes when you want to delete your db, for example
 ```
@@ -95,20 +101,20 @@ docker-compose down  # Add -v flag to remove volumes when you want to delete you
 
 The platform features a comprehensive **Analytics Dashboard** that provides deep insights into Canadian internship salary data:
 
-📈 **[View Analytics Dashboard](https://scoper.fyi/analytics)** 
+📈 **[View Analytics Dashboard](https://scoper.fyi/analytics)**
 
 ## 🗺️ Roadmap
 
 ### Current Focus
-- [X] Enabling search by location
-- [X] Implementing paginated API calls for the tables
-- [X] Refactor codebase
-- [X] Expanding the information on the home and company tables
-- [X] **Analytics Dashboard** - Comprehensive salary analytics with trends, comparisons, and insights
-- [X] **Company Comparison Tool** - Side-by-side salary analysis between multiple companies
-- [X] Waterloo and UTSC Data
+
+- [x] Enabling search by location
+- [x] Implementing paginated API calls for the tables
+- [x] Refactor codebase
+- [x] Expanding the information on the home and company tables
+- [x] **Analytics Dashboard** - Comprehensive salary analytics with trends, comparisons, and insights
+- [x] **Company Comparison Tool** - Side-by-side salary analysis between multiple companies
+- [x] Waterloo and UTSC Data
 
 ## Contributing
 
 Please feel free to submit a Pull Request or start a Github Issue.
-
